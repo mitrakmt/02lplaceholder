@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="O2lApp">
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.css">
@@ -11,14 +11,21 @@
     <md-card class="playerStatsSection" layout-padding layout-margin>
       <h1 class="">Player Stats</h1>
       <div layout="row">
-        <p class="md-subhead" flex>Intellect: <br>
-        Strength: {{player.strength}}<br>
-        Dexterity: <br>
-        Wisdom: <br></p>
-        <p class="md-subhead" flex>Constitution: <br>
-        Armor: <br>
-        Mana: <br>
-        Health: <br></p>
+        <p class="md-subhead" flex>
+          Class: <span id="playerClass"></span><br>
+          Health: <span id="playerHealth"></span><br>
+          Mana: <span id="playerMana"></span><br>
+        </p>
+        <p class="md-subhead" flex>
+          Constitution: <span id="playerConstitution"></span><br>
+          Intellect: <span id="playerIntellect"></span><br>
+          Strength: <span id="playerStrength"></span><br>
+          Dexterity: <span id="playerDexterity"></span><br>
+          Wisdom: <span id="playerWisdom"></span><br>
+          Charisma: <span id="playerCharisma"></span><br>
+          Armor: <span id="playerArmor"></span><br>
+          Mana: <span id="playerMana"></span><br>
+        </p>
       </div>
 
     </md-card>
