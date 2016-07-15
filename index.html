@@ -2,19 +2,46 @@
 <html ng-app>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.css">
     <link rel="stylesheet" href="CSS/main.css">
   </head>
   <body>
 
     <!-- player stats section -->
-    <md-content class="playerStatsSection">
+    <md-card class="playerStatsSection" layout-padding layout-margin>
       <h1 class="">Player Stats</h1>
-    </md-content>
+      <div layout="row">
+        <p class="md-subhead" flex>Intellect: <br>
+        Strength: {{player.strength}}<br>
+        Dexterity: <br>
+        Wisdom: <br></p>
+        <p class="md-subhead" flex>Constitution: <br>
+        Armor: <br>
+        Mana: <br>
+        Health: <br></p>
+      </div>
+
+    </md-card>
 
     <!-- Battle log -->
-    <md-content class="battleLogSection">
-      <h1>Battle Logs</h1>
-    </md-content>
+    <md-card class="battleLogSection" layout-padding layout-margin>
+      <h1 class="">Player Log</h1>
+      <md-card class="eachLog" layout-margin layout-padding>
+        <h4>Battle Successful</h4>
+        <p>You defeated the Giant Rat!</p>
+      </md-card>
+
+      <md-card  class="eachLog" layout-margin layout-padding>
+        <h4>Battle Successful</h4>
+        <p>You defeated the Giant Rat!</p>
+      </md-card>
+
+      <md-card  class="eachLog" layout-margin layout-padding>
+        <h4>Battle Successful</h4>
+        <p>You defeated the Giant Rat!</p>
+      </md-card>
+
+    </md-card>
 
     <script src="JS/main.js"></script>
   </body>
