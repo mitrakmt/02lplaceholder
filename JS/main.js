@@ -1,13 +1,13 @@
 var player = {
-  baseIntellect : 1,
-  baseStrength : 1,
-  baseDexterity : 1,
-  baseWisdom : 1,
-  baseConstitution : 1,
-  baseCharisma : 1,
-  baseArmor : 1,
-  baseMana : 100,
-  baseHealth : 100,
+  intellect : 1,
+  strength : 1,
+  dexterity : 1,
+  wisdom : 1,
+  constitution : 1,
+  charisma : 1,
+  armor : 1,
+  mana : 100,
+  health : 100,
   class : ""
 }
 
@@ -57,8 +57,21 @@ var enemies = [
       charisma : 1,
       armor : 2,
   }
-]
+];
 
 player.class = prompt("Choose your class! \n Warrior <> Rogue <> Mage");
-  console.log(player.class);
-  
+console.log("<> You chose: " + player.class + "! <>");
+
+classes.forEach(function(playerClass) {
+  if (player.class === playerClass.name) {
+    player.intellect += playerClass.intellect;
+    player.strength += playerClass.strength;
+    player.dexterity += playerClass.dexterity;
+    player.charisma += playerClass.charisma;
+    player.constitution += playerClass.constitution;
+    player.armor += playerClass.armor;
+    player.wisdom += playerClass.wisdom;
+   }
+});
+
+console.log("      Your class stats are..\n       _____________________________________________________________\n     <| Int <> Str <> Dex <> Wis <> Con <> Cha <> Def <> Mana <> HP |> \n     <|  "+player.intellect+"      "+player.strength+"      "+player.dexterity+"      "+player.wisdom+"      "+player.constitution+"      "+player.charisma+"      "+player.armor+"     "+player.mana+"    "+player.health+" |> \n        -----------------------------------------------------------");
