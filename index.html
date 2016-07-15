@@ -15,6 +15,7 @@
           Class: <span id="playerClass"></span><br>
           Health: <span id="playerHealth"></span><br>
           Mana: <span id="playerMana"></span><br>
+          Armor: <span id="playerArmor"></span><br>
         </p>
         <p class="md-subhead" flex>
           Constitution: <span id="playerConstitution"></span><br>
@@ -23,8 +24,6 @@
           Dexterity: <span id="playerDexterity"></span><br>
           Wisdom: <span id="playerWisdom"></span><br>
           Charisma: <span id="playerCharisma"></span><br>
-          Armor: <span id="playerArmor"></span><br>
-          Mana: <span id="playerMana"></span><br>
         </p>
       </div>
 
@@ -32,21 +31,36 @@
 
     <!-- Battle log -->
     <md-card class="battleLogSection" layout-padding layout-margin>
-      <h1 class="">Player Log</h1>
-      <md-card class="eachLog" layout-margin layout-padding>
-        <h4>Battle Successful</h4>
-        <p>You defeated the Giant Rat!</p>
-      </md-card>
+      <md-toolbar class="md-theme-light">
+        <h1 class="">Player Stats</h1>
+      </md-toolbar>
+      <md-content>
+        <md-list>
+          <md-list-item class="md-3-line" layout-padding layout-margin>
+            <div class="md-list-item-text">
+              <h3><strong>Victory</strong></h3>
+              <p>You defeated the Giant Rat!</p>
+            </div>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item class="md-3-line" layout-padding layout-margin>
+            <div class="md-list-item-text">
+              <h3><strong>Victory</strong></h3>
+              <p>You defeated the Giant Rat!</p>
+            </div>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item class="md-3-line" layout-padding layout-margin>
+            <div class="md-list-item-text">
+              <h3><strong>Victory</strong></h3>
+              <p>You defeated the Giant Rat!</p>
+            </div>
+            <md-divider></md-divider>
+          </md-list-item>
+        </md-list>
+      </md-content>
 
-      <md-card  class="eachLog" layout-margin layout-padding>
-        <h4>Battle Successful</h4>
-        <p>You defeated the Giant Rat!</p>
-      </md-card>
 
-      <md-card  class="eachLog" layout-margin layout-padding>
-        <h4>Battle Successful</h4>
-        <p>You defeated the Giant Rat!</p>
-      </md-card>
 
     </md-card>
 
