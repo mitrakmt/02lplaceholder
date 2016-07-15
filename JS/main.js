@@ -1,3 +1,4 @@
+  var hit;
     var player = {
       intellect : 1,
       strength : 1,
@@ -15,12 +16,13 @@
       {
         name : "warrior",
           intellect : 1,
-          strength : 5,
+          strength : 4,
           dexterity : 3,
           wisdom : 1,
           constitution : 5,
           charisma : 4,
           armor : 6,
+          mana : 0
       },
 
       {
@@ -32,17 +34,19 @@
           constitution : 3,
           charisma : 5,
           armor : 3,
+          mana : 0
       },
 
       {
         name : "mage",
-          intellect : 5,
+          intellect : 6,
           strength : 2,
           dexterity : 2,
           wisdom : 5,
           constitution : 3,
           charisma : 4,
           armor : 2,
+          mana : 50
       }
     ]
 
@@ -56,11 +60,12 @@
           constitution : 3,
           charisma : 1,
           armor : 2,
+          health : 60,
+          mana : 100
       }
     ];
 
-    player.class = prompt("Choose your class! \n Warrior <> Rogue <> Mage");
-    console.log("<> You chose: " + player.class + "! <>");
+    player.class = prompt("Choose your class! \n Warrior <> Rogue <> Mage").toLowerCase();
 
     classes.forEach(function(playerClass) {
       if (player.class === playerClass.name) {
@@ -71,6 +76,7 @@
         player.constitution += playerClass.constitution;
         player.armor += playerClass.armor;
         player.wisdom += playerClass.wisdom;
+        player.mana += playerClass.mana;
        }
     });
 
@@ -84,3 +90,25 @@
     document.getElementById("playerHealth").innerHTML = player.health;
     document.getElementById("playerMana").innerHTML = player.mana;
     document.getElementById("playerClass").innerHTML = player.class;
+
+
+    function findEnemy() {
+      var randEnemy = Math.ceil((Math.random()*enemies.length)-1);
+        return enemies[randEnemy];
+    }
+
+    function fight(enemy) {
+      console.log(enemy);
+
+      if(player.class==="warrior") { hit = Math.ceil(Math.random()*10)+player.strength }
+      else if (player.class==="rogue") { hit = Math.ceil(Math.random()*10)+player.dexterity }
+      else if (player.class==="mage") { hit = Math.ceil(Math.random()*10)+player.intellect }
+
+      enemy.health -= hit;
+      console.log(enemy.health);
+      if (enemy.health <= 0) {
+          console.log("he ded"); // mike make this pretty
+      }
+    }
+
+    console.log(fight(findEnemy()));
