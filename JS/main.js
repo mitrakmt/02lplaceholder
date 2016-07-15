@@ -84,6 +84,3 @@
     document.getElementById("playerHealth").innerHTML = player.health;
     document.getElementById("playerMana").innerHTML = player.mana;
     document.getElementById("playerClass").innerHTML = player.class;
-
-
-    console.log("      Your class stats are..\n       _____________________________________________________________\n     <| Int <> Str <> Dex <> Wis <> Con <> Cha <> Def <> Mana <> HP |> \n     <|  "+player.intellect+"      "+player.strength+"      "+player.dexterity+"      "+player.wisdom+"      "+player.constitution+"      "+player.charisma+"      "+player.armor+"     "+player.mana+"    "+player.health+" |> \n        -----------------------------------------------------------");
