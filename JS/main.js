@@ -1,4 +1,6 @@
   var hit;
+  var docById = document.getElementById
+
     var player = {
       intellect : 1,
       strength : 1,
@@ -80,16 +82,16 @@
        }
     });
 
-    document.getElementById("playerIntellect").innerHTML = player.intellect;
-    document.getElementById("playerStrength").innerHTML = player.strength;
-    document.getElementById("playerDexterity").innerHTML = player.dexterity;
-    document.getElementById("playerCharisma").innerHTML = player.charisma;
-    document.getElementById("playerConstitution").innerHTML = player.constitution;
-    document.getElementById("playerArmor").innerHTML = player.armor;
-    document.getElementById("playerWisdom").innerHTML = player.wisdom;
-    document.getElementById("playerHealth").innerHTML = player.health;
-    document.getElementById("playerMana").innerHTML = player.mana;
-    document.getElementById("playerClass").innerHTML = player.class;
+    docById("playerIntellect").innerHTML = player.intellect;
+    docById("playerStrength").innerHTML = player.strength;
+    docById("playerDexterity").innerHTML = player.dexterity;
+    docById("playerCharisma").innerHTML = player.charisma;
+    docById("playerConstitution").innerHTML = player.constitution;
+    docById("playerArmor").innerHTML = player.armor;
+    docById("playerWisdom").innerHTML = player.wisdom;
+    docById("playerHealth").innerHTML = player.health;
+    docById("playerMana").innerHTML = player.mana;
+    docById("playerClass").innerHTML = player.class;
 
 
     function findEnemy() {
@@ -107,7 +109,21 @@
       enemy.health -= hit;
       console.log(enemy.health);
       if (enemy.health <= 0) {
-          console.log("he ded"); // mike make this pretty
+        docById("logList").innerHTML += '<md-list-item layout-padding layout-margin>';
+            docById("logList").innerHTML += "<div>";
+              docById("logList").innerHTML += "<h3><strong>VVVV</strong></h3>";
+              docById("logList").innerHTML += "<p>You defeated the Giant Rat!</p>";
+            docById("logList").innerHTML += "</div>";
+            docById("logList").innerHTML += "<md-divider></md-divider>";
+          docById("logList").innerHTML += "</md-list-item>";
+      } else {
+        docById("logList").innerHTML += '<md-list-item layout-padding layout-margin>';
+            docById("logList").innerHTML += "<div>";
+              docById("logList").innerHTML += "<h3><strong>VVVV</strong></h3>";
+              docById("logList").innerHTML += "<p>You defeated the Giant Rat!</p>";
+            docById("logList").innerHTML += "</div>";
+            docById("logList").innerHTML += "<md-divider></md-divider>";
+          docById("logList").innerHTML += "</md-list-item>";
       }
     }
 
