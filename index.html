@@ -8,38 +8,55 @@
   <body>
 
     <!-- player stats section -->
-    <md-card class="playerStatsSection" layout-padding layout-margin>
-      <h1 class="">Player Stats</h1>
-      <div layout="row">
-        <p class="md-subhead" flex>
-          Class: <span id="playerClass"></span><br>
-          Health: <span id="playerHealth"></span><br>
-          Mana: <span id="playerMana"></span><br>
-          Armor: <span id="playerArmor"></span><br>
-        </p>
-        <p class="md-subhead" flex>
-          Constitution: <span id="playerConstitution"></span><br>
-          Intellect: <span id="playerIntellect"></span><br>
-          Strength: <span id="playerStrength"></span><br>
-          Dexterity: <span id="playerDexterity"></span><br>
-          Wisdom: <span id="playerWisdom"></span><br>
-          Charisma: <span id="playerCharisma"></span><br>
-        </p>
-      </div>
+    <div layout="row" layout-xs="column">
+      <md-card class="playerStatsSection" layout-padding layout-margin flex>
+        <h1 class="">Player Stats</h1>
+        <div layout="row">
+          <p class="md-subhead" flex>
+            Class: <span id="playerClass"></span><br>
+            Health: <span id="playerHealth"></span><br>
+            Mana: <span id="playerMana"></span><br>
+            Armor: <span id="playerArmor"></span><br>
+          </p>
+          <p class="md-subhead" flex>
+            Constitution: <span id="playerConstitution"></span><br>
+            Intellect: <span id="playerIntellect"></span><br>
+            Strength: <span id="playerStrength"></span><br>
+            Dexterity: <span id="playerDexterity"></span><br>
+            Wisdom: <span id="playerWisdom"></span><br>
+            Charisma: <span id="playerCharisma"></span><br>
+          </p>
+        </div>
+      </md-card>
 
-    </md-card>
+      <!-- Player items -->
+      <md-card class="playerBag" layout-padding layout-margin>
+        <h1 class="">Inventory</h1>
+        <p class="md-subhead" flex>
+          Gold: <span id="playerGold"></span><br><br>
+          Health potion: <span id="playerHealthPotion"></span> <button class="md-raised" onclick="healthPotion()">Use</button><br>
+          Mana potion: <span id="playerManaPotion"></span> <button class="md-raised" onclick="manaPotion()">Use</button><br>
+
+        </p>
+      </md-card flex>
+    </div>
 
     <!-- Battle log -->
     <md-card class="battleLogSection" layout-padding layout-margin>
-      <md-toolbar class="md-theme-light">
-        <h1 class="">Player Stats</h1>
+      <md-toolbar class="md-theme-light" layout="row">
+        <h1 class="" flex>Battle Log</h1>
+        <p class="md-headline inBattle" id="inBattle" flex><span id="enemyName"></span> Health: <span id="enemyHealth"></span></p>
       </md-toolbar>
+      <div layout="row">
+        <button id="attackButton" class="md-raised attack-button" onclick="fight(currentEnemy)">Attack</button>
+        <button id="startBattleButton" class="md-raised start-battle-button" onclick="fight(findEnemy()); action();">Start Encounter</button>
+      </div>
       <md-content>
-        <md-list id=#logList>
+        <md-list>
           <md-list-item class="md-3-line" layout-padding layout-margin>
             <div class="md-list-item-text">
-              <h3><strong>Example</strong></h3>
-              <p>Any battle logs or udpates will appear here!</p>
+              <h1 id="logListTitle"><strong>Example</strong></h1>
+              <p id="logListDesc" class="md-display-1">Any battle logs or udpates will appear here!</p>
             </div>
             <md-divider></md-divider>
           </md-list-item>

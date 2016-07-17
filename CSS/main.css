@@ -1,13 +1,48 @@
+body {
+  background: url(images/background-image.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .playerStatsSection {
   background-color: #E5E5E6;
+  opacity: .8;
   width: 100%;
 }
 
 .battleLogSection {
   background-color: #E5E5E6;
+  opacity: .8;
   width: 100%;
 }
 
 .eachLog {
   background-color: white;
+}
+
+.attack-button {
+  width: 100px;
+  height: 40px;
+  padding: 5px;
+  background-color: red;
+  visibility: hidden;
+}
+
+.start-battle-button {
+  width: 100px;
+  height: 60px;
+  padding: 5px;
+  background-color: red;
+}
+
+.inBattle {
+  visibility: hidden;
+}
+
+.playerBag {
+  min-width: 450px;
+  background-color: #E5E5E6;
+  opacity: .8;
 }
