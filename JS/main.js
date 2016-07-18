@@ -282,8 +282,8 @@
       if (enemy.health <= 0) {
         // Update player stats
         document.getElementById("logListTitle").innerHTML = "Enemy defeated!";
-        document.getElementById("logListDesc").innerHTML = "You found " + enemy.gold + " gold!";
-        player.gold += enemy.gold;
+        document.getElementById("logListDesc").innerHTML = "You found " + enemy.inventory.gold + " gold!";
+        player.gold += enemy.inventory.gold;
         document.getElementById("playerGold").innerHTML = player.gold;
         document.getElementById("playerHealth").innerHTML = player.health;
 
