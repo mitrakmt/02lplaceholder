@@ -18,6 +18,17 @@
         }
     }
 
+    var cheatCodes = function() {
+      var phrase = prompt("Do you know one of our secret cheat codes?");
+      if (phrase === "Bling bling bitches") {
+        player.gold += 100000;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else if (phrase === "I'm invincible boyyy") {
+        player.health = 100000;
+        document.getElementById("playerHealth").innerHTML = player.health;
+      }
+    }
+
     var player = {
       intellect : 1,
       strength : 1,
@@ -38,7 +49,7 @@
       {
         name : "warrior",
           intellect : 1,
-          strength : 4,
+          strength : 5,
           dexterity : 3,
           wisdom : 1,
           constitution : 5,
@@ -56,6 +67,16 @@
           armor : 3,
           mana : 0
       }, {
+        name : "paladin",
+          intellect : 2,
+          strength : 4,
+          dexterity : 4,
+          wisdom : 3,
+          constitution : 3,
+          charisma : 5,
+          armor : 5,
+          mana : 100
+      }, {
         name : "mage",
           intellect : 6,
           strength : 2,
@@ -64,7 +85,7 @@
           constitution : 3,
           charisma : 4,
           armor : 2,
-          mana : 50
+          mana : 100
       }
     ]
 
