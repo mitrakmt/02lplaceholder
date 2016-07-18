@@ -9,3 +9,5 @@ TODO:
   // Add experience systems / leveling
   // Some type of text based manaPotion
   // After successful victory, chance of running into a merchant.
+  // Fix gold because moved into inventory object
+  // Fix at end of fight so enemy goes to previous health and not just to 100 after death

@@ -94,82 +94,34 @@
     var enemies = [
       {
         name : "Giant Rat",
-        intellect : 1,
-        strength : 2,
-        dexterity : 2,
-        wisdom : 1,
-        constitution : 3,
-        charisma : 1,
-        armor : 1,
-        health : 60,
-        mana : 100,
-        gold: 3,
-        inventory: {healthPotion: 2, manaPotion: 1}
+        level: 1,
+        stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+        inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       }, {
         name : "King Scorpion",
-        intellect : 1,
-        strength : 3,
-        dexterity : 2,
-        wisdom : 1,
-        constitution : 3,
-        charisma : 1,
-        armor : 3,
-        health : 70,
-        mana : 100,
-        gold: 5,
-        inventory: {healthPotion: 3, manaPotion: 1}
+        level: 1,
+        stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+        inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
         name : "Camel",
-        intellect : 1,
-        strength : 2,
-        dexterity : 2,
-        wisdom : 1,
-        constitution : 3,
-        charisma : 1,
-        armor : 1,
-        health : 30,
-        mana : 100,
-        gold: 1,
-        inventory: {healthPotion: 1, manaPotion: 1}
+        level: 1,
+        stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+        inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
         name : "Mummy",
-        intellect : 1,
-        strength : 2,
-        dexterity : 2,
-        wisdom : 1,
-        constitution : 3,
-        charisma : 1,
-        armor : 2,
-        health : 75,
-        mana : 100,
-        gold: 6,
-        inventory: {healthPotion: 1, manaPotion: 1}
+        level: 1,
+        stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+        inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
         name : "Naga",
-        intellect : 3,
-        strength : 2,
-        dexterity : 2,
-        wisdom : 1,
-        constitution : 3,
-        charisma : 1,
-        armor : 3,
-        health : 60,
-        mana : 100,
-        gold: 2,
-        inventory: {healthPotion: 0, manaPotion: 0}
+        level: 1,
+        stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+        inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
         name : "Mummy Lord",
-        intellect : 1,
-        strength : 3,
-        dexterity : 2,
-        wisdom : 1,
-        constitution : 3,
-        charisma : 1,
-        armor : 3,
-        health : 100,
-        mana : 100,
-        gold: 45,
-        inventory: {healthPotion: 0, manaPotion: 0}
+        level: 1,
+        stats : {health : 100, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+        inventory: {healthPotion: 2, manaPotion: 2, gold: 35}
       }
     ];
 
