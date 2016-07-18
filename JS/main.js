@@ -263,23 +263,75 @@
       var randEnemy = Math.ceil((Math.random()*enemies.length)-1);
         currentEnemy = enemies[randEnemy];
         enemy = currentEnemy;
-        document.getElementById("enemyHealth").innerHTML = enemy.health + " HP";
+        document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
         document.getElementById("enemyName").innerHTML = enemy.name;
         action();
     }
 
-    function normalAttack(enemy) {
+    var normalStrength = function () {
+      if(player.class === "warrior") {
+        hit = Math.ceil(Math.random()*10)+player.strength;
 
-      if(player.class === "warrior") { hit = Math.ceil(Math.random()*10)+player.strength }
-      else if (player.class === "rogue") { hit = Math.ceil(Math.random()*10)+player.dexterity }
-      else if (player.class === "mage") { hit = Math.ceil(Math.random()*10)+player.strength }
+        if ((hit - player.strength) === 10) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      } else if (player.class === "rogue") {
+        hit = Math.ceil(Math.random()*10)+player.dexterity;
 
-      var enemyHit = Math.ceil(Math.random()*10) + enemy.strength;
+        if ((hit - player.dexterity) === 10) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      } else if (player.class === "mage") {
+        hit = Math.ceil(Math.random()*10)+player.strength;
 
-      enemy.health -= hit;
+        if ((hit - player.strength) === 10) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      }
+    }
+
+    var mediumStrength = function () {
+      if(player.class === "warrior") {
+        hit = Math.ceil(Math.random()*20)+player.strength;
+
+        if ((hit - player.strength) === 19||20) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      } else if (player.class === "rogue") {
+        hit = Math.ceil(Math.random()*20)+player.dexterity;
+
+        if ((hit - player.dexterity) === 19||20) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      } else if (player.class === "mage") {
+        hit = Math.ceil(Math.random()*20)+player.intellect;
+
+        if ((hit - player.intellect) === 19||20) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      }
+    }
+
+    function attack(enemy, hit) {
+
+      var enemyHit = Math.ceil(Math.random()*10) + enemy.stats.strength;
+
+      enemy.stats.health -= hit;
 
       // When enemy is killed:
-      if (enemy.health <= 0) {
+      if (enemy.stats.health <= 0) {
         // Update player stats
         document.getElementById("logListTitle").innerHTML = "Enemy defeated!";
         document.getElementById("logListDesc").innerHTML = "You found " + enemy.inventory.gold + " gold!";
@@ -304,7 +356,7 @@
         document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
         document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
 
-        enemy.health = 100;
+        enemy.stats.health = 100;
 
         // Take the player out of battle
         action();
@@ -312,7 +364,7 @@
       } else {
         document.getElementById("logListTitle").innerHTML = "Attack Successful";
         document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!";
-        document.getElementById("enemyHealth").innerHTML = enemy.health + " HP";
+        document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
         player.health -= (enemyHit - (player.armor/2));
         document.getElementById("playerHealth").innerHTML = player.health;
       }

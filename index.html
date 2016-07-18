@@ -58,7 +58,8 @@
         <p class="md-headline inBattle" id="inBattle" flex><span id="enemyName"></span> Health: <span id="enemyHealth"></span></p>
       </md-toolbar>
       <div layout="row">
-        <button id="attackButton" class="md-raised attack-button" onclick="normalAttack(currentEnemy)">Attack</button>
+        <button id="attackButton" class="md-raised attack-button" onclick="attack(currentEnemy, normalStrength())">Attack</button>
+        <button id="skillButton" class="md-raised" onclick="attack(currentEnemy, mediumStrength())">Shiv</button>
         <button id="startBattleButton" class="md-raised start-battle-button" onclick="findEnemy()">Start Encounter</button>
       </div>
       <md-content>
