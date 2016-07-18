@@ -37,7 +37,9 @@
       constitution : 1,
       charisma : 1,
       armor : 1,
-      mana : 100,
+      mana : 0,
+      energy : 0,
+      rage : 0,
       health : 100,
       class : "",
       gold : 0,
@@ -55,7 +57,7 @@
           constitution : 5,
           charisma : 4,
           armor : 6,
-          mana : 0
+          rage : 100
       }, {
         name : "rogue",
           intellect : 1,
@@ -65,7 +67,7 @@
           constitution : 3,
           charisma : 5,
           armor : 3,
-          mana : 0
+          energy : 100
       }, {
         name : "paladin",
           intellect : 2,
@@ -98,7 +100,7 @@
         wisdom : 1,
         constitution : 3,
         charisma : 1,
-        armor : 2,
+        armor : 1,
         health : 60,
         mana : 100,
         gold: 3,
@@ -111,7 +113,7 @@
         wisdom : 1,
         constitution : 3,
         charisma : 1,
-        armor : 2,
+        armor : 3,
         health : 70,
         mana : 100,
         gold: 5,
@@ -124,7 +126,7 @@
         wisdom : 1,
         constitution : 3,
         charisma : 1,
-        armor : 2,
+        armor : 1,
         health : 30,
         mana : 100,
         gold: 1,
@@ -143,15 +145,15 @@
         gold: 6,
         inventory: {healthPotion: 1, manaPotion: 1}
       } , {
-        name : "Lamia",
-        intellect : 1,
-        strength : 1,
+        name : "Naga",
+        intellect : 3,
+        strength : 2,
         dexterity : 2,
         wisdom : 1,
         constitution : 3,
         charisma : 1,
-        armor : 2,
-        health : 50,
+        armor : 3,
+        health : 60,
         mana : 100,
         gold: 2,
         inventory: {healthPotion: 1, manaPotion: 1}
@@ -163,7 +165,7 @@
         wisdom : 1,
         constitution : 3,
         charisma : 1,
-        armor : 2,
+        armor : 3,
         health : 100,
         mana : 100,
         gold: 15,
@@ -294,11 +296,11 @@
         action();
     }
 
-    function fight(enemy) {
+    function normalAttack(enemy) {
 
       if(player.class === "warrior") { hit = Math.ceil(Math.random()*10)+player.strength }
       else if (player.class === "rogue") { hit = Math.ceil(Math.random()*10)+player.dexterity }
-      else if (player.class === "mage") { hit = Math.ceil(Math.random()*10)+player.intellect }
+      else if (player.class === "mage") { hit = Math.ceil(Math.random()*10)+player.strength }
 
       var enemyHit = Math.ceil(Math.random()*10) + enemy.strength;
 
@@ -339,7 +341,7 @@
         document.getElementById("logListTitle").innerHTML = "Attack Successful";
         document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!";
         document.getElementById("enemyHealth").innerHTML = enemy.health + " HP";
-        player.health -= enemyHit;
+        player.health -= (enemyHit - (player.armor/2));
         document.getElementById("playerHealth").innerHTML = player.health;
       }
 
