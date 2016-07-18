@@ -30,6 +30,7 @@
       health : 100,
       class : "",
       gold : 0,
+      weapon : undefined,
       inventory: {healthPotion: 1, manaPotion: 1}
     }
 
@@ -44,9 +45,7 @@
           charisma : 4,
           armor : 6,
           mana : 0
-      },
-
-      {
+      }, {
         name : "rogue",
           intellect : 1,
           strength : 3,
@@ -56,9 +55,7 @@
           charisma : 5,
           armor : 3,
           mana : 0
-      },
-
-      {
+      }, {
         name : "mage",
           intellect : 6,
           strength : 2,
@@ -107,13 +104,11 @@
         constitution : 3,
         charisma : 1,
         armor : 2,
-        health : 20,
+        health : 30,
         mana : 100,
         gold: 1,
         inventory: {healthPotion: 1, manaPotion: 1}
       } , {
-
-      }, {
         name : "Mummy",
         intellect : 1,
         strength : 2,
@@ -153,7 +148,24 @@
         gold: 15,
         inventory: {healthPotion: 3, manaPotion: 2}
       }
+    ];
 
+    var store = [
+      {
+        name: "King Slayer",
+        type: "Weapon",
+        damage: 29,
+        dexterity: 50,
+        cost: 150
+      }, {
+        name: "Health Potion",
+        type: "Potion",
+        cost: 5
+      }, {
+        name: "Mana Potion",
+        type: "Potion",
+        cost: 5
+      }
     ];
 
     var healthPotion = function () {
@@ -167,6 +179,17 @@
       }
     }
 
+    var buyHealthPotion = function () {
+      if (player.gold > store[1].cost) {
+        player.gold -= store[1].cost;
+        player.inventory.healthPotion++;
+        document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else {
+        alert("Sorry, you don't have enough gold yet.")
+      }
+    }
+
     var manaPotion = function () {
       if (player.inventory.manaPotion > 0) {
         player.mana = 100;
@@ -175,6 +198,31 @@
         document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
       } else {
         console.log("You have no mana potions");
+      }
+    }
+
+    var buyManaPotion = function () {
+      if (player.gold > store[2].cost) {
+        player.gold -= store[2].cost;
+        player.inventory.manaPotion++;
+        document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else {
+        alert("Sorry, you don't have enough gold yet.")
+      }
+    }
+
+    var buyKingSlayer = function() {
+      if (player.gold > store[0].cost) {
+        player.weapon = "King Slayer";
+        player.strength += 29;
+        player.dexterity += 50;
+        player.gold -= store[0].cost;
+        document.getElementById("playerStrength").innerHTML = player.strength;
+        document.getElementById("playerDexterity").innerHTML = player.dexterity;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else {
+        alert("Sorry, you don't have enough gold yet.")
       }
     }
 
@@ -193,6 +241,7 @@
        }
     });
 
+    // Insert player stats and inventory into DOM
     document.getElementById("playerIntellect").innerHTML = player.intellect;
     document.getElementById("playerStrength").innerHTML = player.strength;
     document.getElementById("playerDexterity").innerHTML = player.dexterity;
@@ -207,10 +256,21 @@
     document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
     document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
 
+    // Insert store into DOM
+    document.getElementById("buyKingSlayerName").innerHTML = store[0].name;
+    document.getElementById("buyKingSlayerCost").innerHTML = store[0].cost;
+    document.getElementById("buyHealthPotionName").innerHTML = store[1].name;
+    document.getElementById("buyHealthPotionCost").innerHTML = store[1].cost;
+    document.getElementById("buyManaPotionName").innerHTML = store[2].name;
+    document.getElementById("buyManaPotionCost").innerHTML = store[2].cost;
 
-    function findEnemy() {
+    var findEnemy = function() {
       var randEnemy = Math.ceil((Math.random()*enemies.length)-1);
-        return enemies[randEnemy];
+        currentEnemy = enemies[randEnemy];
+        enemy = currentEnemy;
+        document.getElementById("enemyHealth").innerHTML = enemy.health + " HP";
+        document.getElementById("enemyName").innerHTML = enemy.name;
+        action();
     }
 
     function fight(enemy) {
@@ -219,9 +279,9 @@
       else if (player.class === "rogue") { hit = Math.ceil(Math.random()*10)+player.dexterity }
       else if (player.class === "mage") { hit = Math.ceil(Math.random()*10)+player.intellect }
 
-      enemy.health -= hit;
+      var enemyHit = Math.ceil(Math.random()*10) + enemy.strength;
 
-      document.getElementById("enemyName").innerHTML = enemy.name;
+      enemy.health -= hit;
 
       // When enemy is killed:
       if (enemy.health <= 0) {
@@ -230,7 +290,6 @@
         document.getElementById("logListDesc").innerHTML = "You found " + enemy.gold + " gold!";
         player.gold += enemy.gold;
         document.getElementById("playerGold").innerHTML = player.gold;
-        player.health = 100;
         document.getElementById("playerHealth").innerHTML = player.health;
 
         // Move all of enemy's inventory to player's inventory
@@ -238,7 +297,11 @@
         if (enemy.inventory.length !== null) {
           console.log("Trying to add to inventory 2");
           for(var item in enemy.inventory) {
-            player.inventory[item] += enemy.inventory[item];
+            if (player.inventory[item] !== undefined) {
+              player.inventory[item] += enemy.inventory[item];
+            } else {
+              player.inventory[item] = enemy.inventory[item];
+            }
           }
         }
 
@@ -246,15 +309,17 @@
         document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
         document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
 
+        enemy.health = 100;
+
         // Take the player out of battle
-        currentEnemy = findEnemy();
         action();
 
       } else {
         document.getElementById("logListTitle").innerHTML = "Attack Successful";
         document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!";
         document.getElementById("enemyHealth").innerHTML = enemy.health + " HP";
-        player.health -= hit;
+        player.health -= enemyHit;
+        document.getElementById("playerHealth").innerHTML = player.health;
       }
 
       if (player.health <= 0) {
@@ -262,6 +327,5 @@
       }
       document.getElementById("playerHealth").innerHTML = player.health;
 
-      currentEnemy = enemy;
       return enemy;
     }
