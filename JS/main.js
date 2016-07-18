@@ -156,7 +156,7 @@
         health : 60,
         mana : 100,
         gold: 2,
-        inventory: {healthPotion: 1, manaPotion: 1}
+        inventory: {healthPotion: 0, manaPotion: 0}
       } , {
         name : "Mummy Lord",
         intellect : 1,
@@ -168,8 +168,8 @@
         armor : 3,
         health : 100,
         mana : 100,
-        gold: 15,
-        inventory: {healthPotion: 3, manaPotion: 2}
+        gold: 45,
+        inventory: {healthPotion: 0, manaPotion: 0}
       }
     ];
 
@@ -180,6 +180,26 @@
         damage: 29,
         dexterity: 50,
         cost: 150
+      }, {
+        name: "Claymore",
+        type: "Weapon",
+        damage: 3,
+        cost: 30
+      }, {
+        name: "Short Staff",
+        type: "Weapon",
+        damage: 3,
+        cost: 30
+      }, {
+        name: "Dirk",
+        type: "Weapon",
+        damage: 3,
+        cost: 30
+      }, {
+        name: "Club",
+        type: "Weapon",
+        damage: 3,
+        cost: 30
       }, {
         name: "Health Potion",
         type: "Potion",
@@ -236,7 +256,7 @@
     }
 
     var buyKingSlayer = function() {
-      if (player.gold > store[0].cost) {
+      if (player.gold >= store[0].cost) {
         player.weapon = "King Slayer";
         player.strength += 29;
         player.dexterity += 50;
