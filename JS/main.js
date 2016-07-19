@@ -2,6 +2,10 @@
   var inBattle = false;
   var startHP = 0;
   var totalExp = 100;
+  var mageResource = "Mana";
+  var paladinResource = "Mana";
+  var warriorResource = "Rage";
+  var rogueResource = "Energy";
 
     function action() {
         inBattle = !inBattle;
@@ -314,21 +318,21 @@
     document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
     document.getElementById("playerResourceValue").innerHTML = player.resource;
     if (player.class === "warrior") {
-      document.getElementById("playerResourceName").innerHTML = "Rage";
-      document.getElementById("playerResourcePotionName").innerHTML = "Rage ";
-      document.getElementById("buyResourcePotionName").innerHTML = "Rage ";
+      document.getElementById("playerResourceName").innerHTML = warriorResource;
+      document.getElementById("playerResourcePotionName").innerHTML = warriorResource;
+      document.getElementById("buyResourcePotionName").innerHTML = warriorResource;
     } else if (player.class === "rogue") {
-      document.getElementById("playerResourceName").innerHTML = "Energy";
-      document.getElementById("playerResourcePotionName").innerHTML = "Energy ";
-      document.getElementById("buyResourcePotionName").innerHTML = "Energy ";
+      document.getElementById("playerResourceName").innerHTML = rogueResource;
+      document.getElementById("playerResourcePotionName").innerHTML = rogueResource;
+      document.getElementById("buyResourcePotionName").innerHTML = rogueResource;
     } else if (player.class === "mage") {
-      document.getElementById("playerResourceName").innerHTML = "Mana";
-      document.getElementById("playerResourcePotionName").innerHTML = "Mana ";
-      document.getElementById("buyResourcePotionName").innerHTML = "Mana ";
+      document.getElementById("playerResourceName").innerHTML = mageResource;
+      document.getElementById("playerResourcePotionName").innerHTML = mageResource;
+      document.getElementById("buyResourcePotionName").innerHTML = mageResource;
     } else if (player.class === "paladin") {
-      document.getElementById("playerResourceName").innerHTML = "Mana";
-      document.getElementById("playerResourcePotionName").innerHTML = "Mana ";
-      document.getElementById("buyResourcePotionName").innerHTML = "Mana ";
+      document.getElementById("playerResourceName").innerHTML = paladinResource;
+      document.getElementById("playerResourcePotionName").innerHTML = paladinResource;
+      document.getElementById("buyResourcePotionName").innerHTML = paladinResource;
     }
 
     // Insert store into DOM
@@ -355,6 +359,7 @@
       action();
     }
 
+    // Normal Strength Attack
     var normalStrength = function () {
         if(player.class === "paladin") {
         hit = Math.ceil(Math.random()*10)+player.strength;
@@ -391,6 +396,7 @@
       }
     }
 
+    // Medium Strength Attack
     var mediumStrength = function () {
       if (player.class === "paladin") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
@@ -452,6 +458,7 @@
       }
     }
 
+    // Max Strength Attack
     var maxStrength = function () {
       if (player.class === "paladin") {
         hit = Math.ceil(Math.random()*26)+player.intellect + player.strength;
