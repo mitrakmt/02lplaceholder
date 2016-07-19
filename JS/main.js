@@ -105,33 +105,57 @@
     var enemies = [
       {
         name : "Giant Rat",
+        status: "Common",
         level: 1,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       }, {
         name : "King Scorpion",
+        status: "Uncommon",
         level: 1,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
         name : "Camel",
+        status: "Common",
         level: 1,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
         name : "Mummy",
+        status: "Common",
         level: 1,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
         name : "Naga",
+        status: "Common",
         level: 1,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
-        name : "Mummy Lord",
+        name : "Ragnaros",
+        status: "Boss",
+        level: 3,
+        stats : {health : 150, mana : 100, intellect : 3, strength : 5, dexterity : 3, wisdom : 5, constitution : 5, armor : 4},
+        inventory: {healthPotion: 4, manaPotion: 4, gold: 70}
+      } , {
+        name : "Arcane Golem",
+        status: "Uncommon",
         level: 1,
         stats : {health : 100, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+        inventory: {healthPotion: 2, manaPotion: 2, gold: 35}
+      } , {
+        name : "Orc Warrior",
+        status: "Common",
+        level: 1,
+        stats : {health : 100, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+        inventory: {healthPotion: 2, manaPotion: 2, gold: 35}
+      } , {
+        name : "Tauren Warrior",
+        status: "Common",
+        level: 1,
+        stats : {health : 100, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 2, manaPotion: 2, gold: 35}
       }
     ];
