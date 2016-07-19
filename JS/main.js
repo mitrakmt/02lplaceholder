@@ -227,7 +227,7 @@
       armor: {
         paladin:{
           judgement: {
-            name: "Judgement",
+            name: "Judgement Armor",
             type: "Plate",
             armor: 6,
             intellect: 5,
@@ -236,7 +236,7 @@
             cost: 400
           },
           redemption: {
-            name: "Redemption",
+            name: "Redemption Armor",
             type: "Plate",
             armor: 8,
             intellect: 7,
@@ -245,7 +245,7 @@
             cost: 900
           },
           whiteTiger: {
-            name: "White Tiger",
+            name: "White Tiger Armor",
             type: "Plate",
             armor: 11,
             intellect: 10,
@@ -254,7 +254,7 @@
             cost: 1300
           },
           lightsworn: {
-            name: "Lightsworn",
+            name: "Lightsworn Dragonplate",
             type: "Plate",
             armor: 16,
             intellect: 14,
@@ -281,7 +281,7 @@
             cost: 900
           },
           kirinTor: {
-            name: "Kirin Tor Ragalia",
+            name: "Kirin Tor Regalia",
             type: "Cloth",
             armor: 6,
             intellect: 11,
@@ -298,70 +298,66 @@
           }
         },
         warrior: {
-          aldor: {
-            name: "Aldor Regalia",
-            type: "Cloth",
-            armor: 3,
-            intellect: 5,
-            wisdom: 4,
+          destroyer: {
+            name: "Battlegear of WrathDestroyer",
+            type: "Plate",
+            armor: 6,
+            strength: 5,
             cost: 400
           },
-          tirisfal: {
-            name: "Tirisfal Regalia",
-            type: "Cloth",
-            armor: 4,
-            intellect: 7,
-            wisdom: 6,
+          wrath: {
+            name: "Battlegear of Wrath",
+            type: "Plate",
+            armor: 12,
+            strength: 7,
             cost: 900
           },
-          kirinTor: {
-            name: "Kirin Tor Ragalia",
-            type: "Cloth",
+          dreadnaught: {
+            name: "Valourous Dreadnaught",
+            type: "Plate",
             armor: 6,
-            intellect: 11,
-            wisdom: 10,
+            strength: 11,
             cost: 1300
           },
-          timeLords: {
-            name: "Time Lord's Regalia",
-            type: "Cloth",
-            armor: 8,
-            intellect: 15,
-            wisdom: 14,
+          dragonplate: {
+            name: "Sanctified Colossal Dragonplate",
+            type: "Plate",
+            armor: 19,
+            strength: 15,
             cost: 2500
           }
         },
         rogue: {
-          aldor: {
-            name: "Aldor Regalia",
-            type: "Cloth",
-            armor: 3,
-            intellect: 5,
-            wisdom: 4,
+          nightSlayer: {
+            name: "Night Slayer Armor",
+            type: "Leather",
+            armor: 4,
+            dexterity: 5,
+            strength: 4,
             cost: 400
           },
-          tirisfal: {
-            name: "Tirisfal Regalia",
-            type: "Cloth",
-            armor: 4,
-            intellect: 7,
-            wisdom: 6,
+          terrorblade: {
+            name: "Terrorblade Battlegear",
+            type: "Leather",
+            armor: 5,
+            dexterity: 7,
+            strength: 6,
             cost: 900
           },
-          kirinTor: {
-            name: "Kirin Tor Ragalia",
-            type: "Cloth",
-            armor: 6,
-            intellect: 11,
-            wisdom: 10,
+          darkPhoenix: {
+            name: "Vestments of the Dark Phoenix",
+            type: "Leather",
+            armor: 7,
+            dexterity: 11,
+            strength: 10,
             cost: 1300
           },
           timeLords: {
-            name: "Time Lord's Regalia",
-            type: "Cloth",
-            armor: 8,
-            intellect: 15,
-            wisdom: 14,
+            name: "Dragon's Soul Battlegear",
+            type: "Leather",
+            armor: 10,
+            dexterity: 15,
+            strength: 14,
             cost: 2500
           }
         }
@@ -425,7 +421,7 @@
     }
 
     var buyWeapon = function (weaponName) {
-      if (player.gold >= store.weapons[weaponName].cost) {
+      if (player.gold >= store.weapons.playerClass[weaponName].cost) {
         player.weapon = store.weapons[weaponName].name;
         player.strength += store.weapons[weaponName].damage;
         player.dexterity += store.weapons[weaponName].dexterity;
@@ -441,7 +437,25 @@
       }
     }
 
+    var buyArmor = function (armorName) {
+      if (player.gold >= store.armor.playerClass[armorName].cost) {
+        player.weapon = store.armor.playerClass[armorName].name;
+        player.strength += store.armor.playerClass[armorName].damage;
+        player.dexterity += store.armor.playerClass[armorName].dexterity;
+        player.intellect += store.armor.playerClass[armorName].intellect;
+        player.gold -= store.armor.playerClass[armorName].cost;
+        document.getElementById("playerStrength").innerHTML = player.strength;
+        document.getElementById("playerIntellect").innerHTML = player.intellect;
+        document.getElementById("playerDexterity").innerHTML = player.dexterity;
+        document.getElementById("playerWisdom").innerHTML = player.wisdom;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else {
+        alert("Sorry, you don't have enough gold yet.")
+      }
+    }
+
     player.class = prompt("Choose your class! \n Warrior <> Rogue <> Mage <> Paladin");
+    var playerCase = player.class;
 
     classes.forEach(function(playerClass) {
       if (player.class === playerClass.name) {
