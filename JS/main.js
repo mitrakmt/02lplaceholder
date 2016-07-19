@@ -52,7 +52,7 @@
       resource: 100,
       health : 100,
       class : "",
-      gold : 0,
+      gold : 1000,
       weapon : null,
       inventory: {healthPotion: 1, resourcePotion: 1}
     }
@@ -260,63 +260,15 @@
       }
     }
 
-    var buyKingSlayer = function() {
-      if (player.gold >= store.weapons.KingSlayer.cost) {
-        player.weapon = store.weapons.KingSlayer.name;
-        player.strength += store.weapons.KingSlayer.damage;
-        player.gold -= store.weapons.KingSlayer.cost;
+    var buyWeapon = function (weaponName) {
+      if (player.gold >= store.weapons[weaponName].cost) {
+        player.weapon = store.weapons[weaponName].name;
+        player.strength += store.weapons[weaponName].damage;
+        player.gold -= store.weapons[weaponName].cost;
         document.getElementById("playerStrength").innerHTML = player.strength;
         document.getElementById("playerGold").innerHTML = player.gold;
       } else {
         alert("Sorry, you don't have enough gold yet.")
-      }
-    }
-
-    var buyShortStaff = function() {
-      if (player.gold >= store.weapons.ShortStaff.cost) {
-        player.weapon = store.weapons.ShortStaff.name;
-        player.strength += store.weapons.ShortStaff.damage;
-        player.gold -= store.weapons.ShortStaff.cost;
-        document.getElementById("playerStrength").innerHTML = player.strength;
-        document.getElementById("playerGold").innerHTML = player.gold;
-      } else {
-        alert("Sorry, you don't have enough gold yet. :(")
-      }
-    }
-
-    var buyDirk = function() {
-      if (player.gold >= store.weapons.Dirk.cost) {
-        player.weapon = store.weapons.Dirk.name;
-        player.strength += store.weapons.Dirk.damage;
-        player.gold -= store.weapons.Dirk.cost;
-        document.getElementById("playerStrength").innerHTML = player.strength;
-        document.getElementById("playerGold").innerHTML = player.gold;
-      } else {
-        alert("Sorry, you don't have enough gold yet. :(")
-      }
-    }
-
-    var buyClaymore = function() {
-      if (player.gold >= store.weapons.Claymore.cost) {
-        player.weapon = store.weapons.Claymore.name;
-        player.strength += store.weapons.Claymore.damage;
-        player.gold -= store.weapons.Claymore.cost;
-        document.getElementById("playerStrength").innerHTML = player.strength;
-        document.getElementById("playerGold").innerHTML = player.gold;
-      } else {
-        alert("Sorry, you don't have enough gold yet. :(")
-      }
-    }
-
-    var buyClub = function() {
-      if (player.gold >= store.weapons.Club.cost) {
-        player.weapon = store.weapons.Club.name;
-        player.strength += store.weapons.Club.damage;
-        player.gold -= store.weapons.Club.cost;
-        document.getElementById("playerStrength").innerHTML = player.strength;
-        document.getElementById("playerGold").innerHTML = player.gold;
-      } else {
-        alert("Sorry, you don't have enough gold yet. :(")
       }
     }
 
