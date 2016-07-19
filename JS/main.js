@@ -621,6 +621,8 @@
         if (player.health <= 0) {
           alert("Game over :(");
           location.reload();
+        } else if (player.health <= 20) {
+          alert("You are low on health!");
         }
 
         return enemy;

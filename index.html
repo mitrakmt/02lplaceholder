@@ -12,11 +12,11 @@
       <md-card class="playerStatsSection" layout-padding layout-margin flex>
         <h1>Player Stats</h1>
         <div layout="row">
-          <p class="md-subhead" flex>
+          <p class="md-title" flex>
             Level: <span id="playerLevel"></span><br>
             Class: <span id="playerClass"></span><br>
-            Health: <span id="playerHealth"></span><br>
-            <span id="playerResourceName"></span>: <span id="playerResourceValue"></span><br>
+            <span class="health">Health: <span id="playerHealth"></span></span><br>
+            <span class="resource"><span id="playerResourceName"></span>: <span id="playerResourceValue"></span></span><br>
             Armor: <span id="playerArmor"></span><br>
           </p>
           <p class="md-subhead" flex>
@@ -74,7 +74,7 @@
             <md-list-item class="md-3-line" layout-padding layout-margin>
               <div class="md-list-item-text">
                 <h1 id="logListTitle"><strong>Example</strong></h1>
-                <p id="logListDesc" class="md-display-1">Any battle logs or udpates will appear here!</p>
+                <p id="logListDesc" class="md-display-1">Any battle logs or updates will appear here!</p>
               </div>
               <md-divider></md-divider>
             </md-list-item>
@@ -84,7 +84,7 @@
       </md-card>
 
       <md-card class="map-card" layout-margin layout-padding flex>
-        <img src="images/map.jpg" />
+        <img src="images/map.jpg" class="map"/>
       </md-card>
     </div>
 
