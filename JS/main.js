@@ -11,6 +11,7 @@
             document.getElementById('enemyHealth').style.visibility = 'visible';
             document.getElementById('enemyName').style.visibility = 'visible';
             document.getElementById('inBattle').style.visibility = 'visible';
+            document.getElementById('skillButton').style.visibility = 'visible';
             document.getElementById('skillButton').innerHTML = skillA;
         } else {
             document.getElementById('startBattleButton').style.visibility = 'visible';
@@ -18,6 +19,7 @@
             document.getElementById('enemyHealth').style.visibility = 'hidden';
             document.getElementById('enemyName').style.visibility = 'hidden';
             document.getElementById('inBattle').style.visibility = 'hidden';
+            document.getElementById('skillButton').style.visibility = 'hidden';
             document.getElementById('skillButton').innerHTML = skillA;
         }
     }
@@ -130,100 +132,100 @@
     ];
 
     var store = [
-          {
-            name: "King Slayer",
-            type: "Weapon",
-            damage: 29,
-            dexterity: 50,
-            cost: 150
-          }, {
-            name: "Claymore",
-            type: "Weapon",
-            damage: 3,
-            cost: 30
-          }, {
-            name: "Short Staff",
-            type: "Weapon",
-            damage: 3,
-            cost: 30
-          }, {
-            name: "Dirk",
-            type: "Weapon",
-            damage: 3,
-            cost: 30
-          }, {
-            name: "Club",
-            type: "Weapon",
-            damage: 3,
-            cost: 30
-          }, {
-            name: "Health Potion",
-            type: "Potion",
-            cost: 5
-          }, {
-            name: "Mana Potion",
-            type: "Potion",
-            cost: 5
-          }
-        ];
+      {
+        name: "King Slayer",
+        type: "Weapon",
+        damage: 29,
+        dexterity: 50,
+        cost: 150
+      }, {
+        name: "Claymore",
+        type: "Weapon",
+        damage: 3,
+        cost: 30
+      }, {
+        name: "Short Staff",
+        type: "Weapon",
+        damage: 3,
+        cost: 30
+      }, {
+        name: "Dirk",
+        type: "Weapon",
+        damage: 3,
+        cost: 30
+      }, {
+        name: "Club",
+        type: "Weapon",
+        damage: 3,
+        cost: 30
+      }, {
+        name: "Health Potion",
+        type: "Potion",
+        cost: 5
+      }, {
+        name: "Mana Potion",
+        type: "Potion",
+        cost: 5
+      }
+    ];
 
-        var healthPotion = function () {
-          if (player.inventory.healthPotion > 0) {
-            player.health = 100;
-            player.inventory.healthPotion--;
-            document.getElementById("playerHealth").innerHTML = player.health;
-            document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
-          } else {
-            console.log("You have no health potions");
-          }
-        };
+    var healthPotion = function () {
+      if (player.inventory.healthPotion > 0) {
+        player.health = 100;
+        player.inventory.healthPotion--;
+        document.getElementById("playerHealth").innerHTML = player.health;
+        document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+      } else {
+        console.log("You have no health potions");
+      }
+    }
 
-        var buyHealthPotion = function () {
-          if (player.gold > store[1].cost) {
-            player.gold -= store[1].cost;
-            player.inventory.healthPotion++;
-            document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
-            document.getElementById("playerGold").innerHTML = player.gold;
-          } else {
-            alert("Sorry, you don't have enough gold yet.")
-          }
-        };
+    var buyHealthPotion = function () {
+      if (player.gold > store[1].cost) {
+        player.gold -= store[1].cost;
+        player.inventory.healthPotion++;
+        document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else {
+        alert("Sorry, you don't have enough gold yet.")
+      }
+    }
 
-        var manaPotion = function () {
-          if (player.inventory.manaPotion > 0) {
-            player.mana = 100;
-            player.inventory.manaPotion--;
-            document.getElementById("playerMana").innerHTML = player.mana;
-            document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
-          } else {
-            console.log("You have no mana potions");
-          }
-        };
+    var manaPotion = function () {
+      if (player.inventory.manaPotion > 0) {
+        player.mana = 100;
+        player.inventory.manaPotion--;
+        document.getElementById("playerMana").innerHTML = player.mana;
+        document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
+      } else {
+        console.log("You have no mana potions");
+      }
+    }
 
-        var buyManaPotion = function () {
-          if (player.gold > store[2].cost) {
-            player.gold -= store[2].cost;
-            player.inventory.manaPotion++;
-            document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
-            document.getElementById("playerGold").innerHTML = player.gold;
-          } else {
-            alert("Sorry, you don't have enough gold yet.")
-          }
-        };
+    var buyManaPotion = function () {
+      if (player.gold > store[2].cost) {
+        player.gold -= store[2].cost;
+        player.inventory.manaPotion++;
+        document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else {
+        alert("Sorry, you don't have enough gold yet.")
+      }
+    }
 
-        var buyKingSlayer = function() {
-          if (player.gold >= store[0].cost) {
-            player.weapon = "King Slayer";
-            player.strength += 29;
-            player.dexterity += 50;
-            player.gold -= store[0].cost;
-            document.getElementById("playerStrength").innerHTML = player.strength;
-            document.getElementById("playerDexterity").innerHTML = player.dexterity;
-            document.getElementById("playerGold").innerHTML = player.gold;
-          } else {
-            alert("Sorry, you don't have enough gold yet.")
-          }
-        };
+    var buyKingSlayer = function() {
+      if (player.gold >= store[0].cost) {
+        player.weapon = "King Slayer";
+        player.strength += 29;
+        player.dexterity += 50;
+        player.gold -= store[0].cost;
+        document.getElementById("playerStrength").innerHTML = player.strength;
+        document.getElementById("playerDexterity").innerHTML = player.dexterity;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else {
+        alert("Sorry, you don't have enough gold yet.")
+      }
+    }
 
     player.class = prompt("Choose your class! \n Warrior <> Rogue <> Mage");
 
@@ -340,6 +342,7 @@
       else if(player.class === "warrior") {
         hit = Math.ceil(Math.random()*20)+player.strength;
         player.rage -= 10;
+        document.getElementById("playerResourceValue").innerHTML = player.rage;
 
         if ((hit - player.strength) === 19||20) {
           return hit *= 2;
@@ -349,6 +352,7 @@
       } else if (player.class === "rogue") {
         hit = Math.ceil(Math.random()*20)+player.dexterity;
         player.energy -= 10;
+        document.getElementById("playerResourceValue").innerHTML = player.energy;
 
         if ((hit - player.dexterity) === 19||20) {
           return hit *= 2;
@@ -358,6 +362,7 @@
       } else if (player.class === "mage") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
         player.mana -= 10;
+        document.getElementById("playerResourceValue").innerHTML = player.mana;
 
         if ((hit - player.intellect) === 19||20) {
           return hit *= 2;
@@ -381,9 +386,7 @@
         document.getElementById("playerHealth").innerHTML = player.health;
 
         // Move all of enemy's inventory to player's inventory
-        console.log("Attempting inventory add 1");
         if (enemy.inventory.length !== null) {
-          console.log("Trying to add to inventory 2");
           for(var item in enemy.inventory) {
             if (player.inventory[item] !== undefined) {
               player.inventory[item] += enemy.inventory[item];
