@@ -16,7 +16,6 @@
             document.getElementById('skillbButton').style.visibility = 'visible';
             document.getElementById('skillaButton').innerHTML = skillA;
             document.getElementById('skillbButton').innerHTML = skillB;
-            document.getElementById('skillButton').innerHTML = skillA;
         } else {
             document.getElementById('startBattleButton').style.visibility = 'visible';
             document.getElementById('attackButton').style.visibility = 'hidden';
@@ -99,7 +98,7 @@
           constitution : 3,
           charisma : 4,
           armor : 2,
-          mana : 100
+          mana : 0
       }
     ]
 
@@ -233,7 +232,7 @@
       }
     }
 
-    player.class = prompt("Choose your class! \n Warrior <> Rogue <> Mage");
+    player.class = prompt("Choose your class! \n Warrior <> Rogue <> Mage <> Paladin");
 
     classes.forEach(function(playerClass) {
       if (player.class === playerClass.name) {
@@ -453,6 +452,7 @@
         document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
         document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
 
+        // Reset enemy to full health
         enemy.stats.health = startHP;
 
         // Take the player out of battle
@@ -469,7 +469,6 @@
       if (player.health <= 0) {
         alert("Game over :(");
       }
-      document.getElementById("playerHealth").innerHTML = player.health;
 
       return enemy;
     }
