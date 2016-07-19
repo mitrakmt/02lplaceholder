@@ -15,7 +15,7 @@
           <p class="md-subhead" flex>
             Class: <span id="playerClass"></span><br>
             Health: <span id="playerHealth"></span><br>
-            Mana: <span id="playerMana"></span><br>
+            <span id="playerResourceName"></span>: <span id="playerResourceValue"></span><br>
             Armor: <span id="playerArmor"></span><br>
           </p>
           <p class="md-subhead" flex>
@@ -58,8 +58,8 @@
         <p class="md-headline inBattle" id="inBattle" flex><span id="enemyName"></span> Health: <span id="enemyHealth"></span></p>
       </md-toolbar>
       <div layout="row">
-        <button id="attackButton" class="md-raised attack-button" onclick="attack(currentEnemy, normalStrength())">Attack</button>
-        <button id="skillButton" class="md-raised" onclick="attack(currentEnemy, mediumStrength())">Shiv</button>
+        <button id="attackButton" class="md-raised attack-button" onclick="attack(enemy, normalStrength())">Attack</button>
+        <button id="skillButton" class="md-raised" onclick="attack(enemy, mediumStrength())"></button>
         <button id="startBattleButton" class="md-raised start-battle-button" onclick="findEnemy()">Start Encounter</button>
       </div>
       <md-content>
