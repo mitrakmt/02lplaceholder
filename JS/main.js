@@ -88,7 +88,7 @@
           constitution : 3,
           charisma : 5,
           armor : 5,
-          mana : 50
+          mana : 0
       }, {
         name : "mage",
           intellect : 6,
@@ -367,6 +367,7 @@
       if (player.class === "paladin") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
         player.mana -= 10;
+        document.getElementById("playerResourceValue").innerHTML = player.mana;
 
         if ((hit - player.intellect) === 19||20) {
           return hit *= 2;
@@ -411,6 +412,7 @@
       if (player.class === "paladin") {
         hit = Math.ceil(Math.random()*26)+player.intellect+player.strength;
         player.mana -= 20;
+        document.getElementById("playerResourceValue").innerHTML = player.mana;
 
         if ((hit - player.intellect) === 25||26) {
           return hit *= 2;
@@ -421,6 +423,7 @@
       else if(player.class === "warrior") {
         hit = Math.ceil(Math.random()*25)+player.strength;
         player.rage -= 20;
+        document.getElementById("playerResourceValue").innerHTML = player.rage;
 
         if ((hit - player.strength) === 24||25) {
           return hit *= 2;
@@ -430,6 +433,7 @@
       } else if (player.class === "rogue") {
         hit = Math.ceil(Math.random()*25)+player.dexterity;
         player.energy -= 20;
+        document.getElementById("playerResourceValue").innerHTML = player.energy;
 
         if ((hit - player.dexterity) === 24||25) {
           return hit *= 2;
@@ -439,6 +443,7 @@
       } else if (player.class === "mage") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
         player.mana -= 20;
+        document.getElementById("playerResourceValue").innerHTML = player.mana;
 
         if ((hit - player.intellect) === 24||25) {
           return hit *= 2;
