@@ -183,6 +183,42 @@
 
     var store = {
       weapons: {
+          mage: {
+            
+          },
+          warrior: {
+            shadowmourne:{
+              name: "Shadowmourne"
+              strength: 10,
+              constituion: 2,
+              cost: 1000
+            }
+          },
+          rogue: {
+            warglaives:{
+              name: "Warglaives of Azzinoth",
+              dexterity: 10,
+              strength: 4,
+              cost: 1000
+            }
+          },
+          paladin: {
+            ashbringer:{
+              name: "ashbringer",
+              intellect: 2,
+              strength: 6,
+              wisdom: 2,
+              cost: 900
+            },
+            truthguard:{
+              name: "Truthguard"
+              intellect: 4,
+              strength: 3,
+              wisdom: 3,
+              armor: 7,
+              cost: 800
+            }
+          }
         KingSlayer: {
           name: "King Slayer",
           type: "Weapon",
