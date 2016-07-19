@@ -264,15 +264,61 @@
 
     var buyKingSlayer = function() {
       if (player.gold >= store.weapons.KingSlayer.cost) {
-        player.weapon = "King Slayer";
-        player.strength += 29;
-        player.dexterity += 50;
+        player.weapon = store.weapons.KingSlayer.name;
+        player.strength += store.weapons.KingSlayer.damage;
         player.gold -= store.weapons.KingSlayer.cost;
         document.getElementById("playerStrength").innerHTML = player.strength;
-        document.getElementById("playerDexterity").innerHTML = player.dexterity;
         document.getElementById("playerGold").innerHTML = player.gold;
       } else {
         alert("Sorry, you don't have enough gold yet.")
+      }
+    }
+
+    var buyShortStaff = function() {
+      if (player.gold >= store.weapons.ShortStaff.cost) {
+        player.weapon = store.weapons.ShortStaff.name;
+        player.strength += store.weapons.ShortStaff.damage;
+        player.gold -= store.weapons.ShortStaff.cost;
+        document.getElementById("playerStrength").innerHTML = player.strength;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else {
+        alert("Sorry, you don't have enough gold yet. :(")
+      }
+    }
+
+    var buyDirk = function() {
+      if (player.gold >= store.weapons.Dirk.cost) {
+        player.weapon = store.weapons.Dirk.name;
+        player.strength += store.weapons.Dirk.damage;
+        player.gold -= store.weapons.Dirk.cost;
+        document.getElementById("playerStrength").innerHTML = player.strength;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else {
+        alert("Sorry, you don't have enough gold yet. :(")
+      }
+    }
+
+    var buyClaymore = function() {
+      if (player.gold >= store.weapons.Claymore.cost) {
+        player.weapon = store.weapons.Claymore.name;
+        player.strength += store.weapons.Claymore.damage;
+        player.gold -= store.weapons.Claymore.cost;
+        document.getElementById("playerStrength").innerHTML = player.strength;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else {
+        alert("Sorry, you don't have enough gold yet. :(")
+      }
+    }
+
+    var buyClub = function() {
+      if (player.gold >= store.weapons.Club.cost) {
+        player.weapon = store.weapons.Club.name;
+        player.strength += store.weapons.Club.damage;
+        player.gold -= store.weapons.Club.cost;
+        document.getElementById("playerStrength").innerHTML = player.strength;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else {
+        alert("Sorry, you don't have enough gold yet. :(")
       }
     }
 
@@ -334,6 +380,14 @@
     // Insert store into DOM
     document.getElementById("buyKingSlayerName").innerHTML = store.weapons.KingSlayer.name;
     document.getElementById("buyKingSlayerCost").innerHTML = store.weapons.KingSlayer.cost;
+    document.getElementById("buyClaymoreName").innerHTML = store.weapons.Claymore.name;
+    document.getElementById("buyClaymoreCost").innerHTML = store.weapons.Claymore.cost;
+    document.getElementById("buyClubName").innerHTML = store.weapons.Club.name;
+    document.getElementById("buyClubCost").innerHTML = store.weapons.Club.cost;
+    document.getElementById("buyDirkName").innerHTML = store.weapons.Dirk.name;
+    document.getElementById("buyDirkCost").innerHTML = store.weapons.Dirk.cost;
+    document.getElementById("buyShortStaffName").innerHTML = store.weapons.ShortStaff.name;
+    document.getElementById("buyShortStaffCost").innerHTML = store.weapons.ShortStaff.cost;
     document.getElementById("buyHealthPotionName").innerHTML = store.potions.HealthPotion.name;
     document.getElementById("buyHealthPotionCost").innerHTML = store.potions.HealthPotion.cost;
     document.getElementById("buyManaPotionName").innerHTML = store.potions.ManaPotion.name;
