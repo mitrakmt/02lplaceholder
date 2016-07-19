@@ -186,10 +186,10 @@
         KingSlayer: {
           name: "King Slayer",
           type: "Weapon",
-          damage: 29,
-          dexterity: 50,
+          damage: 24,
+          dexterity: 25,
           intellect: 0,
-          cost: 150
+          cost: 500
         },
         Claymore: {
           name: "Claymore",
@@ -222,6 +222,148 @@
           intellect: 0,
           dexterity: 0,
           cost: 30
+        }
+      },
+      armor: {
+        paladin:{
+          judgement: {
+            name: "Judgement",
+            type: "Plate",
+            armor: 6,
+            intellect: 5,
+            strength: 3,
+            wisdom: 5,
+            cost: 400
+          },
+          redemption: {
+            name: "Redemption",
+            type: "Plate",
+            armor: 8,
+            intellect: 7,
+            strength: 6,
+            wisdom: 9,
+            cost: 900
+          },
+          whiteTiger: {
+            name: "White Tiger",
+            type: "Plate",
+            armor: 11,
+            intellect: 10,
+            strength: 11,
+            wisdom: 13,
+            cost: 1300
+          },
+          lightsworn: {
+            name: "Lightsworn",
+            type: "Plate",
+            armor: 16,
+            intellect: 14,
+            strength: 17,
+            wisdom: 15,
+            cost: 2500
+          },
+        },
+        mage: {
+          aldor: {
+            name: "Aldor Regalia",
+            type: "Cloth",
+            armor: 3,
+            intellect: 5,
+            wisdom: 4,
+            cost: 400
+          },
+          tirisfal: {
+            name: "Tirisfal Regalia",
+            type: "Cloth",
+            armor: 4,
+            intellect: 7,
+            wisdom: 6,
+            cost: 900
+          },
+          kirinTor: {
+            name: "Kirin Tor Ragalia",
+            type: "Cloth",
+            armor: 6,
+            intellect: 11,
+            wisdom: 10,
+            cost: 1300
+          },
+          timeLords: {
+            name: "Time Lord's Regalia",
+            type: "Cloth",
+            armor: 8,
+            intellect: 15,
+            wisdom: 14,
+            cost: 2500
+          }
+        },
+        warrior: {
+          aldor: {
+            name: "Aldor Regalia",
+            type: "Cloth",
+            armor: 3,
+            intellect: 5,
+            wisdom: 4,
+            cost: 400
+          },
+          tirisfal: {
+            name: "Tirisfal Regalia",
+            type: "Cloth",
+            armor: 4,
+            intellect: 7,
+            wisdom: 6,
+            cost: 900
+          },
+          kirinTor: {
+            name: "Kirin Tor Ragalia",
+            type: "Cloth",
+            armor: 6,
+            intellect: 11,
+            wisdom: 10,
+            cost: 1300
+          },
+          timeLords: {
+            name: "Time Lord's Regalia",
+            type: "Cloth",
+            armor: 8,
+            intellect: 15,
+            wisdom: 14,
+            cost: 2500
+          }
+        },
+        rogue: {
+          aldor: {
+            name: "Aldor Regalia",
+            type: "Cloth",
+            armor: 3,
+            intellect: 5,
+            wisdom: 4,
+            cost: 400
+          },
+          tirisfal: {
+            name: "Tirisfal Regalia",
+            type: "Cloth",
+            armor: 4,
+            intellect: 7,
+            wisdom: 6,
+            cost: 900
+          },
+          kirinTor: {
+            name: "Kirin Tor Ragalia",
+            type: "Cloth",
+            armor: 6,
+            intellect: 11,
+            wisdom: 10,
+            cost: 1300
+          },
+          timeLords: {
+            name: "Time Lord's Regalia",
+            type: "Cloth",
+            armor: 8,
+            intellect: 15,
+            wisdom: 14,
+            cost: 2500
+          }
         }
       },
       potions: {
