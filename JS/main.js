@@ -291,7 +291,15 @@
     }
 
     var normalStrength = function () {
-      if(player.class === "warrior") {
+        if(player.class === "paladin") {
+        hit = Math.ceil(Math.random()*10)+player.strength;
+
+        if ((hit - player.strength) === 10) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      } else if(player.class === "warrior") {
         hit = Math.ceil(Math.random()*10)+player.strength;
 
         if ((hit - player.strength) === 10) {
@@ -319,7 +327,17 @@
     }
 
     var mediumStrength = function () {
-      if(player.class === "warrior") {
+      if (player.class === "paladin") {
+        hit = Math.ceil(Math.random()*20)+player.intellect;
+        player.mana -= 10;
+
+        if ((hit - player.intellect) === 19||20) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      }
+      else if(player.class === "warrior") {
         hit = Math.ceil(Math.random()*20)+player.strength;
         player.rage -= 10;
 
