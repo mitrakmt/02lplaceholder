@@ -8,13 +8,13 @@ body {
 
 .playerStatsSection {
   background-color: #E5E5E6;
-  opacity: .8;
+  opacity: .85;
   width: 100%;
 }
 
 .battleLogSection {
   background-color: #E5E5E6;
-  opacity: .8;
+  opacity: .85;
   width: 100%;
 }
 
@@ -33,7 +33,7 @@ body {
 .map-card {
   width: 350px;
   background-color: #E5E5E6;
-  opacity: .8;
+  opacity: .85;
 }
 
 .start-battle-button {
@@ -50,7 +50,7 @@ body {
 .playerBag {
   min-width: 350px;
   background-color: #E5E5E6;
-  opacity: .8;
+  opacity: .85;
 }
 
 .cheatCodes {

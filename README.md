@@ -2,8 +2,6 @@
 
 TODO:
   // Algorithms for charisma etc.
-  // Some type of text based map
+  // Some type of text based map, ASCII, sprites, search some 2d type of thing. Preset algorithm, can give choices for left or right..?
   // After successful victory, chance of running into a merchant.
-  // Fix mana potion name if a different class, as well as in the store
-  // Mana potions don't currently effect energy on rogue or rage
-  // Rage gets to 100 after being refilled, but still can't use
+  // Fix class based weapon stats

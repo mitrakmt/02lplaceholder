@@ -36,7 +36,7 @@
         <p class="md-subhead" flex>
           Gold: <span id="playerGold"></span><br><br>
           Health potion: <span id="playerHealthPotion"></span> <button class="md-raised" onclick="healthPotion()">Use</button><br>
-          Mana potion: <span id="playerManaPotion"></span> <button class="md-raised" onclick="manaPotion()">Use</button><br>
+          <span id="playerResourcePotionName"> </span> Potion: <span id="playerResourcePotion"></span> <button class="md-raised" onclick="resourcePotion()">Use</button><br>
         </p>
       </md-card>
 
@@ -45,7 +45,7 @@
         <h1 class="">Store</h1>
         <p class="md-subhead" flex>
           <span id="buyHealthPotionName"></span>: <span id="buyHealthPotionCost"></span> <button class="md-raised" onclick="buyHealthPotion()">Buy</button><br>
-          <span id="buyManaPotionName"></span>: <span id="buyManaPotionCost"></span> <button class="md-raised" onclick="buyManaPotion()">Buy</button><br>
+          <span id="buyResourcePotionName"></span> Potion: <span id="buyResourcePotionCost"></span> <button class="md-raised" onclick="buyResourcePotion()">Buy</button><br>
           <span id="buyKingSlayerName"></span>: <span id="buyKingSlayerCost"></span> <button class="md-raised" onclick="buyKingSlayer()">Buy</button><br>
           <span id="buyClaymoreName"></span>: <span id="buyClaymoreCost"></span> <button class="md-raised" onclick="buyClaymore()">Buy</button><br>
           <span id="buyShortStaffName"></span>: <span id="buyShortStaffCost"></span> <button class="md-raised" onclick="buyShortStaff()">Buy</button><br>
@@ -84,7 +84,7 @@
       </md-card>
 
       <md-card class="map-card" layout-margin layout-padding flex>
-        <h1>This is where the map will go</h1>
+        <img src="images/map.jpg" />
       </md-card>
     </div>
 

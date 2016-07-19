@@ -49,14 +49,12 @@
       constitution : 1,
       charisma : 1,
       armor : 1,
-      mana : 100,
-      energy : 100,
-      rage : 100,
+      resource: 100,
       health : 100,
       class : "",
       gold : 0,
       weapon : null,
-      inventory: {healthPotion: 1, manaPotion: 1}
+      inventory: {healthPotion: 1, resourcePotion: 1}
     }
 
     var classes = [
@@ -69,7 +67,7 @@
           constitution : 5,
           charisma : 4,
           armor : 6,
-          rage : 100
+          resource : 100
       }, {
         name : "rogue",
           intellect : 1,
@@ -79,7 +77,7 @@
           constitution : 3,
           charisma : 5,
           armor : 3,
-          energy : 100
+          resource : 100
       }, {
         name : "paladin",
           intellect : 2,
@@ -89,7 +87,7 @@
           constitution : 3,
           charisma : 5,
           armor : 5,
-          mana : 0
+          resource : 0
       }, {
         name : "mage",
           intellect : 6,
@@ -99,7 +97,7 @@
           constitution : 3,
           charisma : 4,
           armor : 2,
-          mana : 0
+          resource : 0
       }
     ]
 
@@ -110,63 +108,63 @@
         level: 1,
         experience: 10,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
-        inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
+        inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
       }, {
         name : "King Scorpion",
         status: "Uncommon",
         level: 1,
         experience: 25,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
-        inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
+        inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
       } , {
         name : "Camel",
         status: "Common",
         level: 1,
         experience: 10,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
-        inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
+        inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
       } , {
         name : "Mummy",
         status: "Common",
         level: 1,
         experience: 10,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
-        inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
+        inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
       } , {
         name : "Naga",
         status: "Common",
         level: 1,
         experience: 10,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
-        inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
+        inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
       } , {
         name : "Ragnaros",
         status: "Boss",
         level: 3,
         experience: 100,
         stats : {health : 150, mana : 100, intellect : 3, strength : 5, dexterity : 3, wisdom : 5, constitution : 5, armor : 4},
-        inventory: {healthPotion: 4, manaPotion: 4, gold: 70}
+        inventory: {healthPotion: 4, resourcePotion: 4, gold: 70}
       } , {
         name : "Arcane Golem",
         status: "Uncommon",
         level: 1,
         experience: 25,
         stats : {health : 100, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
-        inventory: {healthPotion: 2, manaPotion: 2, gold: 35}
+        inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
       } , {
         name : "Orc Warrior",
         status: "Common",
         level: 1,
         experience: 10,
         stats : {health : 100, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
-        inventory: {healthPotion: 2, manaPotion: 2, gold: 35}
+        inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
       } , {
         name : "Tauren Warrior",
         status: "Common",
         level: 1,
         experience: 10,
         stats : {health : 100, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
-        inventory: {healthPotion: 2, manaPotion: 2, gold: 35}
+        inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
       }
     ];
 
@@ -210,8 +208,8 @@
           type: "Potion",
           cost: 5
         },
-        ManaPotion: {
-          name: "Mana Potion",
+        ResourcePotion: {
+          name: "Resource Potion",
           type: "Potion",
           cost: 5
         }
@@ -240,22 +238,22 @@
       }
     }
 
-    var manaPotion = function () {
-      if (player.inventory.manaPotion > 0) {
-        player.mana = 100;
-        player.inventory.manaPotion--;
-        document.getElementById("playerResourceValue").innerHTML = player.mana;
-        document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
+    var resourcePotion = function () {
+      if (player.inventory.resourcePotion > 0) {
+        player.resource = 100;
+        player.inventory.resourcePotion--;
+        document.getElementById("playerResourceValue").innerHTML = player.resource;
+        document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
       } else {
-        console.log("You have no mana potions");
+        console.log("You have no resource potions");
       }
     }
 
-    var buyManaPotion = function () {
-      if (player.gold > store.potions.ManaPotion.cost) {
-        player.gold -= store.potions.ManaPotion.cost;
-        player.inventory.manaPotion++;
-        document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
+    var buyResourcePotion = function () {
+      if (player.gold > store.potions.ResourcePotion.cost) {
+        player.gold -= store.potions.ResourcePotion.cost;
+        player.inventory.resourcePotion++;
+        document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
         document.getElementById("playerGold").innerHTML = player.gold;
       } else {
         alert("Sorry, you don't have enough gold yet.")
@@ -333,7 +331,6 @@
         player.constitution += playerClass.constitution;
         player.armor += playerClass.armor;
         player.wisdom += playerClass.wisdom;
-        player.mana += playerClass.mana;
        }
     });
 
@@ -361,20 +358,25 @@
     document.getElementById("playerHealth").innerHTML = player.health;
     document.getElementById("playerClass").innerHTML = player.class;
     document.getElementById("playerGold").innerHTML = player.gold;
-    document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
+    document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
     document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+    document.getElementById("playerResourceValue").innerHTML = player.resource;
     if (player.class === "warrior") {
-      document.getElementById("playerResourceValue").innerHTML = player.rage;
       document.getElementById("playerResourceName").innerHTML = "Rage";
+      document.getElementById("playerResourcePotionName").innerHTML = "Rage ";
+      document.getElementById("buyResourcePotionName").innerHTML = "Rage ";
     } else if (player.class === "rogue") {
-      document.getElementById("playerResourceValue").innerHTML = player.energy;
       document.getElementById("playerResourceName").innerHTML = "Energy";
+      document.getElementById("playerResourcePotionName").innerHTML = "Energy ";
+      document.getElementById("buyResourcePotionName").innerHTML = "Energy ";
     } else if (player.class === "mage") {
-      document.getElementById("playerResourceValue").innerHTML = player.mana;
       document.getElementById("playerResourceName").innerHTML = "Mana";
+      document.getElementById("playerResourcePotionName").innerHTML = "Mana ";
+      document.getElementById("buyResourcePotionName").innerHTML = "Mana ";
     } else if (player.class === "paladin") {
-      document.getElementById("playerResourceValue").innerHTML = player.mana;
       document.getElementById("playerResourceName").innerHTML = "Mana";
+      document.getElementById("playerResourcePotionName").innerHTML = "Mana ";
+      document.getElementById("buyResourcePotionName").innerHTML = "Mana ";
     }
 
     // Insert store into DOM
@@ -390,8 +392,7 @@
     document.getElementById("buyShortStaffCost").innerHTML = store.weapons.ShortStaff.cost;
     document.getElementById("buyHealthPotionName").innerHTML = store.potions.HealthPotion.name;
     document.getElementById("buyHealthPotionCost").innerHTML = store.potions.HealthPotion.cost;
-    document.getElementById("buyManaPotionName").innerHTML = store.potions.ManaPotion.name;
-    document.getElementById("buyManaPotionCost").innerHTML = store.potions.ManaPotion.cost;
+    document.getElementById("buyResourcePotionCost").innerHTML = store.potions.ResourcePotion.cost;
 
     var findEnemy = function() {
       var randEnemy = Math.ceil((Math.random() * enemies.length) - 1);
@@ -441,9 +442,9 @@
     var mediumStrength = function () {
       if (player.class === "paladin") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
-        if (player.mana >= 10) {
-          player.mana -= 10;
-          document.getElementById("playerResourceValue").innerHTML = player.mana;
+        if (player.resource >= 10) {
+          player.resource -= 10;
+          document.getElementById("playerResourceValue").innerHTML = player.resource;
 
           if ((hit - player.intellect) === 19||20) {
             return hit *= 2;
@@ -451,14 +452,14 @@
             return hit;
           }
         } else {
-          console.log("Not enough mana to use this attack!");
+          console.log("Not enough resource to use this attack!");
         }
       }
       else if(player.class === "warrior") {
         hit = Math.ceil(Math.random()*20)+player.strength;
-        if (player.rage >= 10) {
-          player.rage -= 10;
-          document.getElementById("playerResourceValue").innerHTML = player.rage;
+        if (player.resource >= 10) {
+          player.resource -= 10;
+          document.getElementById("playerResourceValue").innerHTML = player.resource;
 
           if ((hit - player.strength) === 19||20) {
             return hit *= 2;
@@ -466,13 +467,13 @@
             return hit;
           }
         } else {
-          console.log("Not enough rage to use this attack!");
+          console.log("Not enough resource to use this attack!");
         }
       } else if (player.class === "rogue") {
         hit = Math.ceil(Math.random()*20)+player.dexterity;
-        if (player.energy >= 10) {
-          player.energy -= 10;
-          document.getElementById("playerResourceValue").innerHTML = player.energy;
+        if (player.resource >= 10) {
+          player.resource -= 10;
+          document.getElementById("playerResourceValue").innerHTML = player.resource;
 
           if ((hit - player.dexterity) === 19||20) {
             return hit *= 2;
@@ -480,13 +481,13 @@
             return hit;
           }
         } else {
-          console.log("Not enough energy to use this attack!");
+          console.log("Not enough resource to use this attack!");
         }
       } else if (player.class === "mage") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
-        if (player.mana >= 10) {
-          player.mana -= 10;
-          document.getElementById("playerResourceValue").innerHTML = player.mana;
+        if (player.resource >= 10) {
+          player.resource -= 10;
+          document.getElementById("playerResourceValue").innerHTML = player.resource;
 
           if ((hit - player.intellect) === 19||20) {
             return hit *= 2;
@@ -494,17 +495,17 @@
             return hit;
           }
         } else {
-          console.log("Not enough energy to use this attack!");
+          console.log("Not enough resource to use this attack!");
         }
       }
     }
 
     var maxStrength = function () {
       if (player.class === "paladin") {
-        hit = Math.ceil(Math.random()*26)+player.intellect+player.strength;
-        if (player.mana >= 20) {
-          player.mana -= 20;
-          document.getElementById("playerResourceValue").innerHTML = player.mana;
+        hit = Math.ceil(Math.random()*26)+player.intellect + player.strength;
+        if (player.resource >= 20) {
+          player.resource -= 20;
+          document.getElementById("playerResourceValue").innerHTML = player.resource;
 
           if ((hit - player.intellect) === 25||26) {
             return hit *= 2;
@@ -512,14 +513,14 @@
             return hit;
           }
         } else {
-          console.log("Not enough energy to use this attack!");
+          console.log("Not enough resource to use this attack!");
         }
       }
       else if(player.class === "warrior") {
         hit = Math.ceil(Math.random()*25)+player.strength;
-        if (player.rage >= 20) {
-          player.rage -= 20;
-          document.getElementById("playerResourceValue").innerHTML = player.rage;
+        if (player.resource >= 20) {
+          player.resource -= 20;
+          document.getElementById("playerResourceValue").innerHTML = player.resource;
 
           if ((hit - player.strength) === 24||25) {
             return hit *= 2;
@@ -527,13 +528,13 @@
             return hit;
           }
         } else {
-          console.log("Not enough rage to use this attack!");
+          console.log("Not enough resource to use this attack!");
         }
       } else if (player.class === "rogue") {
         hit = Math.ceil(Math.random()*25)+player.dexterity;
-        if (player.energy >= 20) {
-          player.energy -= 20;
-          document.getElementById("playerResourceValue").innerHTML = player.energy;
+        if (player.resource >= 20) {
+          player.resource -= 20;
+          document.getElementById("playerResourceValue").innerHTML = player.resource;
 
           if ((hit - player.dexterity) === 24||25) {
             return hit *= 2;
@@ -541,13 +542,13 @@
             return hit;
           }
         } else {
-          console.log("Not enough energy to use this attack!");
+          console.log("Not enough resource to use this attack!");
         }
       } else if (player.class === "mage") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
-        if (player.mana >= 20) {
-          player.mana -= 20;
-          document.getElementById("playerResourceValue").innerHTML = player.mana;
+        if (player.resource >= 20) {
+          player.resource -= 20;
+          document.getElementById("playerResourceValue").innerHTML = player.resource;
 
           if ((hit - player.intellect) === 24||25) {
             return hit *= 2;
@@ -600,7 +601,7 @@
           }
 
           // Updpate items on DOM
-          document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
+          document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
           document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
 
           // Reset enemy to full health
