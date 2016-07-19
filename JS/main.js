@@ -1,8 +1,7 @@
-  var hit;
-  var skillA;
-  var skillB;
+  var hit, skillA, skillB;
   var inBattle = false;
   var startHP = 0;
+  var totalExp = 100;
 
     function action() {
         inBattle = !inBattle;
@@ -41,6 +40,8 @@
     }
 
     var player = {
+      level: 1,
+      experience: 0,
       intellect : 1,
       strength : 1,
       dexterity : 1,
@@ -107,54 +108,63 @@
         name : "Giant Rat",
         status: "Common",
         level: 1,
+        experience: 10,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       }, {
         name : "King Scorpion",
         status: "Uncommon",
         level: 1,
+        experience: 25,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
         name : "Camel",
         status: "Common",
         level: 1,
+        experience: 10,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
         name : "Mummy",
         status: "Common",
         level: 1,
+        experience: 10,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
         name : "Naga",
         status: "Common",
         level: 1,
+        experience: 10,
         stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 0, manaPotion: 0, gold: 3}
       } , {
         name : "Ragnaros",
         status: "Boss",
         level: 3,
+        experience: 100,
         stats : {health : 150, mana : 100, intellect : 3, strength : 5, dexterity : 3, wisdom : 5, constitution : 5, armor : 4},
         inventory: {healthPotion: 4, manaPotion: 4, gold: 70}
       } , {
         name : "Arcane Golem",
         status: "Uncommon",
         level: 1,
+        experience: 25,
         stats : {health : 100, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 2, manaPotion: 2, gold: 35}
       } , {
         name : "Orc Warrior",
         status: "Common",
         level: 1,
+        experience: 10,
         stats : {health : 100, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 2, manaPotion: 2, gold: 35}
       } , {
         name : "Tauren Warrior",
         status: "Common",
         level: 1,
+        experience: 10,
         stats : {health : 100, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 2, manaPotion: 2, gold: 35}
       }
@@ -284,6 +294,7 @@
     else if (player.class === "paladin") { skillB = "Divine Storm" }
 
     // Insert player stats and inventory into DOM
+    document.getElementById("playerLevel").innerHTML = player.level;
     document.getElementById("playerIntellect").innerHTML = player.intellect;
     document.getElementById("playerStrength").innerHTML = player.strength;
     document.getElementById("playerDexterity").innerHTML = player.dexterity;
@@ -366,44 +377,60 @@
     var mediumStrength = function () {
       if (player.class === "paladin") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
-        player.mana -= 10;
-        document.getElementById("playerResourceValue").innerHTML = player.mana;
+        if (player.mana > 10) {
+          player.mana -= 10;
+          document.getElementById("playerResourceValue").innerHTML = player.mana;
 
-        if ((hit - player.intellect) === 19||20) {
-          return hit *= 2;
+          if ((hit - player.intellect) === 19||20) {
+            return hit *= 2;
+          } else {
+            return hit;
+          }
         } else {
-          return hit;
+          console.log("Not enough mana to use this attack!");
         }
       }
       else if(player.class === "warrior") {
         hit = Math.ceil(Math.random()*20)+player.strength;
-        player.rage -= 10;
-        document.getElementById("playerResourceValue").innerHTML = player.rage;
+        if (player.rage > 10) {
+          player.rage -= 10;
+          document.getElementById("playerResourceValue").innerHTML = player.rage;
 
-        if ((hit - player.strength) === 19||20) {
-          return hit *= 2;
+          if ((hit - player.strength) === 19||20) {
+            return hit *= 2;
+          } else {
+            return hit;
+          }
         } else {
-          return hit;
+          console.log("Not enough rage to use this attack!");
         }
       } else if (player.class === "rogue") {
         hit = Math.ceil(Math.random()*20)+player.dexterity;
-        player.energy -= 10;
-        document.getElementById("playerResourceValue").innerHTML = player.energy;
+        if (player.energy > 10) {
+          player.energy -= 10;
+          document.getElementById("playerResourceValue").innerHTML = player.energy;
 
-        if ((hit - player.dexterity) === 19||20) {
-          return hit *= 2;
+          if ((hit - player.dexterity) === 19||20) {
+            return hit *= 2;
+          } else {
+            return hit;
+          }
         } else {
-          return hit;
+          console.log("Not enough energy to use this attack!");
         }
       } else if (player.class === "mage") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
-        player.mana -= 10;
-        document.getElementById("playerResourceValue").innerHTML = player.mana;
+        if (player.mana > 10) {
+          player.mana -= 10;
+          document.getElementById("playerResourceValue").innerHTML = player.mana;
 
-        if ((hit - player.intellect) === 19||20) {
-          return hit *= 2;
+          if ((hit - player.intellect) === 19||20) {
+            return hit *= 2;
+          } else {
+            return hit;
+          }
         } else {
-          return hit;
+          console.log("Not enough energy to use this attack!");
         }
       }
     }
@@ -411,46 +438,72 @@
     var maxStrength = function () {
       if (player.class === "paladin") {
         hit = Math.ceil(Math.random()*26)+player.intellect+player.strength;
-        player.mana -= 20;
-        document.getElementById("playerResourceValue").innerHTML = player.mana;
+        if (player.mana > 20) {
+          player.mana -= 20;
+          document.getElementById("playerResourceValue").innerHTML = player.mana;
 
-        if ((hit - player.intellect) === 25||26) {
-          return hit *= 2;
+          if ((hit - player.intellect) === 25||26) {
+            return hit *= 2;
+          } else {
+            return hit;
+          }
         } else {
-          return hit;
+          console.log("Not enough energy to use this attack!");
         }
       }
       else if(player.class === "warrior") {
         hit = Math.ceil(Math.random()*25)+player.strength;
-        player.rage -= 20;
-        document.getElementById("playerResourceValue").innerHTML = player.rage;
+        if (player.rage > 20) {
+          player.rage -= 20;
+          document.getElementById("playerResourceValue").innerHTML = player.rage;
 
-        if ((hit - player.strength) === 24||25) {
-          return hit *= 2;
+          if ((hit - player.strength) === 24||25) {
+            return hit *= 2;
+          } else {
+            return hit;
+          }
         } else {
-          return hit;
+          console.log("Not enough rage to use this attack!");
         }
       } else if (player.class === "rogue") {
         hit = Math.ceil(Math.random()*25)+player.dexterity;
-        player.energy -= 20;
-        document.getElementById("playerResourceValue").innerHTML = player.energy;
+        if (player.energy > 20) {
+          player.energy -= 20;
+          document.getElementById("playerResourceValue").innerHTML = player.energy;
 
-        if ((hit - player.dexterity) === 24||25) {
-          return hit *= 2;
+          if ((hit - player.dexterity) === 24||25) {
+            return hit *= 2;
+          } else {
+            return hit;
+          }
         } else {
-          return hit;
+          console.log("Not enough energy to use this attack!");
         }
       } else if (player.class === "mage") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
-        player.mana -= 20;
-        document.getElementById("playerResourceValue").innerHTML = player.mana;
+        if (player.mana > 20) {
+          player.mana -= 20;
+          document.getElementById("playerResourceValue").innerHTML = player.mana;
 
-        if ((hit - player.intellect) === 24||25) {
-          return hit *= 2;
+          if ((hit - player.intellect) === 24||25) {
+            return hit *= 2;
+          } else {
+            return hit;
+          }
         } else {
-          return hit;
+          console.log("Not enough mana to use this attack!");
         }
       }
+    }
+
+    var gainedLevel = function() {
+      if (player.experience > totalExp) {
+        player.level++;
+        document.getElementById("playerLevel").innerHTML = player.level;
+        totalExp = totalExp * 3;
+        console.log("Level gained! New totalExp is " + totalExp)
+      }
+      console.log(player.experience)
     }
 
     function attack(enemy, hit) {
@@ -463,6 +516,8 @@
         document.getElementById("logListTitle").innerHTML = "Enemy defeated!";
         document.getElementById("logListDesc").innerHTML = "You found " + enemy.inventory.gold + " gold!";
         player.gold += enemy.inventory.gold;
+        player.experience += enemy.experience;
+        gainedLevel();
         document.getElementById("playerGold").innerHTML = player.gold;
         document.getElementById("playerHealth").innerHTML = player.health;
 
@@ -497,6 +552,7 @@
 
       if (player.health <= 0) {
         alert("Game over :(");
+        location.reload();
       }
 
       return enemy;
