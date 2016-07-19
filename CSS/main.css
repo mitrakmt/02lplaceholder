@@ -30,6 +30,12 @@ body {
   visibility: hidden;
 }
 
+.map-card {
+  width: 400px;
+  background-color: #E5E5E6;
+  opacity: .8;
+}
+
 .start-battle-button {
   width: 100px;
   height: 60px;

@@ -53,30 +53,36 @@
     </div>
 
     <!-- Battle log -->
-    <md-card class="battleLogSection" layout-padding layout-margin>
-      <md-toolbar class="md-theme-light" layout="row">
-        <h1 class="" flex>Battle Log</h1>
-        <p class="md-headline inBattle" id="inBattle" flex><span id="enemyName"></span> Health: <span id="enemyHealth"></span></p>
-      </md-toolbar>
-      <div layout="row">
-        <button id="attackButton" class="md-raised attack-button" onclick="attack(enemy, normalStrength())">Attack</button>
-        <button id="skillaButton" class="md-raised attack-button" onclick="attack(enemy, mediumStrength())"></button>
-        <button id="skillbButton" class="md-raised attack-button" onclick="attack(enemy, maxStrength())"></button>
-        <button id="startBattleButton" class="md-raised start-battle-button" onclick="findEnemy()">Start Encounter</button>
-      </div>
-      <md-content>
-        <md-list>
-          <md-list-item class="md-3-line" layout-padding layout-margin>
-            <div class="md-list-item-text">
-              <h1 id="logListTitle"><strong>Example</strong></h1>
-              <p id="logListDesc" class="md-display-1">Any battle logs or udpates will appear here!</p>
-            </div>
-            <md-divider></md-divider>
-          </md-list-item>
+    <div layout="row" layout-xs="column">
+      <md-card class="battleLogSection" layout-padding layout-margin flex>
+        <md-toolbar class="md-theme-light" layout="row">
+          <h1 class="" flex>Battle Log</h1>
+          <p class="md-headline inBattle" id="inBattle" flex><span id="enemyName"></span> Health: <span id="enemyHealth"></span></p>
+        </md-toolbar>
+        <div layout="row">
+          <button id="attackButton" class="md-raised attack-button" onclick="attack(enemy, normalStrength())">Attack</button>
+          <button id="skillaButton" class="md-raised attack-button" onclick="attack(enemy, mediumStrength())"></button>
+          <button id="skillbButton" class="md-raised attack-button" onclick="attack(enemy, maxStrength())"></button>
+          <button id="startBattleButton" class="md-raised start-battle-button" onclick="findEnemy()">Start Encounter</button>
+        </div>
+        <md-content>
+          <md-list>
+            <md-list-item class="md-3-line" layout-padding layout-margin>
+              <div class="md-list-item-text">
+                <h1 id="logListTitle"><strong>Example</strong></h1>
+                <p id="logListDesc" class="md-display-1">Any battle logs or udpates will appear here!</p>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
 
-        </md-list>
-      </md-content>
-    </md-card>
+          </md-list>
+        </md-content>
+      </md-card>
+
+      <md-card class="map-card" layout-margin layout-padding flex>
+        <h1>This is where the map will go</h1>
+      </md-card>
+    </div>
 
     <input class="cheatCodes" onclick="cheatCodes()"></input>
 

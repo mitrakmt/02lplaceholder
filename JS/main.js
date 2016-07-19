@@ -41,7 +41,7 @@
 
     var player = {
       level: 1,
-      experience: 0,
+      experience : 0,
       intellect : 1,
       strength : 1,
       dexterity : 1,
@@ -308,13 +308,13 @@
     document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
     document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
     if (player.class === "warrior") {
-      document.getElementById("playerResourceValue").innerHTML = player.mana;
+      document.getElementById("playerResourceValue").innerHTML = player.rage;
       document.getElementById("playerResourceName").innerHTML = "Rage";
     } else if (player.class === "rogue") {
       document.getElementById("playerResourceValue").innerHTML = player.energy;
       document.getElementById("playerResourceName").innerHTML = "Energy";
     } else if (player.class === "mage") {
-      document.getElementById("playerResourceValue").innerHTML = player.rage;
+      document.getElementById("playerResourceValue").innerHTML = player.mana;
       document.getElementById("playerResourceName").innerHTML = "Mana";
     } else if (player.class === "paladin") {
       document.getElementById("playerResourceValue").innerHTML = player.mana;
@@ -507,53 +507,57 @@
     }
 
     function attack(enemy, hit) {
-      var enemyHit = Math.ceil(Math.random()*10) + enemy.stats.strength;
-      enemy.stats.health -= hit;
+      if (hit === undefined) {
+        return false;
+      } else {
+        var enemyHit = Math.ceil(Math.random()*10) + enemy.stats.strength;
+        enemy.stats.health -= hit;
 
-      // When enemy is killed:
-      if (enemy.stats.health <= 0) {
-        // Update player stats
-        document.getElementById("logListTitle").innerHTML = "Enemy defeated!";
-        document.getElementById("logListDesc").innerHTML = "You found " + enemy.inventory.gold + " gold!";
-        player.gold += enemy.inventory.gold;
-        player.experience += enemy.experience;
-        gainedLevel();
-        document.getElementById("playerGold").innerHTML = player.gold;
-        document.getElementById("playerHealth").innerHTML = player.health;
+        // When enemy is killed:
+        if (enemy.stats.health <= 0) {
+          // Update player stats
+          document.getElementById("logListTitle").innerHTML = "Enemy defeated!";
+          document.getElementById("logListDesc").innerHTML = "You found " + enemy.inventory.gold + " gold!";
+          player.gold += enemy.inventory.gold;
+          player.experience += enemy.experience;
+          gainedLevel();
+          document.getElementById("playerGold").innerHTML = player.gold;
+          document.getElementById("playerHealth").innerHTML = player.health;
 
-        // Move all of enemy's inventory to player's inventory
-        if (enemy.inventory.length !== null) {
-          for(var item in enemy.inventory) {
-            if (player.inventory[item] !== undefined) {
-              player.inventory[item] += enemy.inventory[item];
-            } else {
-              player.inventory[item] = enemy.inventory[item];
+          // Move all of enemy's inventory to player's inventory
+          if (enemy.inventory.length !== null) {
+            for(var item in enemy.inventory) {
+              if (player.inventory[item] !== undefined) {
+                player.inventory[item] += enemy.inventory[item];
+              } else {
+                player.inventory[item] = enemy.inventory[item];
+              }
             }
           }
+
+          // Updpate items on DOM
+          document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
+          document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+
+          // Reset enemy to full health
+          enemy.stats.health = startHP;
+
+          // Take the player out of battle
+          action();
+
+        } else {
+          document.getElementById("logListTitle").innerHTML = "Attack Successful";
+          document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!";
+          document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
+          player.health -= (enemyHit - (player.armor/2));
+          document.getElementById("playerHealth").innerHTML = player.health;
         }
 
-        // Updpate items on DOM
-        document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
-        document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+        if (player.health <= 0) {
+          alert("Game over :(");
+          location.reload();
+        }
 
-        // Reset enemy to full health
-        enemy.stats.health = startHP;
-
-        // Take the player out of battle
-        action();
-
-      } else {
-        document.getElementById("logListTitle").innerHTML = "Attack Successful";
-        document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!";
-        document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
-        player.health -= (enemyHit - (player.armor/2));
-        document.getElementById("playerHealth").innerHTML = player.health;
+        return enemy;
       }
-
-      if (player.health <= 0) {
-        alert("Game over :(");
-        location.reload();
-      }
-
-      return enemy;
     }
