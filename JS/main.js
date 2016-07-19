@@ -535,6 +535,11 @@
         return false;
       } else {
         var enemyHit = Math.ceil(Math.random()*10) + enemy.stats.strength;
+        if ((enemyHit - enemy.stats.strength) === 10) {
+          enemyHit *= 2;
+        } else {
+          enemyHit;
+        }
         enemy.stats.health -= hit;
 
         // When enemy is killed:
