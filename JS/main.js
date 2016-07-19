@@ -15,20 +15,29 @@
             document.getElementById('enemyHealth').style.visibility = 'visible';
             document.getElementById('enemyName').style.visibility = 'visible';
             document.getElementById('inBattle').style.visibility = 'visible';
-            document.getElementById('skillaButton').style.visibility = 'visible';
-            document.getElementById('skillbButton').style.visibility = 'visible';
-            document.getElementById('skillaButton').innerHTML = skillA;
-            document.getElementById('skillbButton').innerHTML = skillB;
+
+            if (player.level >= 2) {
+              document.getElementById('skillaButton').innerHTML = skillA;
+              document.getElementById('skillaButton').style.visibility = 'visible';
+            }
+            if (player.level >= 5) {
+              document.getElementById('skillbButton').innerHTML = skillB;
+              document.getElementById('skillbButton').style.visibility = 'visible';
+            }
         } else {
             document.getElementById('startBattleButton').style.visibility = 'visible';
             document.getElementById('attackButton').style.visibility = 'hidden';
             document.getElementById('enemyHealth').style.visibility = 'hidden';
             document.getElementById('enemyName').style.visibility = 'hidden';
             document.getElementById('inBattle').style.visibility = 'hidden';
-            document.getElementById('skillaButton').style.visibility = 'hidden';
-            document.getElementById('skillbButton').style.visibility = 'hidden';
-            document.getElementById('skillaButton').innerHTML = skillA;
-            document.getElementById('skillbButton').innerHTML = skillB;
+            if (player.level >= 2) {
+              document.getElementById('skillaButton').style.visibility = 'hidden';
+              document.getElementById('skillaButton').innerHTML = skillA;
+            }
+            if (player.level >= 5) {
+              document.getElementById('skillbButton').style.visibility = 'hidden';
+              document.getElementById('skillbButton').innerHTML = skillB;
+            }
         }
     }
 
@@ -227,7 +236,7 @@
         document.getElementById("playerHealth").innerHTML = player.health;
         document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
       } else {
-        console.log("You have no health potions");
+        alert("You have no health potions");
       }
     }
 
@@ -249,7 +258,7 @@
         document.getElementById("playerResourceValue").innerHTML = player.resource;
         document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
       } else {
-        console.log("You have no resource potions");
+        alert("You have no resource potions");
       }
     }
 
@@ -410,7 +419,7 @@
             return hit;
           }
         } else {
-          console.log("Not enough resource to use this attack!");
+          alert("Not enough resource to use this attack!");
         }
       }
       else if(player.class === "warrior") {
@@ -425,7 +434,7 @@
             return hit;
           }
         } else {
-          console.log("Not enough resource to use this attack!");
+          alert("Not enough resource to use this attack!");
         }
       } else if (player.class === "rogue") {
         hit = Math.ceil(Math.random()*20)+player.dexterity;
@@ -439,7 +448,7 @@
             return hit;
           }
         } else {
-          console.log("Not enough resource to use this attack!");
+          alert("Not enough resource to use this attack!");
         }
       } else if (player.class === "mage") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
@@ -453,7 +462,7 @@
             return hit;
           }
         } else {
-          console.log("Not enough resource to use this attack!");
+          alert("Not enough resource to use this attack!");
         }
       }
     }
@@ -472,7 +481,7 @@
             return hit;
           }
         } else {
-          console.log("Not enough resource to use this attack!");
+          alert("Not enough resource to use this attack!");
         }
       }
       else if(player.class === "warrior") {
@@ -487,7 +496,7 @@
             return hit;
           }
         } else {
-          console.log("Not enough resource to use this attack!");
+          alert("Not enough resource to use this attack!");
         }
       } else if (player.class === "rogue") {
         hit = Math.ceil(Math.random()*25)+player.dexterity;
@@ -501,7 +510,7 @@
             return hit;
           }
         } else {
-          console.log("Not enough resource to use this attack!");
+          alert("Not enough resource to use this attack!");
         }
       } else if (player.class === "mage") {
         hit = Math.ceil(Math.random()*20)+player.intellect;
@@ -515,7 +524,7 @@
             return hit;
           }
         } else {
-          console.log("Not enough mana to use this attack!");
+          alert("Not enough mana to use this attack!");
         }
       }
     }
@@ -525,7 +534,7 @@
         player.level++;
         document.getElementById("playerLevel").innerHTML = player.level;
         totalExp = totalExp * 3;
-        console.log("Level gained! New totalExp is " + totalExp)
+        alert("Level gained! EXP needed to level " + (player.level+1) + " is " + totalExp)
       }
       console.log(player.experience)
     }
@@ -535,6 +544,7 @@
         return false;
       } else {
         var enemyHit = Math.ceil(Math.random()*10) + enemy.stats.strength;
+        //Crits
         if ((enemyHit - enemy.stats.strength) === 10) {
           enemyHit *= 2;
         } else {
@@ -574,7 +584,7 @@
           // Take the player out of battle
           action();
 
-        } else {
+        } else
           document.getElementById("logListTitle").innerHTML = "Attack Successful";
           document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!";
           document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
@@ -591,4 +601,3 @@
 
         return enemy;
       }
-    }

@@ -59,6 +59,10 @@ body {
   visibility: hidden;
 }
 
+.skillInvisible {
+  visibility: hidden;
+}
+
 .playerBag {
   min-width: 350px;
   background-color: #E5E5E6;
