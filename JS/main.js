@@ -1,5 +1,6 @@
   var hit;
   var skillA;
+  var skillB;
   var inBattle = false;
   var startHP = 0;
 
@@ -11,14 +12,16 @@
             document.getElementById('enemyHealth').style.visibility = 'visible';
             document.getElementById('enemyName').style.visibility = 'visible';
             document.getElementById('inBattle').style.visibility = 'visible';
-            document.getElementById('skillButton').innerHTML = skillA;
+            document.getElementById('skillaButton').innerHTML = skillA;
+            document.getElementById('skillbButton').innerHTML = skillB;
         } else {
             document.getElementById('startBattleButton').style.visibility = 'visible';
             document.getElementById('attackButton').style.visibility = 'hidden';
             document.getElementById('enemyHealth').style.visibility = 'hidden';
             document.getElementById('enemyName').style.visibility = 'hidden';
             document.getElementById('inBattle').style.visibility = 'hidden';
-            document.getElementById('skillButton').innerHTML = skillA;
+            document.getElementById('skillaButton').innerHTML = skillA;
+            document.getElementById('skillbButton').innerHTML = skillB;
         }
     }
 
@@ -246,6 +249,12 @@
     else if (player.class === "mage") { skillA = "Fireball" }
     else if (player.class === "paladin") { skillA = "Judgement" }
 
+    // Defining second skill
+    if (player.class === "warrior") { skillB = "Bladestorm" }
+    else if (player.class === "rogue") { skillB = "Eviscerate" }
+    else if (player.class === "mage") { skillB = "Dragon's Breath" }
+    else if (player.class === "paladin") { skillB = "Divine Storm" }
+
     // Insert player stats and inventory into DOM
     document.getElementById("playerIntellect").innerHTML = player.intellect;
     document.getElementById("playerStrength").innerHTML = player.strength;
@@ -360,6 +369,47 @@
         player.mana -= 10;
 
         if ((hit - player.intellect) === 19||20) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      }
+    }
+
+    var maxStrength = function () {
+      if (player.class === "paladin") {
+        hit = Math.ceil(Math.random()*26)+player.intellect+player.strength;
+        player.mana -= 20;
+
+        if ((hit - player.intellect) === 25||26) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      }
+      else if(player.class === "warrior") {
+        hit = Math.ceil(Math.random()*25)+player.strength;
+        player.rage -= 20;
+
+        if ((hit - player.strength) === 24||25) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      } else if (player.class === "rogue") {
+        hit = Math.ceil(Math.random()*25)+player.dexterity;
+        player.energy -= 20;
+
+        if ((hit - player.dexterity) === 24||25) {
+          return hit *= 2;
+        } else {
+          return hit;
+        }
+      } else if (player.class === "mage") {
+        hit = Math.ceil(Math.random()*20)+player.intellect;
+        player.mana -= 20;
+
+        if ((hit - player.intellect) === 24||25) {
           return hit *= 2;
         } else {
           return hit;
