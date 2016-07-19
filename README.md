@@ -18,7 +18,6 @@ TODO:
   // more user options ig. stat choices
   // fix combat log so it scrolls
   // show enemy stats in combat
-  // limit usable skills based on level
   // more weapons
   // backpack/character sprites/item icons
   // implement toaster

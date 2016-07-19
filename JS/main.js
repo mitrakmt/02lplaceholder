@@ -188,30 +188,39 @@
           type: "Weapon",
           damage: 29,
           dexterity: 50,
+          intellect: 0,
           cost: 150
         },
         Claymore: {
           name: "Claymore",
           type: "Weapon",
           damage: 3,
+          intellect: 0,
+          dexterity: 0,
           cost: 30
         },
         ShortStaff: {
           name: "Short Staff",
           type: "Weapon",
           damage: 3,
+          intellect: 3,
+          dexterity: 0,
           cost: 30
         },
         Dirk: {
           name: "Dirk",
           type: "Weapon",
           damage: 3,
+          dexterity: 4,
+          intellect: 0,
           cost: 30
         },
         Club: {
           name: "Club",
           type: "Weapon",
           damage: 3,
+          intellect: 0,
+          dexterity: 0,
           cost: 30
         }
       },
@@ -277,8 +286,13 @@
       if (player.gold >= store.weapons[weaponName].cost) {
         player.weapon = store.weapons[weaponName].name;
         player.strength += store.weapons[weaponName].damage;
+        player.dexterity += store.weapons[weaponName].dexterity;
+        player.intellect += store.weapons[weaponName].intellect;
         player.gold -= store.weapons[weaponName].cost;
         document.getElementById("playerStrength").innerHTML = player.strength;
+        document.getElementById("playerIntellect").innerHTML = player.intellect;
+        document.getElementById("playerDexterity").innerHTML = player.dexterity;
+        document.getElementById("playerWisdom").innerHTML = player.wisdom;
         document.getElementById("playerGold").innerHTML = player.gold;
       } else {
         alert("Sorry, you don't have enough gold yet.")
@@ -413,7 +427,7 @@
           player.resource -= 10;
           document.getElementById("playerResourceValue").innerHTML = player.resource;
 
-          if ((hit - player.intellect) === 19||20) {
+          if ((hit - player.intellect) === 20) {
             return hit *= 2;
           } else {
             return hit;
@@ -428,7 +442,7 @@
           player.resource -= 10;
           document.getElementById("playerResourceValue").innerHTML = player.resource;
 
-          if ((hit - player.strength) === 19||20) {
+          if ((hit - player.strength) === 20) {
             return hit *= 2;
           } else {
             return hit;
@@ -442,7 +456,7 @@
           player.resource -= 10;
           document.getElementById("playerResourceValue").innerHTML = player.resource;
 
-          if ((hit - player.dexterity) === 19||20) {
+          if ((hit - player.dexterity) === 20) {
             return hit *= 2;
           } else {
             return hit;
@@ -451,12 +465,12 @@
           alert("Not enough resource to use this attack!");
         }
       } else if (player.class === "mage") {
-        hit = Math.ceil(Math.random()*20)+player.intellect;
+        hit = Math.ceil(Math.random() * 11 ) + player.intellect;
         if (player.resource >= 10) {
           player.resource -= 10;
           document.getElementById("playerResourceValue").innerHTML = player.resource;
 
-          if ((hit - player.intellect) === 19||20) {
+          if ((hit - player.intellect) === 11) {
             return hit *= 2;
           } else {
             return hit;
@@ -475,7 +489,7 @@
           player.resource -= 20;
           document.getElementById("playerResourceValue").innerHTML = player.resource;
 
-          if ((hit - player.intellect) === 25||26) {
+          if ((hit - player.intellect) === 26) {
             return hit *= 2;
           } else {
             return hit;
@@ -490,7 +504,7 @@
           player.resource -= 20;
           document.getElementById("playerResourceValue").innerHTML = player.resource;
 
-          if ((hit - player.strength) === 24||25) {
+          if ((hit - player.strength) === 25) {
             return hit *= 2;
           } else {
             return hit;
@@ -504,7 +518,7 @@
           player.resource -= 20;
           document.getElementById("playerResourceValue").innerHTML = player.resource;
 
-          if ((hit - player.dexterity) === 24||25) {
+          if ((hit - player.dexterity) === 25) {
             return hit *= 2;
           } else {
             return hit;
@@ -518,7 +532,7 @@
           player.resource -= 20;
           document.getElementById("playerResourceValue").innerHTML = player.resource;
 
-          if ((hit - player.intellect) === 24||25) {
+          if ((hit - player.intellect) === 25) {
             return hit *= 2;
           } else {
             return hit;
