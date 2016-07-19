@@ -54,7 +54,7 @@
       health : 100,
       class : "",
       gold : 0,
-      weapon : undefined,
+      weapon : null,
       inventory: {healthPotion: 1, manaPotion: 1}
     }
 
@@ -224,7 +224,7 @@
       if (player.inventory.manaPotion > 0) {
         player.mana = 100;
         player.inventory.manaPotion--;
-        document.getElementById("playerMana").innerHTML = player.mana;
+        document.getElementById("playerResourceValue").innerHTML = player.mana;
         document.getElementById("playerManaPotion").innerHTML = player.inventory.manaPotion;
       } else {
         console.log("You have no mana potions");
