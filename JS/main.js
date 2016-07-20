@@ -8,7 +8,6 @@
   var rogueResource = "Energy";
   var hpMultiplier = 1;
   var strMultiplier = 1;
-  var newLine = "\n";
 
   // Create elements for insert to DOM
   var newListItem = document.createElement("li");
@@ -56,6 +55,18 @@
             document.getElementById('skillbButton').style.visibility = 'hidden';
             document.getElementById('skillbButton').innerHTML = skillB;
           }
+        }
+      }
+
+
+    var cheatCodes = function() {
+      var phrase = prompt("Do you know one of our secret cheat codes?");
+      if (phrase === "bling") {
+        player.gold += 100000;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      } else if (phrase === "invincible") {
+        player.health = 100000;
+        document.getElementById("playerHealth").innerHTML = player.health;
       }
   }
 
@@ -213,6 +224,13 @@
             intellect: 10,
             wisdom: 5,
             cost: 1000
+          },
+          dragonwrath: {
+            name: "Dragonwrath, Tarecgosa's Rest",
+            type: "Staff",
+            intellect: 8,
+            wisdom: 4,
+            cost: 700
           }
         },
         warrior: {
@@ -220,8 +238,15 @@
             name: "Shadowmourne",
             type: "Axe",
             strength: 10,
-            dexterity: 3,
+            constitution: 3,
             cost: 1000
+          },
+          Sulfuras:{
+            name: "Sulfuras, Hand of Ragnaros",
+            type: "Hammer",
+            strength: 8,
+            constitution: 4,
+            cost: 800
           }
         },
         rogue: {
@@ -231,6 +256,13 @@
             dexterity: 10,
             strength: 3,
             cost: 1000
+          },
+          fangs:{
+            name: "Golad & Tiriosh",
+            type: "Daggers",
+            dexterity: 7,
+            strength: 3,
+            cost: 600
           }
         },
         paladin: {
@@ -250,6 +282,14 @@
             wisdom: 3,
             armor: 7,
             cost: 800
+          },
+          frostmourne:{
+            name: "Frostmourne",
+            type: "2H Sword",
+            strength: 7,
+            intellect: 4,
+            wisdom: 2,
+            cost:800
           }
         },
       KingSlayer: {
@@ -560,36 +600,6 @@
     else if (player.class === "mage") { skillB = "Dragon's Breath" }
     else if (player.class === "paladin") { skillB = "Divine Storm" }
 
-
-  var list = document.getElementById('storeCard');
-
-  // Creating second store for armor & weapons based on class
-  if (player.class === "paladin") {
-    var judgement = store.armor.paladin.judgement.name;
-    var redemption = store.armor.paladin.redemption.name;
-    var whiteTiger = store.armor.paladin.whiteTiger.name;
-    var lightsworn = store.armor.paladin.lightsworn.name;
-    newListItem.appendChild(document.createTextNode(judgement));
-    newListItem.appendChild(document.createTextNode(redemption));
-    newListItem.appendChild(document.createTextNode(whiteTiger));
-    newListItem.appendChild(document.createTextNode(lightsworn));
-    list.appendChild(newListItem)
-  } else if (player.class === "rogue") {
-    for (var armor in store.armor.rogue) {
-     newListItem.textContent += store.armor.rogue[armor].name + ": ";
-    }
-    armorList.appendChild(newListItem);
-  } else if (player.class === "mage") {
-    for (var armor in store.armor.mage) {
-     newListItem.textContent += store.armor.mage[armor].name + ": ";
-    }
-    armorList.appendChild(newListItem);
-  } else if (player.class === "warrior") {
-    for (var armor in store.armor.warrior) {
-     newListItem.textContent += store.armor.warrior[armor].name + ": ";
-    }
-    armorList.appendChild(newListItem);
-  }
 
   // Insert player stats and inventory into DOM
   document.getElementById("playerLevel").innerHTML = player.level;
