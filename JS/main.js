@@ -184,11 +184,18 @@
     var store = {
       weapons: {
           mage: {
-            
+            atiesh:{
+              name: "Atiesh: Greatstaff of the Guardians",
+              type: "Staff",
+              intellect: 10,
+              wisdom: 5,
+              cost: 1000
+            }
           },
           warrior: {
             shadowmourne:{
-              name: "Shadowmourne"
+              name: "Shadowmourne",
+              type: "Axe",
               strength: 10,
               constituion: 2,
               cost: 1000
@@ -197,6 +204,7 @@
           rogue: {
             warglaives:{
               name: "Warglaives of Azzinoth",
+              type: "Glaives",
               dexterity: 10,
               strength: 4,
               cost: 1000
@@ -204,14 +212,16 @@
           },
           paladin: {
             ashbringer:{
-              name: "ashbringer",
+              name: "Ashbringer",
+              type: "2H Sword",
               intellect: 2,
               strength: 6,
               wisdom: 2,
               cost: 900
             },
             truthguard:{
-              name: "Truthguard"
+              name: "Truthguard",
+              type: "Sword and Shield",
               intellect: 4,
               strength: 3,
               wisdom: 3,
