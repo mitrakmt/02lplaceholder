@@ -12,6 +12,11 @@ body {
   width: 100%;
 }
 
+.armorList li {
+  display: none;
+  list-style: none;
+}
+
 .battleLogSection {
   background-color: #E5E5E6;
   opacity: .85;
