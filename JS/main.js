@@ -97,7 +97,7 @@
           strength : 4,
           dexterity : 4,
           wisdom : 3,
-          constitution : 3,
+          constitution : 4,
           charisma : 5,
           armor : 5,
           resource : 0
@@ -106,8 +106,8 @@
           intellect : 6,
           strength : 2,
           dexterity : 2,
-          wisdom : 5,
-          constitution : 3,
+          wisdom : 4,
+          constitution : 2,
           charisma : 4,
           armor : 2,
           resource : 0
@@ -228,7 +228,7 @@
               armor: 7,
               cost: 800
             }
-          }
+          },
         KingSlayer: {
           name: "King Slayer",
           type: "Weapon",
@@ -468,6 +468,9 @@
 
     var buyWeapon = function (weaponName) {
       if (player.gold >= store.weapons.playerClass[weaponName].cost) {
+        if (store.weapons.playerClass[weaponName].cost > 30) {
+          alert("This item costs " + store.weapons.playerClas[weaponName].cost + ". Are you sure you want to buy this?");
+         }
         player.weapon = store.weapons[weaponName].name;
         player.strength += store.weapons[weaponName].damage;
         player.dexterity += store.weapons[weaponName].dexterity;
@@ -619,6 +622,8 @@
           return hit;
         }
       }
+      player.resource += (player.wisdom*2);
+      player.health += (player.constitution*.5);
     }
 
     // Medium Strength Attack
@@ -681,6 +686,8 @@
           alert("Not enough resource to use this attack!");
         }
       }
+      player.resource += (player.wisdom*2);
+    player.health += (player.constitution*.5);
     }
 
     // Max Strength Attack
@@ -743,6 +750,8 @@
           alert("Not enough mana to use this attack!");
         }
       }
+      player.resource += (player.wisdom*2);
+    player.health += (player.constitution*.5);
     }
 
     var gainedLevel = function() {
