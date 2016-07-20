@@ -55,7 +55,7 @@
     }
 
     var player = {
-      level: 3,
+      level: 1,
       experience : 0,
       intellect : 1,
       strength : 1,
