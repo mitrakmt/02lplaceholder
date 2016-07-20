@@ -220,258 +220,335 @@
   // Store Object
   var store = {
     weapons: {
-        mage: {
-          atiesh:{
-            name: "Atiesh: Greatstaff of the Guardians",
-            type: "Staff",
-            intellect: 10,
-            wisdom: 5,
-            cost: 1000
-          },
-          dragonwrath: {
-            name: "Dragonwrath, Tarecgosa's Rest",
-            type: "Staff",
-            intellect: 8,
-            wisdom: 4,
-            cost: 700
-          }
-        },
-        warrior: {
-          shadowmourne:{
-            name: "Shadowmourne",
-            type: "Axe",
-            strength: 10,
-            constitution: 3,
-            cost: 1000
-          },
-          Sulfuras:{
-            name: "Sulfuras, Hand of Ragnaros",
-            type: "Hammer",
-            strength: 8,
-            constitution: 4,
-            cost: 800
-          }
-        },
-        rogue: {
-          warglaives:{
-            name: "Warglaives of Azzinoth",
-            type: "Glaives",
-            dexterity: 10,
-            strength: 3,
-            cost: 1000
-          },
-          fangs:{
-            name: "Golad & Tiriosh",
-            type: "Daggers",
-            dexterity: 7,
-            strength: 3,
-            cost: 600
-          }
-        },
-        paladin: {
-          ashbringer:{
-            name: "Ashbringer",
-            type: "2H Sword",
-            intellect: 4,
-            strength: 8,
-            wisdom: 2,
-            cost: 900
-          },
-          truthguard:{
-            name: "Truthguard",
-            type: "Sword and Shield",
-            intellect: 4,
-            strength: 3,
-            wisdom: 3,
-            armor: 7,
-            cost: 800
-          },
-          frostmourne:{
-            name: "Frostmourne",
-            type: "2H Sword",
-            strength: 7,
-            intellect: 4,
-            wisdom: 2,
-            cost:800
-          }
-        },
+      atiesh:{
+        name: "Atiesh: Greatstaff of the Guardians",
+        class: "mage",
+        type: "Staff",
+        intellect: 10,
+        strength: 0,
+        dexterity: 0,
+        cost: 1000
+      },
+      dragonwrath: {
+        name: "Dragonwrath, Tarecgosa's Rest",
+        class: "mage",
+        type: "Staff",
+        intellect: 8,
+        strength: 0,
+        dexterity: 0,
+        cost: 700
+      },
       KingSlayer: {
         name: "King Slayer",
+        class: "mage",
         type: "Weapon",
-        damage: 24,
+        strength: 25,
         dexterity: 25,
+        intellect: 25,
+        cost: 3000
+      },
+      shadowmourne:{
+        name: "Shadowmourne",
+        class: "warrior",
+        type: "Axe",
+        strength: 10,
+        dexterity: 0,
         intellect: 0,
-        cost: 500
+        cost: 1000
+      },
+      Sulfuras:{
+        name: "Sulfuras, Hand of Ragnaros",
+        class: "warrior",
+        type: "Hammer",
+        strength: 8,
+        dexterity: 0,
+        intellect: 0,
+        cost: 800
       },
       Claymore: {
         name: "Claymore",
+        class: "warrior",
         type: "Weapon",
-        damage: 3,
-        intellect: 0,
+        strength: 3,
         dexterity: 0,
+        intellect: 0,
         cost: 30
       },
-      ShortStaff: {
-        name: "Short Staff",
-        type: "Weapon",
-        damage: 3,
-        intellect: 3,
-        dexterity: 0,
-        cost: 30
+      warglaives:{
+        name: "Warglaives of Azzinoth",
+        class: "rogue",
+        type: "Glaives",
+        dexterity: 10,
+        strength: 3,
+        intellect: 0,
+        cost: 1000
+      },
+      fangs:{
+        name: "Golad & Tiriosh",
+        class: "rogue",
+        type: "Daggers",
+        dexterity: 7,
+        strength: 3,
+        intellect: 0,
+        cost: 600
       },
       Dirk: {
         name: "Dirk",
+        class: "rogue",
         type: "Weapon",
-        damage: 3,
-        dexterity: 4,
+        dexterity: 3,
+        strength: 0,
         intellect: 0,
         cost: 30
       },
-      Club: {
-        name: "Club",
+      ashbringer:{
+        name: "Ashbringer",
+        class: "paladin",
+        type: "2H Sword",
+        intellect: 4,
+        strength: 8,
+        dexterity: 0,
+        cost: 900
+      },
+      truthguard:{
+        name: "Truthguard",
+        class: "paladin",
+        type: "Sword and Shield",
+        intellect: 4,
+        strength: 3,
+        dexterity: 0,
+        armor: 7,
+        cost: 800
+      },
+      frostmourne:{
+        name: "Frostmourne",
+        class: "paladin",
+        type: "2H Sword",
+        strength: 7,
+        intellect: 4,
+        dexterity: 0,
+        cost:800
+      },
+      ShortStaff: {
+        name: "Short Staff",
+        class: "paladin",
         type: "Weapon",
-        damage: 3,
-        intellect: 0,
+        intellect: 3,
+        strength: 0,
         dexterity: 0,
         cost: 30
       }
     },
     armor: {
-      paladin:{
-        judgement: {
-          name: "Judgement Armor",
-          type: "Plate",
-          armor: 6,
-          intellect: 5,
-          strength: 3,
-          wisdom: 5,
-          cost: 400
-        },
-        redemption: {
-          name: "Redemption Armor",
-          type: "Plate",
-          armor: 8,
-          intellect: 7,
-          strength: 6,
-          wisdom: 9,
-          cost: 900
-        },
-        whiteTiger: {
-          name: "White Tiger Armor",
-          type: "Plate",
-          armor: 11,
-          intellect: 10,
-          strength: 11,
-          wisdom: 13,
-          cost: 1300
-        },
-        lightsworn: {
-          name: "Lightsworn Dragonplate",
-          type: "Plate",
-          armor: 16,
-          intellect: 14,
-          strength: 17,
-          wisdom: 15,
-          cost: 2500
-        }
+      rustedArmor: {
+        name: "Rusted Armor",
+        class: "paladin",
+        type: "Plate",
+        armor: 2,
+        intellect: 1,
+        wisdom: 2,
+        strength: 0,
+        dexterity: 0,
+        cost: 100
       },
-      mage: {
-        aldor: {
-          name: "Aldor Regalia",
-          type: "Cloth",
-          armor: 3,
-          intellect: 5,
-          wisdom: 4,
-          cost: 400
-        },
-        tirisfal: {
-          name: "Tirisfal Regalia",
-          type: "Cloth",
-          armor: 4,
-          intellect: 7,
-          wisdom: 6,
-          cost: 900
-        },
-        kirinTor: {
-          name: "Kirin Tor Regalia",
-          type: "Cloth",
-          armor: 6,
-          intellect: 11,
-          wisdom: 10,
-          cost: 1300
-        },
-        timeLords: {
-          name: "Time Lord's Regalia",
-          type: "Cloth",
-          armor: 8,
-          intellect: 15,
-          wisdom: 14,
-          cost: 2500
-        }
+      judgement: {
+        name: "Judgement Armor",
+        class: "paladin",
+        type: "Plate",
+        armor: 6,
+        intellect: 5,
+        dexterity: 0,
+        strength: 3,
+        wisdom: 5,
+        cost: 400
       },
-      warrior: {
-        destroyer: {
-          name: "Battlegear of WrathDestroyer",
-          type: "Plate",
-          armor: 6,
-          strength: 5,
-          cost: 400
-        },
-        wrath: {
-          name: "Battlegear of Wrath",
-          type: "Plate",
-          armor: 12,
-          strength: 7,
-          cost: 900
-        },
-        dreadnaught: {
-          name: "Valourous Dreadnaught",
-          type: "Plate",
-          armor: 6,
-          strength: 11,
-          cost: 1300
-        },
-        dragonplate: {
-          name: "Sanctified Colossal Dragonplate",
-          type: "Plate",
-          armor: 19,
-          strength: 15,
-          cost: 2500
-        }
+      redemption: {
+        name: "Redemption Armor",
+        class: "paladin",
+        type: "Plate",
+        armor: 8,
+        intellect: 7,
+        strength: 6,
+        dexterity: 0,
+        wisdom: 9,
+        cost: 900
       },
-      rogue: {
-        nightSlayer: {
-          name: "Night Slayer Armor",
-          type: "Leather",
-          armor: 4,
-          dexterity: 5,
-          strength: 4,
-          cost: 400
-        },
-        terrorblade: {
-          name: "Terrorblade Battlegear",
-          type: "Leather",
-          armor: 5,
-          dexterity: 7,
-          strength: 6,
-          cost: 900
-        },
-        darkPhoenix: {
-          name: "Vestments of the Dark Phoenix",
-          type: "Leather",
-          armor: 7,
-          dexterity: 11,
-          strength: 10,
-          cost: 1300
-        },
-        timeLords: {
-          name: "Dragon's Soul Battlegear",
-          type: "Leather",
-          armor: 10,
-          dexterity: 15,
-          strength: 14,
-          cost: 2500
-        }
+      whiteTiger: {
+        name: "White Tiger Armor",
+        class: "paladin",
+        type: "Plate",
+        armor: 11,
+        intellect: 10,
+        strength: 11,
+        dexterity: 0,
+        wisdom: 13,
+        cost: 1300
+      },
+      lightsworn: {
+        name: "Lightsworn Dragonplate",
+        class: "paladin",
+        type: "Plate",
+        armor: 16,
+        intellect: 14,
+        dexterity: 0,
+        strength: 17,
+        wisdom: 15,
+        cost: 2500
+      },
+      raggedTunic: {
+        name: "Ragged Tunic",
+        class: "mage",
+        type: "Cloth",
+        armor: 2,
+        intellect: 1,
+        strength: 0,
+        dexterity: 0,
+        wisdom: 2,
+        cost: 100
+      },
+      aldor: {
+        name: "Aldor Regalia",
+        class: "mage",
+        type: "Cloth",
+        armor: 3,
+        intellect: 5,
+        strength: 0,
+        dexterity: 0,
+        wisdom: 4,
+        cost: 400
+      },
+      tirisfal: {
+        name: "Tirisfal Regalia",
+        class: "mage",
+        type: "Cloth",
+        armor: 4,
+        intellect: 7,
+        dexterity: 0,
+        strength: 0,
+        wisdom: 6,
+        cost: 900
+      },
+      kirinTor: {
+        name: "Kirin Tor Regalia",
+        class: "mage",
+        type: "Cloth",
+        armor: 6,
+        intellect: 11,
+        dexterity: 0,
+        strength: 0,
+        wisdom: 10,
+        cost: 1300
+      },
+      timeLords: {
+        name: "Time Lord's Regalia",
+        class: "mage",
+        type: "Cloth",
+        armor: 8,
+        intellect: 15,
+        strength: 0,
+        dexterity: 0,
+        wisdom: 14,
+        cost: 2500
+      },
+      destroyer: {
+        name: "Battlegear of Wrath Destroyer",
+        class: "warrior",
+        type: "Plate",
+        armor: 6,
+        strength: 5,
+        dexterity: 0,
+        intellect: 0,
+        wisdom: 0,
+        cost: 400
+      },
+      wrath: {
+        name: "Battlegear of Wrath",
+        class: "warrior",
+        type: "Plate",
+        armor: 12,
+        dexterity: 0,
+        intellect: 0,
+        wisdom: 0,
+        strength: 7,
+        cost: 900
+      },
+      dreadnaught: {
+        name: "Valourous Dreadnaught",
+        class: "warrior",
+        type: "Plate",
+        armor: 6,
+        strength: 11,
+        dexterity: 0,
+        intellect: 0,
+        wisdom: 0,
+        cost: 1300
+      },
+      dragonplate: {
+        name: "Sanctified Colossal Dragonplate",
+        type: "Plate",
+        armor: 19,
+        strength: 15,
+        dexterity: 0,
+        intellect: 0,
+        wisdom: 0,
+        cost: 2500
+      },
+      raggedTunic: {
+        name: "Ragged Tunic",
+        class: "rogue",
+        type: "Leather",
+        armor: 2,
+        dexterity: 1,
+        strength: 0,
+        intellect: 0,
+        wisdom: 0,
+        cost: 100
+      },
+      nightSlayer: {
+        name: "Night Slayer Armor",
+        class: "rogue",
+        type: "Leather",
+        armor: 4,
+        dexterity: 5,
+        strength: 0,
+        intellect: 0,
+        wisdom: 0,
+        strength: 4,
+        cost: 400
+      },
+      terrorblade: {
+        name: "Terrorblade Battlegear",
+        class: "rogue",
+        type: "Leather",
+        armor: 5,
+        dexterity: 7,
+        strength: 0,
+        intellect: 0,
+        wisdom: 0,
+        strength: 6,
+        cost: 900
+      },
+      darkPhoenix: {
+        name: "Vestments of the Dark Phoenix",
+        class: "rogue",
+        type: "Leather",
+        armor: 7,
+        dexterity: 11,
+        intellect: 0,
+        wisdom: 0,
+        strength: 10,
+        cost: 1300
+      },
+      timeLords: {
+        name: "Dragon's Soul Battlegear",
+        class: "rogue",
+        type: "Leather",
+        armor: 10,
+        dexterity: 15,
+        strength: 14,
+        intellect: 0,
+        wisdom: 0,
+        cost: 2500
       }
     },
     potions: {
@@ -538,12 +615,12 @@
 
   // Buy Weapon Function
   var buyWeapon = function (weaponName) {
-    if (player.gold >= store.weapons.playerClass[weaponName].cost) {
-      if (store.weapons.playerClass[weaponName].cost > 30) {
-        alert("This item costs " + store.weapons.playerClas[weaponName].cost + ". Are you sure you want to buy this?");
+    if (player.gold >= store.weapons[weaponName].cost) {
+      if (store.weapons[weaponName].cost > 30) {
+        alert("This item costs " + store.weapons[weaponName].cost + ". Are you sure you want to buy this?");
        }
       player.weapon = store.weapons[weaponName].name;
-      player.strength += store.weapons[weaponName].damage;
+      player.strength += store.weapons[weaponName].strength;
       player.dexterity += store.weapons[weaponName].dexterity;
       player.intellect += store.weapons[weaponName].intellect;
       player.gold -= store.weapons[weaponName].cost;
@@ -559,12 +636,12 @@
 
   // Buy Armor Function
   var buyArmor = function (armorName) {
-    if (player.gold >= store.armor.playerClass[armorName].cost) {
-      player.weapon = store.armor.playerClass[armorName].name;
-      player.strength += store.armor.playerClass[armorName].damage;
-      player.dexterity += store.armor.playerClass[armorName].dexterity;
-      player.intellect += store.armor.playerClass[armorName].intellect;
-      player.gold -= store.armor.playerClass[armorName].cost;
+    if (player.gold >= store.armor[armorName].cost) {
+      player.weapon = store.armor[armorName].name;
+      player.strength += store.armor[armorName].strength;
+      player.dexterity += store.armor[armorName].dexterity;
+      player.intellect += store.armor[armorName].intellect;
+      player.gold -= store.armor[armorName].cost;
       document.getElementById("playerStrength").innerHTML = player.strength;
       document.getElementById("playerIntellect").innerHTML = player.intellect;
       document.getElementById("playerDexterity").innerHTML = player.dexterity;
@@ -715,16 +792,21 @@
     }
 
   // Insert store into DOM
+    // Paldins
   document.getElementById("buyKingSlayerName").innerHTML = store.weapons.KingSlayer.name;
   document.getElementById("buyKingSlayerCost").innerHTML = store.weapons.KingSlayer.cost;
-  document.getElementById("buyClaymoreName").innerHTML = store.weapons.Claymore.name;
-  document.getElementById("buyClaymoreCost").innerHTML = store.weapons.Claymore.cost;
-  document.getElementById("buyClubName").innerHTML = store.weapons.Club.name;
-  document.getElementById("buyClubCost").innerHTML = store.weapons.Club.cost;
-  document.getElementById("buyDirkName").innerHTML = store.weapons.Dirk.name;
-  document.getElementById("buyDirkCost").innerHTML = store.weapons.Dirk.cost;
   document.getElementById("buyShortStaffName").innerHTML = store.weapons.ShortStaff.name;
   document.getElementById("buyShortStaffCost").innerHTML = store.weapons.ShortStaff.cost;
+  document.getElementById("buyHealthPotionName").innerHTML = store.potions.HealthPotion.name;
+  document.getElementById("buyHealthPotionCost").innerHTML = store.potions.HealthPotion.cost;
+  document.getElementById("buyResourcePotionCost").innerHTML = store.potions.ResourcePotion.cost;
+    // Warriors
+  document.getElementById("buyClaymoreName").innerHTML = store.weapons.Claymore.name;
+  document.getElementById("buyClaymoreCost").innerHTML = store.weapons.Claymore.cost;
+    // Rogues
+  document.getElementById("buyDirkName").innerHTML = store.weapons.Dirk.name;
+  document.getElementById("buyDirkCost").innerHTML = store.weapons.Dirk.cost;
+    //potions
   document.getElementById("buyHealthPotionName").innerHTML = store.potions.HealthPotion.name;
   document.getElementById("buyHealthPotionCost").innerHTML = store.potions.HealthPotion.cost;
   document.getElementById("buyResourcePotionCost").innerHTML = store.potions.ResourcePotion.cost;
