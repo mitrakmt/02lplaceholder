@@ -10,12 +10,13 @@
     <!-- player stats section -->
     <div layout="row" layout-xs="column">
       <md-card class="playerStatsSection" layout-padding layout-margin flex>
-        <h1>Player Stats</h1>
+        <h2 class="card-heading">Player Stats</h2>
         <div layout="row">
           <p class="md-title" flex>
             Level: <span id="playerLevel"></span><br>
             Class: <span id="playerClass"></span><br>
             <span class="health">Health: <span id="playerHealth"></span></span><br>
+            <md-progress-linear md-mode="determinate" value="20"></md-progress-linear>
             <span class="resource"><span id="playerResourceName"></span>: <span id="playerResourceValue"></span></span><br>
             Armor: <span id="playerArmor"></span><br>
           </p>
@@ -32,9 +33,9 @@
 
       <!-- Player items -->
       <md-card class="playerBag" flex layout-padding layout-margin>
-        <h1 class="">Inventory</h1>
+        <h2 class="card-heading">Inventory</h2>
         <p class="md-subhead" flex>
-          Gold: <span id="playerGold"></span><br><br>
+          Gold: <span id="playerGold"></span><br>
           Health potion: <span id="playerHealthPotion"></span> <button class="md-raised" onclick="healthPotion()">Use</button><br>
           <span id="playerResourcePotionName"> </span> Potion: <span id="playerResourcePotion"></span> <button class="md-raised" onclick="resourcePotion()">Use</button><br>
         </p>
@@ -42,20 +43,22 @@
 
       <!-- Store -->
       <md-card class="playerBag" flex layout-padding layout-margin>
-        <h1 class="">Store</h1>
+        <h2 class="card-heading">General Store</h2>
         <p class="md-subhead" flex>
           <span id="buyHealthPotionName"></span>: <span id="buyHealthPotionCost"></span> <button class="md-raised" onclick="buyHealthPotion()">Buy</button><br>
           <span id="buyResourcePotionName"></span> Potion: <span id="buyResourcePotionCost"></span> <button class="md-raised" onclick="buyResourcePotion()">Buy</button><br>
-          <span id="buyKingSlayerName"></span>: <span id="buyKingSlayerCost"></span> <button class="md-raised" onclick="buyWeapon('KingSlayer')">Buy</button><br>
-          <span id="buyClaymoreName"></span>: <span id="buyClaymoreCost"></span> <button class="md-raised" onclick="buyWeapon('Claymore')">Buy</button><br>
-          <span id="buyShortStaffName"></span>: <span id="buyShortStaffCost"></span> <button class="md-raised" onclick="buyWeapon('ShortStaff')">Buy</button><br>
-          <span id="buyDirkName"></span>: <span id="buyDirkCost"></span> <button class="md-raised" onclick="buyWeapon("Dirk")">Buy</button><br>
-          <span id="buyClubName"></span>: <span id="buyClubCost"></span> <button class="md-raised" onclick="buyWeapon("Club")">Buy</button><br>
         </p>
       </md-card>
 
       <md-card class="playerBag" id="storeCard" flex layout-padding layout-margin>
-
+        <h2 class="card-heading">Blacksmith</h2>
+        <p class="md-subhead" flex>
+          <span id="buyKingSlayerName"></span>: <span id="buyKingSlayerCost"></span> <button class="md-raised" onclick="buyWeapon('KingSlayer')">Buy</button><br>
+          <span id="buyClaymoreName"></span>: <span id="buyClaymoreCost"></span> <button class="md-raised" onclick="buyWeapon('Claymore')">Buy</button><br>
+          <span id="buyShortStaffName"></span>: <span id="buyShortStaffCost"></span> <button class="md-raised" onclick="buyWeapon('ShortStaff')">Buy</button><br>
+          <span id="buyDirkName"></span>: <span id="buyDirkCost"></span> <button class="md-raised" onclick="buyWeapon('Dirk')">Buy</button><br>
+          <span id="buyClubName"></span>: <span id="buyClubCost"></span> <button class="md-raised" onclick="buyWeapon('Club')">Buy</button><br>
+        </p>
       </md-card>
 
     </div>

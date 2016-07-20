@@ -15,10 +15,13 @@
   var newUnorderedListItem = document.createElement("ul");
   var newOrderedListItem = document.createElement("ol");
   var newDiv = document.createElement("div");
+  var newParagraph = document.createElement("p");
   var newH1 = document.createElement("h1");
   var newLineBreak = document.createElement("br");
   var newButton = document.createElement("button");
   var newSpan = document.createElement("span");
+  var storeUl = document.querySelector('ul');
+  var storeCard = document.getElementById('storeCard');
 
   // Create lists for insert to DOM
   var armorList = document.getElementById("armorList");
@@ -559,37 +562,83 @@
     else if (player.class === "rogue") { skillB = "Eviscerate" }
     else if (player.class === "mage") { skillB = "Dragon's Breath" }
     else if (player.class === "paladin") { skillB = "Divine Storm" }
-
-
-  var list = document.getElementById('storeCard');
-
-  // Creating second store for armor & weapons based on class
-  if (player.class === "paladin") {
-    var judgement = store.armor.paladin.judgement.name;
-    var redemption = store.armor.paladin.redemption.name;
-    var whiteTiger = store.armor.paladin.whiteTiger.name;
-    var lightsworn = store.armor.paladin.lightsworn.name;
-    newListItem.appendChild(document.createTextNode(judgement));
-    newListItem.appendChild(document.createTextNode(redemption));
-    newListItem.appendChild(document.createTextNode(whiteTiger));
-    newListItem.appendChild(document.createTextNode(lightsworn));
-    list.appendChild(newListItem)
-  } else if (player.class === "rogue") {
-    for (var armor in store.armor.rogue) {
-     newListItem.textContent += store.armor.rogue[armor].name + ": ";
-    }
-    armorList.appendChild(newListItem);
-  } else if (player.class === "mage") {
-    for (var armor in store.armor.mage) {
-     newListItem.textContent += store.armor.mage[armor].name + ": ";
-    }
-    armorList.appendChild(newListItem);
-  } else if (player.class === "warrior") {
-    for (var armor in store.armor.warrior) {
-     newListItem.textContent += store.armor.warrior[armor].name + ": ";
-    }
-    armorList.appendChild(newListItem);
-  }
+  //
+  // // Creating second store for armor & weapons based on class
+  // if (player.class === "paladin") {
+  //   for (var armor in store.armor.paladin) {
+  //     var armorLi = document.createElement('li');
+  //     var buyButton = document.createElement('button');
+  //     armorLi.textContent += armor + ": ";
+  //     buyButton.textContent = "Buy";
+  //     armorLi.appendChild(buyButton);
+  //     storeUl.appendChild(armorLi);
+  //   }
+  //
+  //   for (var weapon in store.weapons.paladin) {
+  //     var weaponLi = document.createElement('li');
+  //     var buyButton = document.createElement('button');
+  //     weaponLi.textContent += weapon + ": ";
+  //     buyButton.textContent = "Buy";
+  //     weaponLi.appendChild(buyButton);
+  //     storeUl.appendChild(weaponLi);
+  //   }
+  // } else if (player.class === "rogue") {
+  //   for (var armor in store.armor.rogue) {
+  //     var armorLi = document.createElement('li');
+  //     var buyButton = document.createElement('button');
+  //     armorLi.textContent += armor + ": ";
+  //     buyButton.textContent = "Buy";
+  //     armorLi.appendChild(buyButton);
+  //     storeUl.appendChild(armorLi);
+  //   }
+  //
+  //   for (var weapon in store.weapons.rogue) {
+  //     var weaponLi = document.createElement('li');
+  //     var buyButton = document.createElement('button');
+  //     weaponLi.textContent += weapon + ": ";
+  //     buyButton.textContent = "Buy";
+  //     weaponLi.appendChild(buyButton);
+  //     storeUl.appendChild(weaponLi);
+  //   }
+  // } else if (player.class === "mage") {
+  //   for (var armor in store.armor.mage) {
+  //     var armorLi = document.createElement('li');
+  //     var buyButton = document.createElement('button');
+  //     armorLi.textContent += armor + ": ";
+  //     buyButton.textContent = "Buy";
+  //     armorLi.appendChild(buyButton);
+  //     storeUl.appendChild(armorLi);
+  //   }
+  //
+  //   for (var weapon in store.weapons.mage) {
+  //     var weaponLi = document.createElement('li');
+  //     var buyButton = document.createElement('button');
+  //     weaponLi.textContent += weapon + ": ";
+  //     buyButton.textContent = "Buy";
+  //     weaponLi.appendChild(buyButton);
+  //     storeUl.appendChild(weaponLi);
+  //   }
+  // } else if (player.class === "warrior") {
+  //   for (var armor in store.armor.warrior) {
+  //     var armorLi = document.createElement('li');
+  //     var buyButton = document.createElement('button');
+  //     armorLi.textContent += armor + ": ";
+  //     buyButton.setAttribute("id", "buyArmorButton");
+  //     document.getElementById("buyArmorButton").addEventListener("click", buyArmor());
+  //     buyButton.textContent = "Buy";
+  //     armorLi.appendChild(buyButton);
+  //     storeUl.appendChild(armorLi);
+  //   }
+  //
+  //   for (var weapon in store.weapons.warrior) {
+  //     var weaponLi = document.createElement('li');
+  //     var buyButton = document.createElement('button');
+  //     weaponLi.textContent += weapon + ": ";
+  //     buyButton.textContent = "Buy";
+  //     weaponLi.appendChild(buyButton);
+  //     storeUl.appendChild(weaponLi);
+  //   }
+  // }
 
   // Insert player stats and inventory into DOM
   document.getElementById("playerLevel").innerHTML = player.level;
