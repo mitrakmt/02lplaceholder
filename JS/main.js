@@ -34,6 +34,10 @@
           document.getElementById('attackButton').style.visibility = 'visible';
           document.getElementById('enemyHealth').style.visibility = 'visible';
           document.getElementById('enemyName').style.visibility = 'visible';
+          document.getElementById('enemyStatus').style.visibility = 'visible';
+          document.getElementById('enemyStrength').style.visibility = 'visible';
+          document.getElementById('enemyArmor').style.visibility = 'visible';
+          document.getElementById('enemyLevel').style.visibility = 'visible';
           document.getElementById('inBattle').style.visibility = 'visible';
 
           if (player.level >= 2) {
@@ -50,6 +54,10 @@
           document.getElementById('enemyHealth').style.visibility = 'hidden';
           document.getElementById('enemyName').style.visibility = 'hidden';
           document.getElementById('inBattle').style.visibility = 'hidden';
+          document.getElementById('enemyStatus').style.visibility = 'hidden';
+          document.getElementById('enemyStrength').style.visibility = 'hidden';
+          document.getElementById('enemyArmor').style.visibility = 'hidden';
+          document.getElementById('enemyLevel').style.visibility = 'hidden';
           if (player.level >= 2) {
             document.getElementById('skillaButton').style.visibility = 'hidden';
             document.getElementById('skillaButton').innerHTML = skillA;
@@ -87,7 +95,7 @@
 
   // Player Object
   var player = {
-    level: 1,
+    level: 7,
     experience : 0,
     intellect : 1,
     strength : 1,
@@ -220,7 +228,7 @@
   // Store Object
   var store = {
     weapons: {
-      atiesh:{
+      Atiesh:{
         name: "Atiesh: Greatstaff of the Guardians",
         class: "mage",
         type: "Staff",
@@ -229,7 +237,7 @@
         dexterity: 0,
         cost: 1000
       },
-      dragonwrath: {
+      Dragonwrath: {
         name: "Dragonwrath, Tarecgosa's Rest",
         class: "mage",
         type: "Staff",
@@ -247,7 +255,7 @@
         intellect: 25,
         cost: 3000
       },
-      shadowmourne:{
+      Shadowmourne:{
         name: "Shadowmourne",
         class: "warrior",
         type: "Axe",
@@ -274,7 +282,7 @@
         intellect: 0,
         cost: 30
       },
-      warglaives:{
+      Warglaives:{
         name: "Warglaives of Azzinoth",
         class: "rogue",
         type: "Glaives",
@@ -283,7 +291,7 @@
         intellect: 0,
         cost: 1000
       },
-      fangs:{
+      Fangs:{
         name: "Golad & Tiriosh",
         class: "rogue",
         type: "Daggers",
@@ -301,7 +309,7 @@
         intellect: 0,
         cost: 30
       },
-      ashbringer:{
+      Ashbringer:{
         name: "Ashbringer",
         class: "paladin",
         type: "2H Sword",
@@ -310,7 +318,7 @@
         dexterity: 0,
         cost: 900
       },
-      truthguard:{
+      Truthguard:{
         name: "Truthguard",
         class: "paladin",
         type: "Sword and Shield",
@@ -320,7 +328,7 @@
         armor: 7,
         cost: 800
       },
-      frostmourne:{
+      Frostmourne:{
         name: "Frostmourne",
         class: "paladin",
         type: "2H Sword",
@@ -340,7 +348,7 @@
       }
     },
     armor: {
-      rustedArmor: {
+      RustedArmor: {
         name: "Rusted Armor",
         class: "paladin",
         type: "Plate",
@@ -351,7 +359,7 @@
         dexterity: 0,
         cost: 100
       },
-      judgement: {
+      Judgement: {
         name: "Judgement Armor",
         class: "paladin",
         type: "Plate",
@@ -362,7 +370,7 @@
         wisdom: 5,
         cost: 400
       },
-      redemption: {
+      Redemption: {
         name: "Redemption Armor",
         class: "paladin",
         type: "Plate",
@@ -373,7 +381,7 @@
         wisdom: 9,
         cost: 900
       },
-      whiteTiger: {
+      WhiteTiger: {
         name: "White Tiger Armor",
         class: "paladin",
         type: "Plate",
@@ -384,7 +392,7 @@
         wisdom: 13,
         cost: 1300
       },
-      lightsworn: {
+      Lightsworn: {
         name: "Lightsworn Dragonplate",
         class: "paladin",
         type: "Plate",
@@ -395,7 +403,7 @@
         wisdom: 15,
         cost: 2500
       },
-      raggedTunic: {
+      RaggedTunic: {
         name: "Ragged Tunic",
         class: "mage",
         type: "Cloth",
@@ -406,7 +414,7 @@
         wisdom: 2,
         cost: 100
       },
-      aldor: {
+      Aldor: {
         name: "Aldor Regalia",
         class: "mage",
         type: "Cloth",
@@ -417,7 +425,7 @@
         wisdom: 4,
         cost: 400
       },
-      tirisfal: {
+      Tirisfal: {
         name: "Tirisfal Regalia",
         class: "mage",
         type: "Cloth",
@@ -428,7 +436,7 @@
         wisdom: 6,
         cost: 900
       },
-      kirinTor: {
+      KirinTor: {
         name: "Kirin Tor Regalia",
         class: "mage",
         type: "Cloth",
@@ -439,7 +447,7 @@
         wisdom: 10,
         cost: 1300
       },
-      timeLords: {
+      TimeLords: {
         name: "Time Lord's Regalia",
         class: "mage",
         type: "Cloth",
@@ -450,7 +458,7 @@
         wisdom: 14,
         cost: 2500
       },
-      destroyer: {
+      Destroyer: {
         name: "Battlegear of Wrath Destroyer",
         class: "warrior",
         type: "Plate",
@@ -461,7 +469,7 @@
         wisdom: 0,
         cost: 400
       },
-      wrath: {
+      Wrath: {
         name: "Battlegear of Wrath",
         class: "warrior",
         type: "Plate",
@@ -472,7 +480,7 @@
         strength: 7,
         cost: 900
       },
-      dreadnaught: {
+      Dreadnaught: {
         name: "Valourous Dreadnaught",
         class: "warrior",
         type: "Plate",
@@ -483,7 +491,7 @@
         wisdom: 0,
         cost: 1300
       },
-      dragonplate: {
+      Dragonplate: {
         name: "Sanctified Colossal Dragonplate",
         type: "Plate",
         armor: 19,
@@ -493,18 +501,7 @@
         wisdom: 0,
         cost: 2500
       },
-      raggedTunic: {
-        name: "Ragged Tunic",
-        class: "rogue",
-        type: "Leather",
-        armor: 2,
-        dexterity: 1,
-        strength: 0,
-        intellect: 0,
-        wisdom: 0,
-        cost: 100
-      },
-      nightSlayer: {
+      NightSlayer: {
         name: "Night Slayer Armor",
         class: "rogue",
         type: "Leather",
@@ -516,7 +513,7 @@
         strength: 4,
         cost: 400
       },
-      terrorblade: {
+      Terrorblade: {
         name: "Terrorblade Battlegear",
         class: "rogue",
         type: "Leather",
@@ -528,7 +525,7 @@
         strength: 6,
         cost: 900
       },
-      darkPhoenix: {
+      DarkPhoenix: {
         name: "Vestments of the Dark Phoenix",
         class: "rogue",
         type: "Leather",
@@ -539,7 +536,7 @@
         strength: 10,
         cost: 1300
       },
-      timeLords: {
+      DragonsSoul: {
         name: "Dragon's Soul Battlegear",
         class: "rogue",
         type: "Leather",
@@ -792,20 +789,81 @@
     }
 
   // Insert store into DOM
-    // Paldins
+    // Paldins weapons
   document.getElementById("buyKingSlayerName").innerHTML = store.weapons.KingSlayer.name;
   document.getElementById("buyKingSlayerCost").innerHTML = store.weapons.KingSlayer.cost;
-  document.getElementById("buyShortStaffName").innerHTML = store.weapons.ShortStaff.name;
-  document.getElementById("buyShortStaffCost").innerHTML = store.weapons.ShortStaff.cost;
-  document.getElementById("buyHealthPotionName").innerHTML = store.potions.HealthPotion.name;
-  document.getElementById("buyHealthPotionCost").innerHTML = store.potions.HealthPotion.cost;
-  document.getElementById("buyResourcePotionCost").innerHTML = store.potions.ResourcePotion.cost;
-    // Warriors
+  document.getElementById("buyAshbringerName").innerHTML = store.weapons.Ashbringer.name;
+  document.getElementById("buyAshbringerCost").innerHTML = store.weapons.Ashbringer.cost;
+  document.getElementById("buyTruthguardName").innerHTML = store.weapons.Truthguard.name;
+  document.getElementById("buyTruthguardCost").innerHTML = store.weapons.Truthguard.cost;
+  document.getElementById("buyFrostmourneName").innerHTML = store.weapons.Frostmourne.name;
+  document.getElementById("buyFrostmourneCost").innerHTML = store.weapons.Frostmourne.cost;
+    // Paldins armor
+    document.getElementById("buyRustedArmorName").innerHTML = store.armor.RustedArmor.name;
+    document.getElementById("buyRustedArmorCost").innerHTML = store.armor.RustedArmor.cost
+    document.getElementById("buyJudgementName").innerHTML = store.armor.Judgement.name;
+    document.getElementById("buyJudgementCost").innerHTML = store.armor.Judgement.cost
+    document.getElementById("buyRedemptionName").innerHTML = store.armor.Redemption.name;
+    document.getElementById("buyRedemptionCost").innerHTML = store.armor.Redemption.cost
+    document.getElementById("buyWhiteTigerName").innerHTML = store.armor.WhiteTiger.name;
+    document.getElementById("buyWhiteTigerCost").innerHTML = store.armor.WhiteTiger.cost
+    document.getElementById("buyLightswornName").innerHTML = store.armor.Lightsworn.name;
+    document.getElementById("buyLightswornCost").innerHTML = store.armor.Lightsworn.cost
+
+    // Warriors Weapons
   document.getElementById("buyClaymoreName").innerHTML = store.weapons.Claymore.name;
   document.getElementById("buyClaymoreCost").innerHTML = store.weapons.Claymore.cost;
+  document.getElementById("buyShadowmourneName").innerHTML = store.weapons.Shadowmourne.name;
+  document.getElementById("buyShadowmourneCost").innerHTML = store.weapons.Shadowmourne.cost;
+  document.getElementById("buySulfurasName").innerHTML = store.weapons.Sulfuras.name;
+  document.getElementById("buySulfurasCost").innerHTML = store.weapons.Sulfuras.cost;
+    // Warriors armor
+  document.getElementById("buyDestroyerName").innerHTML = store.armor.Destroyer.name;
+  document.getElementById("buyDestroyerCost").innerHTML = store.armor.Destroyer.cost
+  document.getElementById("buyWrathName").innerHTML = store.armor.Wrath.name;
+  document.getElementById("buyWrathCost").innerHTML = store.armor.Wrath.cost
+  document.getElementById("buyDreadnaughtName").innerHTML = store.armor.Dreadnaught.name;
+  document.getElementById("buyDreadnaughtCost").innerHTML = store.armor.Dreadnaught.cost
+  document.getElementById("buyDragonplateName").innerHTML = store.armor.Dragonplate.name;
+  document.getElementById("buyDragonplateCost").innerHTML = store.armor.Dragonplate.cost
+
     // Rogues
   document.getElementById("buyDirkName").innerHTML = store.weapons.Dirk.name;
   document.getElementById("buyDirkCost").innerHTML = store.weapons.Dirk.cost;
+  document.getElementById("buyWarglaivesName").innerHTML = store.weapons.Warglaives.name;
+  document.getElementById("buyWarglaivesCost").innerHTML = store.weapons.Warglaives.cost;
+  document.getElementById("buyFangsName").innerHTML = store.weapons.Fangs.name;
+  document.getElementById("buyFangsCost").innerHTML = store.weapons.Fangs.cost;
+    // Rogues armor
+  document.getElementById("buyNightSlayerName").innerHTML = store.armor.NightSlayer.name;
+  document.getElementById("buyNightSlayerCost").innerHTML = store.armor.NightSlayer.cost
+  document.getElementById("buyTerrorbladeName").innerHTML = store.armor.Terrorblade.name;
+  document.getElementById("buyTerrorbladeCost").innerHTML = store.armor.Terrorblade.cost
+  document.getElementById("buyDarkPhoenixName").innerHTML = store.armor.DarkPhoenix.name;
+  document.getElementById("buyDarkPhoenixCost").innerHTML = store.armor.DarkPhoenix.cost
+  document.getElementById("buyDragonsSoulName").innerHTML = store.armor.DragonsSoul.name;
+  document.getElementById("buyDragonsSoulCost").innerHTML = store.armor.DragonsSoul.cost
+
+    // Mages
+  document.getElementById("buyShortStaffName").innerHTML = store.weapons.ShortStaff.name;
+  document.getElementById("buyShortStaffCost").innerHTML = store.weapons.ShortStaff.cost;
+  document.getElementById("buyAtieshName").innerHTML = store.weapons.Atiesh.name;
+  document.getElementById("buyAtieshCost").innerHTML = store.weapons.Atiesh.cost;
+  document.getElementById("buyDragonwrathName").innerHTML = store.weapons.Dragonwrath.name;
+  document.getElementById("buyDragonwrathCost").innerHTML = store.weapons.Dragonwrath.cost;
+    // Mages armor
+  document.getElementById("buyRaggedTunicName").innerHTML = store.armor.RaggedTunic.name;
+  document.getElementById("buyRaggedTunicCost").innerHTML = store.armor.RaggedTunic.cost
+  document.getElementById("buyAldorName").innerHTML = store.armor.Aldor.name;
+  document.getElementById("buyAldorCost").innerHTML = store.armor.Aldor.cost
+  document.getElementById("buyTirisfalName").innerHTML = store.armor.Tirisfal.name;
+  document.getElementById("buyTirisfalCost").innerHTML = store.armor.Tirisfal.cost
+  document.getElementById("buyKirinTorName").innerHTML = store.armor.KirinTor.name;
+  document.getElementById("buyKirinTorCost").innerHTML = store.armor.KirinTor.cost
+  document.getElementById("buyTimeLordsName").innerHTML = store.armor.TimeLords.name;
+  document.getElementById("buyTimeLordsCost").innerHTML = store.armor.TimeLords.cost
+
+
     //potions
   document.getElementById("buyHealthPotionName").innerHTML = store.potions.HealthPotion.name;
   document.getElementById("buyHealthPotionCost").innerHTML = store.potions.HealthPotion.cost;
@@ -824,11 +882,14 @@
        }
       enemy.stats.health *= hpMultiplier;
       enemy.stats.strength *= strMultiplier;
-      console.log(enemy.stats.strength, enemy.stats.health);
     }
     startHP = enemy.stats.health;
     document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
     document.getElementById("enemyName").innerHTML = enemy.name;
+    document.getElementById("enemyStrength").innerHTML = enemy.stats.strength.toFixed(1);;
+    document.getElementById("enemyArmor").innerHTML = enemy.stats.armor;
+    document.getElementById("enemyLevel").innerHTML = enemy.level;
+    document.getElementById("enemyStatus").innerHTML = enemy.status;
     action();
   }
 
@@ -840,7 +901,7 @@
       if ((hit - player.strength) === 10) {
         return hit *= 2;
       } else {
-        return hit;
+        return hit.toFixed(1);;
       }
     } else if(player.class === "warrior") {
       hit = Math.ceil(Math.random()*10)+player.strength;
@@ -848,7 +909,7 @@
       if ((hit - player.strength) === 10) {
         return hit *= 2;
       } else {
-        return hit;
+        return hit.toFixed(1);;
       }
     } else if (player.class === "rogue") {
       hit = Math.ceil(Math.random()*10)+player.dexterity+player.strength;
@@ -856,7 +917,7 @@
       if ((hit - player.dexterity) === 10) {
         return hit *= 2;
       } else {
-        return hit;
+        return hit.toFixed(1);;
       }
     } else if (player.class === "mage") {
       hit = Math.ceil(Math.random()*10)+player.strength;
@@ -864,7 +925,7 @@
       if ((hit - player.strength) === 10) {
         return hit *= 2;
       } else {
-        return hit;
+        return hit.toFixed(1);;
       }
     }
     player.resource += (player.wisdom*2);
@@ -882,7 +943,7 @@
         if ((hit - player.intellect) === 20) {
           return hit *= 2;
         } else {
-          return hit;
+          return hit.toFixed(1);;
         }
       } else {
         alert("Not enough resource to use this attack!");
@@ -897,7 +958,7 @@
         if ((hit - player.strength) === 20) {
           return hit *= 2;
         } else {
-          return hit;
+          return hit.toFixed(1);;
         }
       } else {
         alert("Not enough resource to use this attack!");
@@ -911,7 +972,7 @@
         if ((hit - player.dexterity) === 20) {
           return hit *= 2;
         } else {
-          return hit;
+          return hit.toFixed(1);;
         }
       } else {
         alert("Not enough resource to use this attack!");
@@ -925,7 +986,7 @@
         if ((hit - player.intellect) === 11) {
           return hit *= 2;
         } else {
-          return hit;
+          return hit.toFixed(1);;
         }
       } else {
         alert("Not enough resource to use this attack!");
@@ -946,7 +1007,7 @@
         if ((hit - player.intellect) === 26) {
           return hit *= 2;
         } else {
-          return hit;
+          return hit.toFixed(1);;
         }
       } else {
         alert("Not enough resource to use this attack!");
@@ -961,7 +1022,7 @@
         if ((hit - player.strength) === 25) {
           return hit *= 2;
         } else {
-          return hit;
+          return hit.toFixed(1);;
         }
       } else {
         alert("Not enough resource to use this attack!");
@@ -975,7 +1036,7 @@
         if ((hit - player.dexterity) === 25) {
           return hit *= 2;
         } else {
-          return hit;
+          return hit.toFixed(1);;
         }
       } else {
         alert("Not enough resource to use this attack!");
@@ -989,7 +1050,7 @@
         if ((hit - player.intellect) === 25) {
           return hit *= 2;
         } else {
-          return hit;
+          return hit.toFixed(1);;
         }
       } else {
         alert("Not enough mana to use this attack!");
@@ -1020,7 +1081,7 @@
       if ((enemyHit - enemy.stats.strength) === 10) {
         enemyHit *= 2;
       } else {
-        enemyHit;
+        enemyHit.toFixed(1);;
       }
       enemy.stats.health -= hit;
 
@@ -1051,7 +1112,7 @@
         document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
 
         // Reset enemy to full health
-        enemy.stats.health = startHP;
+        enemy.stats.health = startHP.toFixed(1);;
 
         // Take the player out of battle
         action();
@@ -1061,6 +1122,7 @@
         document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!";
         document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
         player.health -= (enemyHit - (player.armor/2));
+        player.health = player.health.toFixed(1);
         document.getElementById("playerHealth").innerHTML = player.health;
       }
 
