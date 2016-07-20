@@ -6,6 +6,8 @@
   var paladinResource = "Mana";
   var warriorResource = "Rage";
   var rogueResource = "Energy";
+  var hpMultiplier = 1;
+  var strMultiplier = 1;
 
     function action() {
         inBattle = !inBattle;
@@ -53,7 +55,7 @@
     }
 
     var player = {
-      level: 1,
+      level: 3,
       experience : 0,
       intellect : 1,
       strength : 1,
@@ -162,21 +164,21 @@
         status: "Uncommon",
         level: 1,
         experience: 25,
-        stats : {health : 100, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+        stats : {health : 80, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
       } , {
         name : "Orc Warrior",
         status: "Common",
         level: 1,
         experience: 10,
-        stats : {health : 100, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+        stats : {health : 80, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
       } , {
         name : "Tauren Warrior",
         status: "Common",
         level: 1,
         experience: 10,
-        stats : {health : 100, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+        stats : {health : 80, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
         inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
       }
     ];
@@ -197,7 +199,7 @@
               name: "Shadowmourne",
               type: "Axe",
               strength: 10,
-              constituion: 2,
+              dexterity: 3,
               cost: 1000
             }
           },
@@ -206,7 +208,7 @@
               name: "Warglaives of Azzinoth",
               type: "Glaives",
               dexterity: 10,
-              strength: 4,
+              strength: 3,
               cost: 1000
             }
           },
@@ -214,8 +216,8 @@
             ashbringer:{
               name: "Ashbringer",
               type: "2H Sword",
-              intellect: 2,
-              strength: 6,
+              intellect: 4,
+              strength: 8,
               wisdom: 2,
               cost: 900
             },
@@ -581,6 +583,17 @@
     var findEnemy = function() {
       var randEnemy = Math.ceil((Math.random() * enemies.length) - 1);
       enemy = enemies[randEnemy];
+      if (player.level !== 1) {
+        hpMultiplier = 1;
+        strMultiplier = 1;
+        for (var i=1; i<player.level; i++) {
+           hpMultiplier += .25;
+           strMultiplier += .10;
+         }
+        enemy.stats.health *= hpMultiplier;
+        enemy.stats.strength *= strMultiplier;
+        console.log(enemy.stats.strength, enemy.stats.health);
+      }
       startHP = enemy.stats.health;
       document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
       document.getElementById("enemyName").innerHTML = enemy.name;

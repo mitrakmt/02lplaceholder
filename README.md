@@ -4,7 +4,6 @@ TODO:
   // Algorithms for luck/charisma etc.
   // Some type of text based map, ASCII, sprites, search some 2d type of thing. Preset algorithm, can give choices for left or right..?
   // After successful victory, chance of running into a merchant.
-  // Fix class based weapon stats
   // Notification when you get below 10 health.
   // create text based map
   // display picture of combat + sprites
