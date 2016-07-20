@@ -576,7 +576,7 @@
   }
 
   player.class = prompt("Choose your class! \n Warrior <> Rogue <> Mage <> Paladin");
-  var playerCase = player.class;
+  var playerClass = player.class;
 
   // Add player class stats to player stats
   classes.forEach(function(playerClass) {
@@ -769,7 +769,7 @@
         return hit;
       }
     } else if (player.class === "rogue") {
-      hit = Math.ceil(Math.random()*10)+player.dexterity;
+      hit = Math.ceil(Math.random()*10)+player.dexterity+player.strength;
 
       if ((hit - player.dexterity) === 10) {
         return hit *= 2;
