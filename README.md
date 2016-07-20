@@ -17,3 +17,4 @@ TODO:
   // backpack/character sprites/item icons
   // implement toaster ( we need toast )
   // add animations
+  // maybe gain mana and health based on time

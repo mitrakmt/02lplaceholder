@@ -9,6 +9,13 @@
   var hpMultiplier = 1;
   var strMultiplier = 1;
 
+  var armorList = document.getElementById("armorList");
+  var weaponsList = document.getElementById("weaponsList");
+  var newListItem = document.createElement("span");
+  var newLineBreak = document.createElement("br");
+  var newButton = document.createElement("button");
+
+
     function action() {
         inBattle = !inBattle;
         if(inBattle) {
@@ -309,7 +316,7 @@
             strength: 17,
             wisdom: 15,
             cost: 2500
-          },
+          }
         },
         mage: {
           aldor: {
@@ -531,6 +538,29 @@
     else if (player.class === "rogue") { skillB = "Eviscerate" }
     else if (player.class === "mage") { skillB = "Dragon's Breath" }
     else if (player.class === "paladin") { skillB = "Divine Storm" }
+
+    // Creating second store for armor & weapons based on class
+    if (player.class === "paladin") {
+      for (var armor in store.armor.paladin) {
+       newListItem.textContent += store.armor.paladin[armor].name + ": ";
+      }
+      armorList.appendChild(newListItem);
+    } else if (player.class === "rogue") {
+      for (var armor in store.armor.rogue) {
+       newListItem.textContent += store.armor.rogue[armor].name + ": ";
+      }
+      armorList.appendChild(newListItem);
+    } else if (player.class === "mage") {
+      for (var armor in store.armor.mage) {
+       newListItem.textContent += store.armor.mage[armor].name + ": ";
+      }
+      armorList.appendChild(newListItem);
+    } else if (player.class === "warrior") {
+      for (var armor in store.armor.warrior) {
+       newListItem.textContent += store.armor.warrior[armor].name + ": ";
+      }
+      armorList.appendChild(newListItem);
+    }
 
     // Insert player stats and inventory into DOM
     document.getElementById("playerLevel").innerHTML = player.level;
