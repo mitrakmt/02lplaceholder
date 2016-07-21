@@ -20,7 +20,7 @@ body {
 }
 
 .card-heading {
-  margin-bottom: 2px;
+  margin-bottom: 0px;
   margin-top: 3px;
   text-decoration: underline;
 }
@@ -55,6 +55,20 @@ body {
   max-width: 450px;
   background-color: #E5E5E6;
   opacity: .85;
+}
+
+.gold {
+  color: #FFBA55;
+  font-weight: bold;
+}
+
+.md-fab {
+  background-color: #A2D7BB;
+  color: white;
+  line-height: 20px !important;
+  width: 25px !important;
+  height: 20px !important;
+  margin-top: 15px;
 }
 
 .map {
@@ -111,7 +125,7 @@ body {
 
 .blacksmithBag {
   min-width: 410px;
-  max-height: 310px;
+  max-height: 378px;
   background-color: #E5E5E6;
   opacity: .85;
 }

@@ -83,7 +83,9 @@
 
   // Player Object
   var player = {
+    name: null,
     level: 1,
+    statPoints: 14,
     score: 0,
     experience : 0,
     intellect : 1,
@@ -96,7 +98,7 @@
     resource: 100,
     health : 100,
     class : "",
-    gold : 15,
+    gold : 100000,
     weapon : null,
     armor : null,
     inventory: {healthPotion: 1, resourcePotion: 1}
@@ -153,9 +155,9 @@
       name : "Giant Rat",
       status: "Common",
       level: 1,
-      experience: 10,
+      experience: 7,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
+      inventory: {healthPotion: 0, resourcePotion: 0, gold: 2}
     }, {
       name : "King Scorpion",
       status: "Uncommon",
@@ -169,28 +171,35 @@
       level: 1,
       experience: 10,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
+      inventory: {healthPotion: 0, resourcePotion: 0, gold: 1}
     } , {
       name : "Mummy",
       status: "Common",
       level: 1,
       experience: 10,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
+      inventory: {healthPotion: 0, resourcePotion: 0, gold: 5}
     } , {
       name : "Naga",
       status: "Common",
       level: 1,
       experience: 10,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
+      inventory: {healthPotion: 0, resourcePotion: 0, gold: 4}
     } , {
       name : "Ragnaros",
       status: "Boss",
       level: 3,
-      experience: 100,
-      stats : {health : 150, mana : 100, intellect : 3, strength : 5, dexterity : 3, wisdom : 5, constitution : 5, defence : 4},
-      inventory: {healthPotion: 4, resourcePotion: 4, gold: 70}
+      experience: 150,
+      stats : {health : 150, mana : 100, intellect : 3, strength : 6, dexterity : 3, wisdom : 5, constitution : 5, defence : 4},
+      inventory: {healthPotion: 4, resourcePotion: 4, gold: 100}
+    } , {
+      name : "King Sabertooth",
+      status: "Rare",
+      level: 2,
+      experience: 80,
+      stats : {health : 110, mana : 100, intellect : 2, strength : 4, dexterity : 3, wisdom : 5, constitution : 4, defence : 3},
+      inventory: {healthPotion: 2, resourcePotion: 3, gold: 85}
     } , {
       name : "Arcane Golem",
       status: "Uncommon",
@@ -202,16 +211,16 @@
       name : "Orc Warrior",
       status: "Common",
       level: 1,
-      experience: 10,
+      experience: 18,
       stats : {health : 80, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
+      inventory: {healthPotion: 1, resourcePotion: 2, gold: 35}
     } , {
       name : "Tauren Warrior",
-      status: "Common",
-      level: 1,
-      experience: 10,
-      stats : {health : 80, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
+      status: "Uncommon",
+      level: 2,
+      experience: 20,
+      stats : {health : 90, mana : 100, intellect : 1, strength : 4, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
+      inventory: {healthPotion: 2, resourcePotion: 1, gold: 35}
     }
   ];
 
@@ -297,6 +306,15 @@
         dexterity: 3,
         strength: 0,
         intellect: 0,
+        cost: 30
+      },
+      "Mallet": {
+        name: "Mallet",
+        class: "paladin",
+        type: "Weapon",
+        dexterity: 0,
+        strength: 1,
+        intellect: 2,
         cost: 30
       },
       "Ashbringer":{
@@ -386,11 +404,11 @@
         name: "Lightsworn Dragonplate",
         class: "paladin",
         type: "Plate",
-        defence: 16,
-        intellect: 14,
+        defence: 19,
+        intellect: 19,
         dexterity: 0,
-        strength: 17,
-        wisdom: 15,
+        strength: 21,
+        wisdom: 17,
         cost: 2500
       },
       "Ragged Tunic": {
@@ -442,10 +460,10 @@
         class: "mage",
         type: "Cloth",
         defence: 8,
-        intellect: 15,
+        intellect: 19,
         strength: 0,
         dexterity: 0,
-        wisdom: 14,
+        wisdom: 17,
         cost: 2500
       },
       "Battlegear of Wrath Destroyer": {
@@ -463,19 +481,19 @@
         name: "Battlegear of Wrath",
         class: "warrior",
         type: "Plate",
-        defence: 12,
+        defence: 10,
+        strength: 7,
         dexterity: 0,
         intellect: 0,
         wisdom: 0,
-        strength: 7,
         cost: 900
       },
       "Valourous Dreadnaught": {
         name: "Valourous Dreadnaught",
         class: "warrior",
         type: "Plate",
-        defence: 6,
-        strength: 11,
+        defence: 14,
+        strength: 13,
         dexterity: 0,
         intellect: 0,
         wisdom: 0,
@@ -507,7 +525,7 @@
         name: "Terrorblade Battlegear",
         class: "rogue",
         type: "Leather",
-        defence: 5,
+        defence: 6,
         dexterity: 7,
         strength: 0,
         intellect: 0,
@@ -519,19 +537,19 @@
         name: "Vestments of the Dark Phoenix",
         class: "rogue",
         type: "Leather",
-        defence: 7,
+        defence: 8,
         dexterity: 11,
         intellect: 0,
         wisdom: 0,
         strength: 10,
         cost: 1300
       },
-      "Dragon's Soul Battlegear": {
-        name: "Dragon's Soul Battlegear",
+      "Dragon Soul Battlegear": {
+        name: "Dragon Soul Battlegear",
         class: "rogue",
         type: "Leather",
-        defence: 10,
-        dexterity: 15,
+        defence: 11,
+        dexterity: 17,
         strength: 14,
         intellect: 0,
         wisdom: 0,
@@ -549,6 +567,23 @@
         type: "Potion",
         cost: 5
       }
+    }
+  }
+
+  var addStat = function (stat) {
+    if (player.statPoints > 0) {
+      player[stat]++;
+      player.statPoints--;
+      document.getElementById("playerStatPoints").innerHTML = player.statPoints;
+      document.getElementById("playerIntellect").innerHTML = player.intellect;
+      document.getElementById("playerStrength").innerHTML = player.strength;
+      document.getElementById("playerDexterity").innerHTML = player.dexterity;
+      document.getElementById("playerCharisma").innerHTML = player.charisma;
+      document.getElementById("playerConstitution").innerHTML = player.constitution;
+      document.getElementById("playerDefence").innerHTML = player.defence;
+      document.getElementById("playerWisdom").innerHTML = player.wisdom;
+    } else {
+      alert("You have run out of points. Gain a level to receive more stat points!")
     }
   }
 
@@ -604,6 +639,12 @@
   var buyWeapon = function (weaponName) {
     if (player.gold >= store.weapons[weaponName].cost) {
 
+      if (store.weapons[weaponName].cost > 100) {
+        var answer = confirm("This item costs " + store.weapons[weaponName].cost + ". Are you sure you want to buy this?");
+        if (!answer) {
+          return;
+        }
+      }
 
       weaponCheck(player.weapon, weaponName);
 
@@ -622,13 +663,12 @@
     }
   }
 
-  var weaponCheck = function (currentWeapon, newWeapon) {
+  var weaponCheck = function (currentWeapon) {
     if (player.weapon !== null) {
       player.inventory[currentWeapon] = 1;
       player.strength -= store.weapons[currentWeapon].strength;
       player.dexterity -= store.weapons[currentWeapon].dexterity;
       player.intellect -= store.weapons[currentWeapon].intellect;
-      console.log(currentWeapon + " added to inventory, and equipped " + newWeapon);
     }
   }
 
@@ -636,7 +676,7 @@
   var buyArmor = function (armorName) {
     if (player.gold >= store.armor[armorName].cost) {
 
-      if (store.armor[armorName].cost > 30) {
+      if (store.armor[armorName].cost > 100) {
         var answer = confirm("This item costs " + store.armor[armorName].cost + ". Are you sure you want to buy this?");
         if (!answer) {
           return;
@@ -672,12 +712,11 @@
       player.wisdom -= store.armor[currentArmor].wisdom;
       player.dexterity -= store.armor[currentArmor].dexterity;
       player.intellect -= store.armor[currentArmor].intellect;
-      console.log(currentArmor + " added to inventory, and equipped " + newArmor);
     }
   }
 
-
-  player.class = prompt("Choose your class! \n Warrior <> Rogue <> Mage <> Paladin");
+  player.name = prompt("What is your name?");
+  player.class = prompt("Choose your class! \n Warrior <> Rogue <> Mage <> Paladin").toLowerCase();
   var playerClass = player.class;
 
   // Add player class stats to player stats
@@ -707,6 +746,8 @@
 
   // Insert player stats and inventory into DOM
   document.getElementById("playerLevel").innerHTML = player.level;
+    document.getElementById("playerName").innerHTML = player.name;
+    document.getElementById("playerStatPoints").innerHTML = player.statPoints;
     document.getElementById("playerIntellect").innerHTML = player.intellect;
     document.getElementById("playerStrength").innerHTML = player.strength;
     document.getElementById("playerDexterity").innerHTML = player.dexterity;
@@ -743,6 +784,8 @@
     // Paldins weapons
   document.getElementById("buyKingSlayerName").innerHTML = store.weapons['King Slayer'].name;
   document.getElementById("buyKingSlayerCost").innerHTML = store.weapons['King Slayer'].cost;
+  document.getElementById("buyMalletName").innerHTML = store.weapons['Mallet'].name;
+  document.getElementById("buyMalletCost").innerHTML = store.weapons['Mallet'].cost;
   document.getElementById("buyAshbringerName").innerHTML = store.weapons['Ashbringer'].name;
   document.getElementById("buyAshbringerCost").innerHTML = store.weapons['Ashbringer'].cost;
   document.getElementById("buyTruthguardName").innerHTML = store.weapons['Truthguard'].name;
@@ -795,8 +838,8 @@
   document.getElementById("buyTerrorbladeCost").innerHTML = store.armor['Terrorblade Battlegear'].cost
   document.getElementById("buyDarkPhoenixName").innerHTML = store.armor['Vestments of the Dark Phoenix'].name;
   document.getElementById("buyDarkPhoenixCost").innerHTML = store.armor['Vestments of the Dark Phoenix'].cost
-  document.getElementById("buyDragonsSoulName").innerHTML = store.armor["Dragon's Soul Battlegear"].name;
-  document.getElementById("buyDragonsSoulCost").innerHTML = store.armor["Dragon's Soul Battlegear"].cost
+  document.getElementById("buyDragonSoulName").innerHTML = store.armor["Dragon Soul Battlegear"].name;
+  document.getElementById("buyDragonSoulCost").innerHTML = store.armor["Dragon Soul Battlegear"].cost
 
     // Mages
   document.getElementById("buyShortStaffName").innerHTML = store.weapons['Short Staff'].name;
@@ -825,7 +868,9 @@
 
 
   var openEquipment = function () {
-
+    for (var item in player.inventory) {
+      console.log(item);
+    }
   }
 
   // Find New Enemy Function
@@ -1023,11 +1068,12 @@
   var gainedLevel = function() {
     if (player.experience > totalExp) {
       player.level++;
-      document.getElementById("playerLevel").innerHTML = player.level;
+      player.statPoints += 4;
       totalExp = totalExp * 3;
+      document.getElementById("playerStatPoints").innerHTML = player.statPoints;
+      document.getElementById("playerLevel").innerHTML = player.level;
       alert("Level gained! EXP needed to level " + (player.level+1) + " is " + totalExp)
     }
-    console.log(player.experience)
   }
 
   // Attack Enemy Function
@@ -1066,8 +1112,31 @@
           }
         }
 
-        player.score += Math.round(enemy.level * startHP * enemy.stats.strength);
+        if (enemy.status === "Uncommon" || enemy.status === "Rare") {
+          var success = Math.ceil(Math.random() * 10);
+          console.log(success);
+          if (success === 9 || success === 10) {
+            if (player.inventory.mallet === undefined) {
+              player.inventory.mallet = 1;
+            } else {
+              player.inventory.mallet++;
+            }
+          }
+        }
 
+        if (enemy.status === "Boss" || enemy.status === "Rare") {
+          var success = Math.ceil(Math.random() * 10);
+          console.log(success);
+          if (success === 9 || success === 10) {
+            if (player.inventory['Judgement Armor'] === undefined) {
+              player.inventory['Judgement Armor'] = 1;
+            } else {
+              player.inventory['Judgement Armor']++;
+            }
+          }
+        }
+
+        player.score += Math.round(enemy.level * startHP * enemy.stats.strength);
         document.getElementById("playerScore").innerHTML = player.score;
 
         // Updpate items on DOM
