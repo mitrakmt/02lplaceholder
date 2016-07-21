@@ -15,9 +15,11 @@
           <p class="md-subhead" flex>
             Level: <span id="playerLevel"></span><br>
             Class: <span id="playerClass"></span><br>
-            <span class="health">Health: <span id="playerHealth"></span></span><br>
-            <span class="resource"><span id="playerResourceName"></span>: <span id="playerResourceValue"></span></span><br>
-            Armor: <span id="playerArmor"></span><br>
+            Score: <span id="playerScore"></span><br>
+            <span class="health"><strong>Health: <span id="playerHealth"></span></strong></span><br>
+            <span class="resource"><strong><span id="playerResourceName"></span>: <span id="playerResourceValue"></span></strong></span><br>
+
+            Defence: <span id="playerDefence"></span><br>
           </p>
           <p class="md-subhead" flex>
             Constitution: <span id="playerConstitution"></span><br>
@@ -35,8 +37,10 @@
         <h2 class="card-heading">Inventory</h2>
         <p class="md-subhead" flex>
           Gold: <span id="playerGold"></span><br>
-          Health potion: <span id="playerHealthPotion"></span> <button class="md-raised" onclick="healthPotion()">Use</button><br>
-          <span id="playerResourcePotionName"> </span> Potion: <span id="playerResourcePotion"></span> <button class="md-raised" onclick="resourcePotion()">Use</button><br>
+          Health potion: <span id="playerHealthPotion"></span> <button class="md-raised md-button buy-button" onclick="healthPotion()">Use</button><br>
+          <span id="playerResourcePotionName"> </span> Potion: <span id="playerResourcePotion"></span> <button class="md-raised buy-button md-button" onclick="resourcePotion()">Use</button><br>
+          <br><br><br><br>
+          <button class="md-button md-raised inventory-button" onclick="openEquipment()">Open Equipment Inventory</button>
         </p>
       </md-card>
 
@@ -44,48 +48,48 @@
       <md-card class="playerBag" flex layout-padding layout-margin>
         <h2 class="card-heading">General Store</h2>
         <p class="md-subhead" flex>
-          <span id="buyHealthPotionName"></span>: <span id="buyHealthPotionCost"></span> <button class="md-raised" onclick="buyHealthPotion()">Buy</button><br>
-          <span id="buyResourcePotionName"></span> Potion: <span id="buyResourcePotionCost"></span> <button class="md-raised" onclick="buyResourcePotion()">Buy</button><br>
+          <span id="buyHealthPotionName"></span>: <span id="buyHealthPotionCost"></span> <button class="md-button buy-button md-raised" onclick="buyHealthPotion()">Buy</button><br>
+          <span id="buyResourcePotionName"></span> Potion: <span id="buyResourcePotionCost"></span> <button class="md-button buy-button md-raised" onclick="buyResourcePotion()">Buy</button><br>
         </p>
       </md-card>
 
-      <md-card class="blacksmithBag" id="storeCard" flex layout-padding layout-margin>
-        <md-content flex="" layout-padding="">
+      <md-card class="blacksmithBag" id="storeCard" flex layout-padding>
+        <md-content flex="" layout-padding="" layout-margin>
           <h2 class="card-heading">Blacksmith</h2>
           <p class="md-subhead" flex>
-            <span id="buyKingSlayerName"></span>: <span id="buyKingSlayerCost"></span> <button class="md-raised" onclick="buyWeapon('KingSlayer')">Buy</button><br>
-            <span id="buyClaymoreName"></span>: <span id="buyClaymoreCost"></span> <button class="md-raised" onclick="buyWeapon('Claymore')">Buy</button><br>
-            <span id="buyShortStaffName"></span>: <span id="buyShortStaffCost"></span> <button class="md-raised" onclick="buyWeapon('ShortStaff')">Buy</button><br>
-            <span id="buyDirkName"></span>: <span id="buyDirkCost"></span> <button class="md-raised" onclick="buyWeapon('Dirk')">Buy</button><br>
+            <span id="buyKingSlayerName"></span>: <span id="buyKingSlayerCost"></span> <button class="md-button buy-button md-raised" onclick="buyWeapon('King Slayer')">Buy</button><br>
+            <span id="buyClaymoreName"></span>: <span id="buyClaymoreCost"></span> <button class="md-raised md-button buy-button" onclick="buyWeapon('Claymore')">Buy</button><br>
+            <span id="buyShortStaffName"></span>: <span id="buyShortStaffCost"></span> <button class="md-button buy-button md-raised" onclick="buyWeapon('Short Staff')">Buy</button><br>
+            <span id="buyDirkName"></span>: <span id="buyDirkCost"></span> <button class="md-button buy-button md-raised" onclick="buyWeapon('Dirk')">Buy</button><br>
 
-            <span id="buyAtieshName"></span>: <span id="buyAtieshCost"></span> <button class="md-raised" onclick="buyWeapon('Atiesh')">Buy</button><br>
-            <span id="buyDragonwrathName"></span>: <span id="buyDragonwrathCost"></span> <button class="md-raised" onclick="buyWeapon('Dragonwrath')">Buy</button><br>
-            <span id="buyShadowmourneName"></span>: <span id="buyShadowmourneCost"></span> <button class="md-raised" onclick="buyWeapon('Shadowmourne')">Buy</button><br>
-            <span id="buySulfurasName"></span>: <span id="buySulfurasCost"></span> <button class="md-raised" onclick="buyWeapon('Sulfuras')">Buy</button><br>
-            <span id="buyWarglaivesName"></span>: <span id="buyWarglaivesCost"></span> <button class="md-raised" onclick="buyWeapon('Warglaives')">Buy</button><br>
-            <span id="buyFangsName"></span>: <span id="buyFangsCost"></span> <button class="md-raised" onclick="buyWeapon('Fangs')">Buy</button><br>
-            <span id="buyAshbringerName"></span>: <span id="buyAshbringerCost"></span> <button class="md-raised" onclick="buyWeapon('Ashbringer')">Buy</button><br>
-            <span id="buyTruthguardName"></span>: <span id="buyTruthguardCost"></span> <button class="md-raised" onclick="buyWeapon('Truthguard')">Buy</button><br>
-            <span id="buyFrostmourneName"></span>: <span id="buyFrostmourneCost"></span> <button class="md-raised" onclick="buyWeapon('Frostmourne')">Buy</button><br>
+            <span id="buyAtieshName"></span>: <span id="buyAtieshCost"></span> <button class="md-raised md-button buy-button" onclick="buyWeapon('Greatstaff of Atiesh')">Buy</button><br>
+            <span id="buyDragonwrathName"></span>: <span id="buyDragonwrathCost"></span> <button class="md-raised md-button buy-button" onclick="buyWeapon('Dragonwrath')">Buy</button><br>
+            <span id="buyShadowmourneName"></span>: <span id="buyShadowmourneCost"></span> <button class="md-raised md-button buy-button" onclick="buyWeapon('Shadowmourne')">Buy</button><br>
+            <span id="buySulfurasName"></span>: <span id="buySulfurasCost"></span> <button class="md-raised md-button buy-button" onclick="buyWeapon('Sulfuras, Hand of Ragnaros')">Buy</button><br>
+            <span id="buyWarglaivesName"></span>: <span id="buyWarglaivesCost"></span> <button class="md-raised md-button buy-button" onclick="buyWeapon('Warglaives of Azzinoth')">Buy</button><br>
+            <span id="buyFangsName"></span>: <span id="buyFangsCost"></span> <button class="md-raised md-button buy-button" onclick="buyWeapon('Golad & Tiriosh')">Buy</button><br>
+            <span id="buyAshbringerName"></span>: <span id="buyAshbringerCost"></span> <button class="md-raised md-button buy-button" onclick="buyWeapon('Ashbringer')">Buy</button><br>
+            <span id="buyTruthguardName"></span>: <span id="buyTruthguardCost"></span> <button class="md-raised md-button buy-button" onclick="buyWeapon('Truthguard')">Buy</button><br>
+            <span id="buyFrostmourneName"></span>: <span id="buyFrostmourneCost"></span> <button class="md-raised md-button buy-button" onclick="buyWeapon('Frostmourne')">Buy</button><br>
 
-            <span id="buyRustedArmorName"></span>: <span id="buyRustedArmorCost"></span> <button class="md-raised" onclick="buyArmor('RustedArmor')">Buy</button><br>
-            <span id="buyJudgementName"></span>: <span id="buyJudgementCost"></span> <button class="md-raised" onclick="buyArmor('Judgement')">Buy</button><br>
-            <span id="buyRedemptionName"></span>: <span id="buyRedemptionCost"></span> <button class="md-raised" onclick="buyArmor('Redemption')">Buy</button><br>
-            <span id="buyWhiteTigerName"></span>: <span id="buyWhiteTigerCost"></span> <button class="md-raised" onclick="buyArmor('WhiteTiger')">Buy</button><br>
-            <span id="buyLightswornName"></span>: <span id="buyLightswornCost"></span> <button class="md-raised" onclick="buyArmor('Lightsworn')">Buy</button><br>
-            <span id="buyRaggedTunicName"></span>: <span id="buyRaggedTunicCost"></span> <button class="md-raised" onclick="buyArmor('RaggedTunic')">Buy</button><br>
-            <span id="buyAldorName"></span>: <span id="buyAldorCost"></span> <button class="md-raised" onclick="buyArmor('Aldor')">Buy</button><br>
-            <span id="buyTirisfalName"></span>: <span id="buyTirisfalCost"></span> <button class="md-raised" onclick="buyArmor('Tirisfal')">Buy</button><br>
-            <span id="buyKirinTorName"></span>: <span id="buyKirinTorCost"></span> <button class="md-raised" onclick="buyArmor('KirinTor')">Buy</button><br>
-            <span id="buyTimeLordsName"></span>: <span id="buyTimeLordsCost"></span> <button class="md-raised" onclick="buyArmor('TimeLords')">Buy</button><br>
-            <span id="buyDestroyerName"></span>: <span id="buyDestroyerCost"></span> <button class="md-raised" onclick="buyArmor('Destroyer')">Buy</button><br>
-            <span id="buyWrathName"></span>: <span id="buyWrathCost"></span> <button class="md-raised" onclick="buyArmor('Wrath')">Buy</button><br>
-            <span id="buyDreadnaughtName"></span>: <span id="buyDreadnaughtCost"></span> <button class="md-raised" onclick="buyArmor('Dreadnaught')">Buy</button><br>
-            <span id="buyDragonplateName"></span>: <span id="buyDragonplateCost"></span> <button class="md-raised" onclick="buyArmor('Dragonplate')">Buy</button><br>
-            <span id="buyNightSlayerName"></span>: <span id="buyNightSlayerCost"></span> <button class="md-raised" onclick="buyArmor('NightSlayer')">Buy</button><br>
-            <span id="buyTerrorbladeName"></span>: <span id="buyTerrorbladeCost"></span> <button class="md-raised" onclick="buyArmor('Terrorblade')">Buy</button><br>
-            <span id="buyDarkPhoenixName"></span>: <span id="buyDarkPhoenixCost"></span> <button class="md-raised" onclick="buyArmor('DarkPhoenix')">Buy</button><br>
-            <span id="buyDragonsSoulName"></span>: <span id="buyDragonsSoulCost"></span> <button class="md-raised" onclick="buyArmor('DragonsSoul')">Buy</button><br>
+            <span id="buyRustedArmorName"></span>: <span id="buyRustedArmorCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Rusted Armor')">Buy</button><br>
+            <span id="buyJudgementName"></span>: <span id="buyJudgementCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Judgement Armor')">Buy</button><br>
+            <span id="buyRedemptionName"></span>: <span id="buyRedemptionCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Redemption Armor')">Buy</button><br>
+            <span id="buyWhiteTigerName"></span>: <span id="buyWhiteTigerCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('White Tiger Armor')">Buy</button><br>
+            <span id="buyLightswornName"></span>: <span id="buyLightswornCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Lightsworn Dragonplate')">Buy</button><br>
+            <span id="buyRaggedTunicName"></span>: <span id="buyRaggedTunicCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Ragged Tunic')">Buy</button><br>
+            <span id="buyAldorName"></span>: <span id="buyAldorCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Aldor Regalia')">Buy</button><br>
+            <span id="buyTirisfalName"></span>: <span id="buyTirisfalCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Tirisfal Regalia')">Buy</button><br>
+            <span id="buyKirinTorName"></span>: <span id="buyKirinTorCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Kirin Tor Regalia')">Buy</button><br>
+            <span id="buyTimeLordsName"></span>: <span id="buyTimeLordsCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Time Lord's Regalia')">Buy</button><br>
+            <span id="buyDestroyerName"></span>: <span id="buyDestroyerCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Battlegear of Wrath Destroyer')">Buy</button><br>
+            <span id="buyWrathName"></span>: <span id="buyWrathCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Battlegear of Wrath')">Buy</button><br>
+            <span id="buyDreadnaughtName"></span>: <span id="buyDreadnaughtCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Valourous Dreadnaught')">Buy</button><br>
+            <span id="buyDragonplateName"></span>: <span id="buyDragonplateCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Sanctified Colossal Dragonplate')">Buy</button><br>
+            <span id="buyNightSlayerName"></span>: <span id="buyNightSlayerCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Night Slayer Armor')">Buy</button><br>
+            <span id="buyTerrorbladeName"></span>: <span id="buyTerrorbladeCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Terrorblade Battlegear')">Buy</button><br>
+            <span id="buyDarkPhoenixName"></span>: <span id="buyDarkPhoenixCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Vestments of the Dark Phoenix')">Buy</button><br>
+            <span id="buyDragonsSoulName"></span>: <span id="buyDragonsSoulCost"></span> <button class="md-raised md-button buy-button" onclick="buyArmor('Dragon's Soul Battlegear')">Buy</button><br>
           </p>
         </md-content>
       </md-card>
@@ -102,14 +106,14 @@
             <p class="md-subhead enemy-stat" flex>Status: <span id="enemyStatus"></span></p>
             <p class="md-subhead enemy-stat" flex>Level: <span id="enemyLevel"></span></p>
             <p class="md-subhead enemy-stat" flex>Strength: <span id="enemyStrength"></span></p>
-            <p class="md-subhead enemy-stat" flex>Armor: <span id="enemyArmor"></span></p>
+            <p class="md-subhead enemy-stat" flex>Defence: <span id="enemyDefence"></span></p>
           </span>
         </md-toolbar>
         <div layout="row">
-          <button id="startBattleButton" class="md-raised start-battle-button" onclick="findEnemy()">Start Encounter</button>
-          <button id="attackButton" class="md-raised attack-button" onclick="attack(enemy, normalStrength())">Attack</button>
-          <button id="skillaButton" class="md-raised attack-button" onclick="attack(enemy, mediumStrength())"></button>
-          <button id="skillbButton" class="md-raised attack-button" onclick="attack(enemy, maxStrength())"></button>
+          <button id="startBattleButton" class="md-raised md-button start-battle-button" onclick="findEnemy()">Start Encounter</button>
+          <button id="attackButton" class="md-raised md-button attack-button" onclick="attack(enemy, normalStrength())">Attack</button>
+          <button id="skillaButton" class="md-raised md-button attack-button" onclick="attack(enemy, mediumStrength())"></button>
+          <button id="skillbButton" class="md-raised md-button attack-button" onclick="attack(enemy, maxStrength())"></button>
         </div>
       </md-card>
 
@@ -130,7 +134,7 @@
       </md-card>
     </div>
 
-    <input class="cheatCodes" onclick="cheatCodes()"></input>
+    <!-- <input class="cheatCodes" onclick="cheatCodes()"></input> -->
 
     <script src="JS/main.js"></script>
     <script src="JS/myController.js"></script>

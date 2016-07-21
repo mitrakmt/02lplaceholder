@@ -18,3 +18,8 @@ TODO:
   // implement toaster ( we need toast )
   // add animations
   // maybe gain mana and health based on time
+
+
+  // can't buy a dif class's weapons/armorList
+  // Fix armor name, not showing up on profile.
+  //

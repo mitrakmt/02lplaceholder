@@ -36,7 +36,7 @@
           document.getElementById('enemyName').style.visibility = 'visible';
           document.getElementById('enemyStatus').style.visibility = 'visible';
           document.getElementById('enemyStrength').style.visibility = 'visible';
-          document.getElementById('enemyArmor').style.visibility = 'visible';
+          document.getElementById('enemyDefence').style.visibility = 'visible';
           document.getElementById('enemyLevel').style.visibility = 'visible';
           document.getElementById('inBattle').style.visibility = 'visible';
 
@@ -56,7 +56,7 @@
           document.getElementById('inBattle').style.visibility = 'hidden';
           document.getElementById('enemyStatus').style.visibility = 'hidden';
           document.getElementById('enemyStrength').style.visibility = 'hidden';
-          document.getElementById('enemyArmor').style.visibility = 'hidden';
+          document.getElementById('enemyDefence').style.visibility = 'hidden';
           document.getElementById('enemyLevel').style.visibility = 'hidden';
           if (player.level >= 2) {
             document.getElementById('skillaButton').style.visibility = 'hidden';
@@ -68,18 +68,6 @@
           }
         }
       }
-
-
-    var cheatCodes = function() {
-      var phrase = prompt("Do you know one of our secret cheat codes?");
-      if (phrase === "bling") {
-        player.gold += 100000;
-        document.getElementById("playerGold").innerHTML = player.gold;
-      } else if (phrase === "invincible") {
-        player.health = 100000;
-        document.getElementById("playerHealth").innerHTML = player.health;
-      }
-  }
 
   // Secret codes -- should turn cheats into separate object
   var cheatCodes = function() {
@@ -95,7 +83,8 @@
 
   // Player Object
   var player = {
-    level: 7,
+    level: 1,
+    score: 0,
     experience : 0,
     intellect : 1,
     strength : 1,
@@ -103,12 +92,13 @@
     wisdom : 1,
     constitution : 1,
     charisma : 1,
-    armor : 1,
+    defence : 1,
     resource: 100,
     health : 100,
     class : "",
-    gold : 1000,
+    gold : 15,
     weapon : null,
+    armor : null,
     inventory: {healthPotion: 1, resourcePotion: 1}
   }
 
@@ -122,7 +112,7 @@
         wisdom : 1,
         constitution : 5,
         charisma : 4,
-        armor : 6,
+        defence : 6,
         resource : 100
     }, {
       name : "rogue",
@@ -132,7 +122,7 @@
         wisdom : 1,
         constitution : 3,
         charisma : 5,
-        armor : 3,
+        defence : 3,
         resource : 100
     }, {
       name : "paladin",
@@ -142,7 +132,7 @@
         wisdom : 3,
         constitution : 4,
         charisma : 5,
-        armor : 5,
+        defence : 5,
         resource : 0
     }, {
       name : "mage",
@@ -152,7 +142,7 @@
         wisdom : 4,
         constitution : 2,
         charisma : 4,
-        armor : 2,
+        defence : 2,
         resource : 0
     }
   ]
@@ -164,63 +154,63 @@
       status: "Common",
       level: 1,
       experience: 10,
-      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
       inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
     }, {
       name : "King Scorpion",
       status: "Uncommon",
       level: 1,
       experience: 25,
-      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
       inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
     } , {
       name : "Camel",
       status: "Common",
       level: 1,
       experience: 10,
-      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
       inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
     } , {
       name : "Mummy",
       status: "Common",
       level: 1,
       experience: 10,
-      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
       inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
     } , {
       name : "Naga",
       status: "Common",
       level: 1,
       experience: 10,
-      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
       inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
     } , {
       name : "Ragnaros",
       status: "Boss",
       level: 3,
       experience: 100,
-      stats : {health : 150, mana : 100, intellect : 3, strength : 5, dexterity : 3, wisdom : 5, constitution : 5, armor : 4},
+      stats : {health : 150, mana : 100, intellect : 3, strength : 5, dexterity : 3, wisdom : 5, constitution : 5, defence : 4},
       inventory: {healthPotion: 4, resourcePotion: 4, gold: 70}
     } , {
       name : "Arcane Golem",
       status: "Uncommon",
       level: 1,
       experience: 25,
-      stats : {health : 80, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+      stats : {health : 80, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
       inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
     } , {
       name : "Orc Warrior",
       status: "Common",
       level: 1,
       experience: 10,
-      stats : {health : 80, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+      stats : {health : 80, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
       inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
     } , {
       name : "Tauren Warrior",
       status: "Common",
       level: 1,
       experience: 10,
-      stats : {health : 80, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, armor : 1},
+      stats : {health : 80, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
       inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
     }
   ];
@@ -228,8 +218,8 @@
   // Store Object
   var store = {
     weapons: {
-      Atiesh:{
-        name: "Atiesh: Greatstaff of the Guardians",
+      "Greatstaff of Atiesh":{
+        name: "Greatstaff of Atiesh",
         class: "mage",
         type: "Staff",
         intellect: 10,
@@ -237,8 +227,8 @@
         dexterity: 0,
         cost: 1000
       },
-      Dragonwrath: {
-        name: "Dragonwrath, Tarecgosa's Rest",
+      "Dragonwrath": {
+        name: "Dragonwrath",
         class: "mage",
         type: "Staff",
         intellect: 8,
@@ -246,7 +236,7 @@
         dexterity: 0,
         cost: 700
       },
-      KingSlayer: {
+      "King Slayer": {
         name: "King Slayer",
         class: "mage",
         type: "Weapon",
@@ -255,7 +245,7 @@
         intellect: 25,
         cost: 3000
       },
-      Shadowmourne:{
+      "Shadowmourne":{
         name: "Shadowmourne",
         class: "warrior",
         type: "Axe",
@@ -264,7 +254,7 @@
         intellect: 0,
         cost: 1000
       },
-      Sulfuras:{
+      "Sulfuras, Hand of Ragnaros":{
         name: "Sulfuras, Hand of Ragnaros",
         class: "warrior",
         type: "Hammer",
@@ -273,7 +263,7 @@
         intellect: 0,
         cost: 800
       },
-      Claymore: {
+      "Claymore": {
         name: "Claymore",
         class: "warrior",
         type: "Weapon",
@@ -282,7 +272,7 @@
         intellect: 0,
         cost: 30
       },
-      Warglaives:{
+      "Warglaives of Azzinoth":{
         name: "Warglaives of Azzinoth",
         class: "rogue",
         type: "Glaives",
@@ -291,7 +281,7 @@
         intellect: 0,
         cost: 1000
       },
-      Fangs:{
+      "Golad & Tiriosh":{
         name: "Golad & Tiriosh",
         class: "rogue",
         type: "Daggers",
@@ -300,7 +290,7 @@
         intellect: 0,
         cost: 600
       },
-      Dirk: {
+      "Dirk": {
         name: "Dirk",
         class: "rogue",
         type: "Weapon",
@@ -309,7 +299,7 @@
         intellect: 0,
         cost: 30
       },
-      Ashbringer:{
+      "Ashbringer":{
         name: "Ashbringer",
         class: "paladin",
         type: "2H Sword",
@@ -318,17 +308,17 @@
         dexterity: 0,
         cost: 900
       },
-      Truthguard:{
+      "Truthguard":{
         name: "Truthguard",
         class: "paladin",
         type: "Sword and Shield",
         intellect: 4,
         strength: 3,
         dexterity: 0,
-        armor: 7,
+        defence: 7,
         cost: 800
       },
-      Frostmourne:{
+      "Frostmourne":{
         name: "Frostmourne",
         class: "paladin",
         type: "2H Sword",
@@ -337,7 +327,7 @@
         dexterity: 0,
         cost:800
       },
-      ShortStaff: {
+      "Short Staff": {
         name: "Short Staff",
         class: "paladin",
         type: "Weapon",
@@ -348,164 +338,164 @@
       }
     },
     armor: {
-      RustedArmor: {
+      "Rusted Armor": {
         name: "Rusted Armor",
         class: "paladin",
         type: "Plate",
-        armor: 2,
+        defence: 2,
         intellect: 1,
         wisdom: 2,
         strength: 0,
         dexterity: 0,
         cost: 100
       },
-      Judgement: {
+      "Judgement Armor": {
         name: "Judgement Armor",
         class: "paladin",
         type: "Plate",
-        armor: 6,
+        defence: 6,
         intellect: 5,
         dexterity: 0,
         strength: 3,
         wisdom: 5,
         cost: 400
       },
-      Redemption: {
+      "Redemption Armor": {
         name: "Redemption Armor",
         class: "paladin",
         type: "Plate",
-        armor: 8,
+        defence: 8,
         intellect: 7,
         strength: 6,
         dexterity: 0,
         wisdom: 9,
         cost: 900
       },
-      WhiteTiger: {
+      "White Tiger Armor": {
         name: "White Tiger Armor",
         class: "paladin",
         type: "Plate",
-        armor: 11,
+        defence: 11,
         intellect: 10,
         strength: 11,
         dexterity: 0,
         wisdom: 13,
         cost: 1300
       },
-      Lightsworn: {
+      "Lightsworn Dragonplate": {
         name: "Lightsworn Dragonplate",
         class: "paladin",
         type: "Plate",
-        armor: 16,
+        defence: 16,
         intellect: 14,
         dexterity: 0,
         strength: 17,
         wisdom: 15,
         cost: 2500
       },
-      RaggedTunic: {
+      "Ragged Tunic": {
         name: "Ragged Tunic",
         class: "mage",
         type: "Cloth",
-        armor: 2,
+        defence: 2,
         intellect: 1,
         strength: 0,
         dexterity: 0,
         wisdom: 2,
         cost: 100
       },
-      Aldor: {
+      "Aldor Regalia": {
         name: "Aldor Regalia",
         class: "mage",
         type: "Cloth",
-        armor: 3,
+        defence: 3,
         intellect: 5,
         strength: 0,
         dexterity: 0,
         wisdom: 4,
         cost: 400
       },
-      Tirisfal: {
+      "Tirisfal Regalia": {
         name: "Tirisfal Regalia",
         class: "mage",
         type: "Cloth",
-        armor: 4,
+        defence: 4,
         intellect: 7,
         dexterity: 0,
         strength: 0,
         wisdom: 6,
         cost: 900
       },
-      KirinTor: {
+      "Kirin Tor Regalia": {
         name: "Kirin Tor Regalia",
         class: "mage",
         type: "Cloth",
-        armor: 6,
+        defence: 6,
         intellect: 11,
         dexterity: 0,
         strength: 0,
         wisdom: 10,
         cost: 1300
       },
-      TimeLords: {
+      "Time Lord's Regalia": {
         name: "Time Lord's Regalia",
         class: "mage",
         type: "Cloth",
-        armor: 8,
+        defence: 8,
         intellect: 15,
         strength: 0,
         dexterity: 0,
         wisdom: 14,
         cost: 2500
       },
-      Destroyer: {
+      "Battlegear of Wrath Destroyer": {
         name: "Battlegear of Wrath Destroyer",
         class: "warrior",
         type: "Plate",
-        armor: 6,
+        defence: 6,
         strength: 5,
         dexterity: 0,
         intellect: 0,
         wisdom: 0,
         cost: 400
       },
-      Wrath: {
+      "Battlegear of Wrath": {
         name: "Battlegear of Wrath",
         class: "warrior",
         type: "Plate",
-        armor: 12,
+        defence: 12,
         dexterity: 0,
         intellect: 0,
         wisdom: 0,
         strength: 7,
         cost: 900
       },
-      Dreadnaught: {
+      "Valourous Dreadnaught": {
         name: "Valourous Dreadnaught",
         class: "warrior",
         type: "Plate",
-        armor: 6,
+        defence: 6,
         strength: 11,
         dexterity: 0,
         intellect: 0,
         wisdom: 0,
         cost: 1300
       },
-      Dragonplate: {
+      "Sanctified Colossal Dragonplate": {
         name: "Sanctified Colossal Dragonplate",
         type: "Plate",
-        armor: 19,
+        defence: 19,
         strength: 15,
         dexterity: 0,
         intellect: 0,
         wisdom: 0,
         cost: 2500
       },
-      NightSlayer: {
+      "Night Slayer Armor": {
         name: "Night Slayer Armor",
         class: "rogue",
         type: "Leather",
-        armor: 4,
+        defence: 4,
         dexterity: 5,
         strength: 0,
         intellect: 0,
@@ -513,11 +503,11 @@
         strength: 4,
         cost: 400
       },
-      Terrorblade: {
+      "Terrorblade Battlegear": {
         name: "Terrorblade Battlegear",
         class: "rogue",
         type: "Leather",
-        armor: 5,
+        defence: 5,
         dexterity: 7,
         strength: 0,
         intellect: 0,
@@ -525,22 +515,22 @@
         strength: 6,
         cost: 900
       },
-      DarkPhoenix: {
+      "Vestments of the Dark Phoenix": {
         name: "Vestments of the Dark Phoenix",
         class: "rogue",
         type: "Leather",
-        armor: 7,
+        defence: 7,
         dexterity: 11,
         intellect: 0,
         wisdom: 0,
         strength: 10,
         cost: 1300
       },
-      DragonsSoul: {
+      "Dragon's Soul Battlegear": {
         name: "Dragon's Soul Battlegear",
         class: "rogue",
         type: "Leather",
-        armor: 10,
+        defence: 10,
         dexterity: 15,
         strength: 14,
         intellect: 0,
@@ -613,15 +603,58 @@
   // Buy Weapon Function
   var buyWeapon = function (weaponName) {
     if (player.gold >= store.weapons[weaponName].cost) {
-      if (store.weapons[weaponName].cost > 30) {
-        alert("This item costs " + store.weapons[weaponName].cost + ". Are you sure you want to buy this?");
-       }
+
+
+      weaponCheck(player.weapon, weaponName);
+
+      player.gold -= store.weapons[weaponName].cost;
       player.weapon = store.weapons[weaponName].name;
       player.strength += store.weapons[weaponName].strength;
       player.dexterity += store.weapons[weaponName].dexterity;
       player.intellect += store.weapons[weaponName].intellect;
-      player.gold -= store.weapons[weaponName].cost;
       document.getElementById("playerStrength").innerHTML = player.strength;
+      document.getElementById("playerIntellect").innerHTML = player.intellect;
+      document.getElementById("playerDexterity").innerHTML = player.dexterity;
+      document.getElementById("playerGold").innerHTML = player.gold;
+
+    } else {
+      alert("Sorry, you don't have enough gold yet.")
+    }
+  }
+
+  var weaponCheck = function (currentWeapon, newWeapon) {
+    if (player.weapon !== null) {
+      player.inventory[currentWeapon] = 1;
+      player.strength -= store.weapons[currentWeapon].strength;
+      player.dexterity -= store.weapons[currentWeapon].dexterity;
+      player.intellect -= store.weapons[currentWeapon].intellect;
+      console.log(currentWeapon + " added to inventory, and equipped " + newWeapon);
+    }
+  }
+
+  // Buy Armor Function
+  var buyArmor = function (armorName) {
+    if (player.gold >= store.armor[armorName].cost) {
+
+      if (store.armor[armorName].cost > 30) {
+        var answer = confirm("This item costs " + store.armor[armorName].cost + ". Are you sure you want to buy this?");
+        if (!answer) {
+          return;
+        }
+      }
+
+      armorCheck(player.armor, armorName);
+
+      player.armor = store.armor[armorName].name;
+      player.strength += store.armor[armorName].strength;
+      player.defence += store.armor[armorName].defence;
+      player.wisdom += store.armor[armorName].wisdom;
+      player.dexterity += store.armor[armorName].dexterity;
+      player.intellect += store.armor[armorName].intellect;
+      player.gold -= store.armor[armorName].cost;
+
+      document.getElementById("playerStrength").innerHTML = player.strength;
+      document.getElementById("playerDefence").innerHTML = player.defence;
       document.getElementById("playerIntellect").innerHTML = player.intellect;
       document.getElementById("playerDexterity").innerHTML = player.dexterity;
       document.getElementById("playerWisdom").innerHTML = player.wisdom;
@@ -631,23 +664,18 @@
     }
   }
 
-  // Buy Armor Function
-  var buyArmor = function (armorName) {
-    if (player.gold >= store.armor[armorName].cost) {
-      player.weapon = store.armor[armorName].name;
-      player.strength += store.armor[armorName].strength;
-      player.dexterity += store.armor[armorName].dexterity;
-      player.intellect += store.armor[armorName].intellect;
-      player.gold -= store.armor[armorName].cost;
-      document.getElementById("playerStrength").innerHTML = player.strength;
-      document.getElementById("playerIntellect").innerHTML = player.intellect;
-      document.getElementById("playerDexterity").innerHTML = player.dexterity;
-      document.getElementById("playerWisdom").innerHTML = player.wisdom;
-      document.getElementById("playerGold").innerHTML = player.gold;
-    } else {
-      alert("Sorry, you don't have enough gold yet.")
+  var armorCheck = function (currentArmor, newArmor) {
+    if (currentArmor !== null) {
+      player.inventory[currentArmor] = 1;
+      player.strength -= store.armor[currentArmor].strength;
+      player.defence -= store.armor[currentArmor].defence;
+      player.wisdom -= store.armor[currentArmor].wisdom;
+      player.dexterity -= store.armor[currentArmor].dexterity;
+      player.intellect -= store.armor[currentArmor].intellect;
+      console.log(currentArmor + " added to inventory, and equipped " + newArmor);
     }
   }
+
 
   player.class = prompt("Choose your class! \n Warrior <> Rogue <> Mage <> Paladin");
   var playerClass = player.class;
@@ -660,7 +688,7 @@
       player.dexterity += playerClass.dexterity;
       player.charisma += playerClass.charisma;
       player.constitution += playerClass.constitution;
-      player.armor += playerClass.armor;
+      player.defence += playerClass.defence;
       player.wisdom += playerClass.wisdom;
      }
   });
@@ -677,84 +705,6 @@
     else if (player.class === "mage") { skillB = "Dragon's Breath" }
     else if (player.class === "paladin") { skillB = "Divine Storm" }
 
-  // Creating second store for armor & weapons based on class
-  // if (player.class === "paladin") {
-  //   for (var armor in store.armor.paladin) {
-  //     var armorLi = document.createElement('li');
-  //     var buyButton = document.createElement('button');
-  //     armorLi.textContent += armor + ": ";
-  //     buyButton.textContent = "Buy";
-  //     armorLi.appendChild(buyButton);
-  //     storeUl.appendChild(armorLi);
-  //   }
-  //
-  //   for (var weapon in store.weapons.paladin) {
-  //     var weaponLi = document.createElement('li');
-  //     var buyButton = document.createElement('button');
-  //     weaponLi.textContent += weapon + ": ";
-  //     buyButton.textContent = "Buy";
-  //     weaponLi.appendChild(buyButton);
-  //     storeUl.appendChild(weaponLi);
-  //   }
-  // } else if (player.class === "rogue") {
-  //   for (var armor in store.armor.rogue) {
-  //     var armorLi = document.createElement('li');
-  //     var buyButton = document.createElement('button');
-  //     armorLi.textContent += armor + ": ";
-  //     buyButton.textContent = "Buy";
-  //     armorLi.appendChild(buyButton);
-  //     storeUl.appendChild(armorLi);
-  //   }
-  //
-  //   for (var weapon in store.weapons.rogue) {
-  //     var weaponLi = document.createElement('li');
-  //     var buyButton = document.createElement('button');
-  //     weaponLi.textContent += weapon + ": ";
-  //     buyButton.textContent = "Buy";
-  //     weaponLi.appendChild(buyButton);
-  //     storeUl.appendChild(weaponLi);
-  //   }
-  // } else if (player.class === "mage") {
-  //   for (var armor in store.armor.mage) {
-  //     var armorLi = document.createElement('li');
-  //     var buyButton = document.createElement('button');
-  //     armorLi.textContent += armor + ": ";
-  //     buyButton.textContent = "Buy";
-  //     armorLi.appendChild(buyButton);
-  //     storeUl.appendChild(armorLi);
-  //   }
-  //
-  //   for (var weapon in store.weapons.mage) {
-  //     var weaponLi = document.createElement('li');
-  //     var buyButton = document.createElement('button');
-  //     weaponLi.textContent += weapon + ": ";
-  //     buyButton.textContent = "Buy";
-  //     weaponLi.appendChild(buyButton);
-  //     storeUl.appendChild(weaponLi);
-  //   }
-  // } else if (player.class === "warrior") {
-  //   for (var armor in store.armor.warrior) {
-  //     var armorLi = document.createElement('li');
-  //     var buyButton = document.createElement('button');
-  //     armorLi.textContent += armor + ": ";
-  //     buyButton.setAttribute("id", "buyArmorButton");
-  //     document.getElementById("buyArmorButton").addEventListener("click", buyArmor());
-  //     buyButton.textContent = "Buy";
-  //     armorLi.appendChild(buyButton);
-  //     storeUl.appendChild(armorLi);
-  //   }
-  //
-  //   for (var weapon in store.weapons.warrior) {
-  //     var weaponLi = document.createElement('li');
-  //     var buyButton = document.createElement('button');
-  //     weaponLi.textContent += weapon + ": ";
-  //     buyButton.textContent = "Buy";
-  //     weaponLi.appendChild(buyButton);
-  //     storeUl.appendChild(weaponLi);
-  //   }
-  // }
-
-
   // Insert player stats and inventory into DOM
   document.getElementById("playerLevel").innerHTML = player.level;
     document.getElementById("playerIntellect").innerHTML = player.intellect;
@@ -762,9 +712,10 @@
     document.getElementById("playerDexterity").innerHTML = player.dexterity;
     document.getElementById("playerCharisma").innerHTML = player.charisma;
     document.getElementById("playerConstitution").innerHTML = player.constitution;
-    document.getElementById("playerArmor").innerHTML = player.armor;
+    document.getElementById("playerDefence").innerHTML = player.defence;
     document.getElementById("playerWisdom").innerHTML = player.wisdom;
     document.getElementById("playerHealth").innerHTML = player.health;
+    document.getElementById("playerScore").innerHTML = player.score;
     document.getElementById("playerClass").innerHTML = player.class;
     document.getElementById("playerGold").innerHTML = player.gold;
     document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
@@ -790,84 +741,92 @@
 
   // Insert store into DOM
     // Paldins weapons
-  document.getElementById("buyKingSlayerName").innerHTML = store.weapons.KingSlayer.name;
-  document.getElementById("buyKingSlayerCost").innerHTML = store.weapons.KingSlayer.cost;
-  document.getElementById("buyAshbringerName").innerHTML = store.weapons.Ashbringer.name;
-  document.getElementById("buyAshbringerCost").innerHTML = store.weapons.Ashbringer.cost;
-  document.getElementById("buyTruthguardName").innerHTML = store.weapons.Truthguard.name;
-  document.getElementById("buyTruthguardCost").innerHTML = store.weapons.Truthguard.cost;
-  document.getElementById("buyFrostmourneName").innerHTML = store.weapons.Frostmourne.name;
-  document.getElementById("buyFrostmourneCost").innerHTML = store.weapons.Frostmourne.cost;
+  document.getElementById("buyKingSlayerName").innerHTML = store.weapons['King Slayer'].name;
+  document.getElementById("buyKingSlayerCost").innerHTML = store.weapons['King Slayer'].cost;
+  document.getElementById("buyAshbringerName").innerHTML = store.weapons['Ashbringer'].name;
+  document.getElementById("buyAshbringerCost").innerHTML = store.weapons['Ashbringer'].cost;
+  document.getElementById("buyTruthguardName").innerHTML = store.weapons['Truthguard'].name;
+  document.getElementById("buyTruthguardCost").innerHTML = store.weapons['Truthguard'].cost;
+  document.getElementById("buyFrostmourneName").innerHTML = store.weapons['Frostmourne'].name;
+  document.getElementById("buyFrostmourneCost").innerHTML = store.weapons['Frostmourne'].cost;
+
     // Paldins armor
-    document.getElementById("buyRustedArmorName").innerHTML = store.armor.RustedArmor.name;
-    document.getElementById("buyRustedArmorCost").innerHTML = store.armor.RustedArmor.cost
-    document.getElementById("buyJudgementName").innerHTML = store.armor.Judgement.name;
-    document.getElementById("buyJudgementCost").innerHTML = store.armor.Judgement.cost
-    document.getElementById("buyRedemptionName").innerHTML = store.armor.Redemption.name;
-    document.getElementById("buyRedemptionCost").innerHTML = store.armor.Redemption.cost
-    document.getElementById("buyWhiteTigerName").innerHTML = store.armor.WhiteTiger.name;
-    document.getElementById("buyWhiteTigerCost").innerHTML = store.armor.WhiteTiger.cost
-    document.getElementById("buyLightswornName").innerHTML = store.armor.Lightsworn.name;
-    document.getElementById("buyLightswornCost").innerHTML = store.armor.Lightsworn.cost
+    document.getElementById("buyRustedArmorName").innerHTML = store.armor['Rusted Armor'].name;
+    document.getElementById("buyRustedArmorCost").innerHTML = store.armor['Rusted Armor'].cost
+    document.getElementById("buyJudgementName").innerHTML = store.armor['Judgement Armor'].name;
+    document.getElementById("buyJudgementCost").innerHTML = store.armor['Judgement Armor'].cost
+    document.getElementById("buyRedemptionName").innerHTML = store.armor['Redemption Armor'].name;
+    document.getElementById("buyRedemptionCost").innerHTML = store.armor['Redemption Armor'].cost
+    document.getElementById("buyWhiteTigerName").innerHTML = store.armor['White Tiger Armor'].name;
+    document.getElementById("buyWhiteTigerCost").innerHTML = store.armor['White Tiger Armor'].cost
+    document.getElementById("buyLightswornName").innerHTML = store.armor['Lightsworn Dragonplate'].name;
+    document.getElementById("buyLightswornCost").innerHTML = store.armor['Lightsworn Dragonplate'].cost
 
     // Warriors Weapons
-  document.getElementById("buyClaymoreName").innerHTML = store.weapons.Claymore.name;
-  document.getElementById("buyClaymoreCost").innerHTML = store.weapons.Claymore.cost;
-  document.getElementById("buyShadowmourneName").innerHTML = store.weapons.Shadowmourne.name;
-  document.getElementById("buyShadowmourneCost").innerHTML = store.weapons.Shadowmourne.cost;
-  document.getElementById("buySulfurasName").innerHTML = store.weapons.Sulfuras.name;
-  document.getElementById("buySulfurasCost").innerHTML = store.weapons.Sulfuras.cost;
+  document.getElementById("buyClaymoreName").innerHTML = store.weapons['Claymore'].name;
+  document.getElementById("buyClaymoreCost").innerHTML = store.weapons['Claymore'].cost;
+  document.getElementById("buyShadowmourneName").innerHTML = store.weapons['Shadowmourne'].name;
+  document.getElementById("buyShadowmourneCost").innerHTML = store.weapons['Shadowmourne'].cost;
+  document.getElementById("buySulfurasName").innerHTML = store.weapons['Sulfuras, Hand of Ragnaros'].name;
+  document.getElementById("buySulfurasCost").innerHTML = store.weapons['Sulfuras, Hand of Ragnaros'].cost;
+
     // Warriors armor
-  document.getElementById("buyDestroyerName").innerHTML = store.armor.Destroyer.name;
-  document.getElementById("buyDestroyerCost").innerHTML = store.armor.Destroyer.cost
-  document.getElementById("buyWrathName").innerHTML = store.armor.Wrath.name;
-  document.getElementById("buyWrathCost").innerHTML = store.armor.Wrath.cost
-  document.getElementById("buyDreadnaughtName").innerHTML = store.armor.Dreadnaught.name;
-  document.getElementById("buyDreadnaughtCost").innerHTML = store.armor.Dreadnaught.cost
-  document.getElementById("buyDragonplateName").innerHTML = store.armor.Dragonplate.name;
-  document.getElementById("buyDragonplateCost").innerHTML = store.armor.Dragonplate.cost
+  document.getElementById("buyDestroyerName").innerHTML = store.armor['Battlegear of Wrath Destroyer'].name;
+  document.getElementById("buyDestroyerCost").innerHTML = store.armor['Battlegear of Wrath Destroyer'].cost
+  document.getElementById("buyWrathName").innerHTML = store.armor['Battlegear of Wrath'].name;
+  document.getElementById("buyWrathCost").innerHTML = store.armor['Battlegear of Wrath'].cost
+  document.getElementById("buyDreadnaughtName").innerHTML = store.armor['Valourous Dreadnaught'].name;
+  document.getElementById("buyDreadnaughtCost").innerHTML = store.armor['Valourous Dreadnaught'].cost
+  document.getElementById("buyDragonplateName").innerHTML = store.armor['Sanctified Colossal Dragonplate'].name;
+  document.getElementById("buyDragonplateCost").innerHTML = store.armor['Sanctified Colossal Dragonplate'].cost
 
     // Rogues
-  document.getElementById("buyDirkName").innerHTML = store.weapons.Dirk.name;
-  document.getElementById("buyDirkCost").innerHTML = store.weapons.Dirk.cost;
-  document.getElementById("buyWarglaivesName").innerHTML = store.weapons.Warglaives.name;
-  document.getElementById("buyWarglaivesCost").innerHTML = store.weapons.Warglaives.cost;
-  document.getElementById("buyFangsName").innerHTML = store.weapons.Fangs.name;
-  document.getElementById("buyFangsCost").innerHTML = store.weapons.Fangs.cost;
+  document.getElementById("buyDirkName").innerHTML = store.weapons['Dirk'].name;
+  document.getElementById("buyDirkCost").innerHTML = store.weapons['Dirk'].cost;
+  document.getElementById("buyWarglaivesName").innerHTML = store.weapons['Warglaives of Azzinoth'].name;
+  document.getElementById("buyWarglaivesCost").innerHTML = store.weapons['Warglaives of Azzinoth'].cost;
+  document.getElementById("buyFangsName").innerHTML = store.weapons['Golad & Tiriosh'].name;
+  document.getElementById("buyFangsCost").innerHTML = store.weapons['Golad & Tiriosh'].cost;
+
     // Rogues armor
-  document.getElementById("buyNightSlayerName").innerHTML = store.armor.NightSlayer.name;
-  document.getElementById("buyNightSlayerCost").innerHTML = store.armor.NightSlayer.cost
-  document.getElementById("buyTerrorbladeName").innerHTML = store.armor.Terrorblade.name;
-  document.getElementById("buyTerrorbladeCost").innerHTML = store.armor.Terrorblade.cost
-  document.getElementById("buyDarkPhoenixName").innerHTML = store.armor.DarkPhoenix.name;
-  document.getElementById("buyDarkPhoenixCost").innerHTML = store.armor.DarkPhoenix.cost
-  document.getElementById("buyDragonsSoulName").innerHTML = store.armor.DragonsSoul.name;
-  document.getElementById("buyDragonsSoulCost").innerHTML = store.armor.DragonsSoul.cost
+  document.getElementById("buyNightSlayerName").innerHTML = store.armor['Night Slayer Armor'].name;
+  document.getElementById("buyNightSlayerCost").innerHTML = store.armor['Night Slayer Armor'].cost
+  document.getElementById("buyTerrorbladeName").innerHTML = store.armor['Terrorblade Battlegear'].name;
+  document.getElementById("buyTerrorbladeCost").innerHTML = store.armor['Terrorblade Battlegear'].cost
+  document.getElementById("buyDarkPhoenixName").innerHTML = store.armor['Vestments of the Dark Phoenix'].name;
+  document.getElementById("buyDarkPhoenixCost").innerHTML = store.armor['Vestments of the Dark Phoenix'].cost
+  document.getElementById("buyDragonsSoulName").innerHTML = store.armor["Dragon's Soul Battlegear"].name;
+  document.getElementById("buyDragonsSoulCost").innerHTML = store.armor["Dragon's Soul Battlegear"].cost
 
     // Mages
-  document.getElementById("buyShortStaffName").innerHTML = store.weapons.ShortStaff.name;
-  document.getElementById("buyShortStaffCost").innerHTML = store.weapons.ShortStaff.cost;
-  document.getElementById("buyAtieshName").innerHTML = store.weapons.Atiesh.name;
-  document.getElementById("buyAtieshCost").innerHTML = store.weapons.Atiesh.cost;
-  document.getElementById("buyDragonwrathName").innerHTML = store.weapons.Dragonwrath.name;
-  document.getElementById("buyDragonwrathCost").innerHTML = store.weapons.Dragonwrath.cost;
-    // Mages armor
-  document.getElementById("buyRaggedTunicName").innerHTML = store.armor.RaggedTunic.name;
-  document.getElementById("buyRaggedTunicCost").innerHTML = store.armor.RaggedTunic.cost
-  document.getElementById("buyAldorName").innerHTML = store.armor.Aldor.name;
-  document.getElementById("buyAldorCost").innerHTML = store.armor.Aldor.cost
-  document.getElementById("buyTirisfalName").innerHTML = store.armor.Tirisfal.name;
-  document.getElementById("buyTirisfalCost").innerHTML = store.armor.Tirisfal.cost
-  document.getElementById("buyKirinTorName").innerHTML = store.armor.KirinTor.name;
-  document.getElementById("buyKirinTorCost").innerHTML = store.armor.KirinTor.cost
-  document.getElementById("buyTimeLordsName").innerHTML = store.armor.TimeLords.name;
-  document.getElementById("buyTimeLordsCost").innerHTML = store.armor.TimeLords.cost
+  document.getElementById("buyShortStaffName").innerHTML = store.weapons['Short Staff'].name;
+  document.getElementById("buyShortStaffCost").innerHTML = store.weapons['Short Staff'].cost;
+  document.getElementById("buyAtieshName").innerHTML = store.weapons['Greatstaff of Atiesh'].name;
+  document.getElementById("buyAtieshCost").innerHTML = store.weapons['Greatstaff of Atiesh'].cost;
+  document.getElementById("buyDragonwrathName").innerHTML = store.weapons["Dragonwrath"].name;
+  document.getElementById("buyDragonwrathCost").innerHTML = store.weapons["Dragonwrath"].cost;
 
+    // Mages armor
+  document.getElementById("buyRaggedTunicName").innerHTML = store.armor['Ragged Tunic'].name;
+  document.getElementById("buyRaggedTunicCost").innerHTML = store.armor['Ragged Tunic'].cost
+  document.getElementById("buyAldorName").innerHTML = store.armor['Aldor Regalia'].name;
+  document.getElementById("buyAldorCost").innerHTML = store.armor['Aldor Regalia'].cost
+  document.getElementById("buyTirisfalName").innerHTML = store.armor['Tirisfal Regalia'].name;
+  document.getElementById("buyTirisfalCost").innerHTML = store.armor['Tirisfal Regalia'].cost
+  document.getElementById("buyKirinTorName").innerHTML = store.armor['Kirin Tor Regalia'].name;
+  document.getElementById("buyKirinTorCost").innerHTML = store.armor['Kirin Tor Regalia'].cost
+  document.getElementById("buyTimeLordsName").innerHTML = store.armor["Time Lord's Regalia"].name;
+  document.getElementById("buyTimeLordsCost").innerHTML = store.armor["Time Lord's Regalia"].cost
 
     //potions
   document.getElementById("buyHealthPotionName").innerHTML = store.potions.HealthPotion.name;
   document.getElementById("buyHealthPotionCost").innerHTML = store.potions.HealthPotion.cost;
   document.getElementById("buyResourcePotionCost").innerHTML = store.potions.ResourcePotion.cost;
+
+
+  var openEquipment = function () {
+
+  }
 
   // Find New Enemy Function
   var findEnemy = function() {
@@ -887,7 +846,7 @@
     document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
     document.getElementById("enemyName").innerHTML = enemy.name;
     document.getElementById("enemyStrength").innerHTML = enemy.stats.strength.toFixed(1);;
-    document.getElementById("enemyArmor").innerHTML = enemy.stats.armor;
+    document.getElementById("enemyDefence").innerHTML = enemy.stats.defence;
     document.getElementById("enemyLevel").innerHTML = enemy.level;
     document.getElementById("enemyStatus").innerHTML = enemy.status;
     action();
@@ -1107,12 +1066,16 @@
           }
         }
 
+        player.score += Math.round(enemy.level * startHP * enemy.stats.strength);
+
+        document.getElementById("playerScore").innerHTML = player.score;
+
         // Updpate items on DOM
         document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
         document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
 
         // Reset enemy to full health
-        enemy.stats.health = startHP.toFixed(1);;
+        enemy.stats.health = startHP;
 
         // Take the player out of battle
         action();
@@ -1121,15 +1084,15 @@
         document.getElementById("logListTitle").innerHTML = "Attack Successful";
         document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!";
         document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
-        player.health -= (enemyHit - (player.armor/2));
-        player.health = player.health.toFixed(1);
+        player.health -= (enemyHit - (player.defence/2));
+        player.health = Math.round(player.health);
         document.getElementById("playerHealth").innerHTML = player.health;
       }
 
       if (player.health <= 0) {
         alert("Game over :(");
         location.reload();
-      } else if (player.health <= 20) {
+      } else if (player.health <= 15) {
         alert("You are low on health!");
       }
 

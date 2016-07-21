@@ -62,7 +62,7 @@ body {
 }
 
 .start-battle-button {
-  width: 100px;
+  min-width: 150px;
   height: 60px;
   padding: 5px;
   background-color: red;
@@ -83,6 +83,24 @@ body {
 
 .skillInvisible {
   visibility: hidden;
+}
+
+.inventory-button {
+  background-color: #A2D7BB;
+}
+
+.md-button {
+  min-width: 40px;
+  line-height: 28px;
+  min-height: 25px;
+}
+
+.buy-button {
+  padding: 0px;
+  margin: 2px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: #A2D7BB
 }
 
 .playerBag {
