@@ -133,3 +133,8 @@ body {
 .cheatCodes {
   opacity: .2;
 }
+
+.toast-message {
+  color: white !important;
+  background-color: green;
+}

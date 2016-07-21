@@ -98,7 +98,7 @@
     resource: 100,
     health : 100,
     class : "",
-    gold : 100000,
+    gold : 0,
     weapon : null,
     armor : null,
     inventory: {healthPotion: 1, resourcePotion: 1}
@@ -570,6 +570,10 @@
     }
   }
 
+  var viewToastr = function () {
+    toastr.info('My name is Inigo Montoya. You killed my father, prepare to die!');
+  }
+
   var addStat = function (stat) {
     if (player.statPoints > 0) {
       player[stat]++;
@@ -1003,7 +1007,7 @@
   // Max Strength Attack Function
   var maxStrength = function () {
     if (player.class === "paladin") {
-      hit = Math.ceil(Math.random()*26)+player.intellect + player.strength;
+      hit = Math.ceil(Math.random() * 26) + player.intellect + player.strength;
       if (player.resource >= 20) {
         player.resource -= 20;
         document.getElementById("playerResourceValue").innerHTML = player.resource;
@@ -1018,7 +1022,7 @@
       }
     }
     else if(player.class === "warrior") {
-      hit = Math.ceil(Math.random()*25)+player.strength;
+      hit = Math.ceil(Math.random() * 25) + player.strength;
       if (player.resource >= 20) {
         player.resource -= 20;
         document.getElementById("playerResourceValue").innerHTML = player.resource;
@@ -1032,7 +1036,7 @@
         alert("Not enough resource to use this attack!");
       }
     } else if (player.class === "rogue") {
-      hit = Math.ceil(Math.random()*25)+player.dexterity;
+      hit = Math.ceil(Math.random() * 25) + player.dexterity;
       if (player.resource >= 20) {
         player.resource -= 20;
         document.getElementById("playerResourceValue").innerHTML = player.resource;
@@ -1046,7 +1050,7 @@
         alert("Not enough resource to use this attack!");
       }
     } else if (player.class === "mage") {
-      hit = Math.ceil(Math.random()*20)+player.intellect;
+      hit = Math.ceil(Math.random() * 20) + player.intellect;
       if (player.resource >= 20) {
         player.resource -= 20;
         document.getElementById("playerResourceValue").innerHTML = player.resource;
@@ -1159,6 +1163,7 @@
       }
 
       if (player.health <= 0) {
+        player.health = 0;
         alert("Game over :(");
         location.reload();
       } else if (player.health <= 15) {

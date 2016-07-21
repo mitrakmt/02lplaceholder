@@ -1,5 +1,6 @@
-angular.module('02lApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
-  .controller('AppCtrl', ['$scope', '$interval', function($scope, $interval) {
+angular.module('02lApp',['ngMaterial', 'ngMessages', 'ngAnimate', 'toaster'])
+  .controller('myController', ['$scope', function($scope, toaster, $window) {
+
 
 
   }]);
