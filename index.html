@@ -66,7 +66,8 @@
           <span class="gold">Gold: <span id="playerGold"></span></span><br>
           Health potion: <span id="playerHealthPotion"></span> <button class="md-raised md-button buy-button" onclick="healthPotion()">Use</button><br>
           <span id="playerResourcePotionName"> </span> Potion: <span id="playerResourcePotion"></span> <button class="md-raised buy-button md-button" onclick="resourcePotion()">Use</button><br>
-          <br><br><br><br><br><br><br>
+          <br><br><br><br>
+          <p class="highScore">High Score: 602,026</p>
           <button class="md-button md-raised inventory-button" onclick="openEquipment()">Open Equipment Inventory</button>
         </p>
       </md-card>
@@ -143,8 +144,14 @@
 
     <!-- Battle log -->
     <div layout="row" layout-xs="column">
-      <md-card class="battleLogSection" layout-padding layout-margin flex>
-        <md-toolbar class="md-theme-light enemy-stats-bar" layout="row">
+      <md-card class="battleLogSection" layout="row" layout-padding layout-margin flex>
+        <div layout="column" flex>
+          <button id="startBattleButton" class="md-raised md-button start-battle-button" onclick="findEnemy()">Start Encounter</button>
+          <button id="attackButton" class="md-raised md-button attack-button" onclick="attack(enemy, normalStrength())">Attack</button>
+          <button id="skillaButton" class="md-raised md-button attack-button" onclick="attack(enemy, mediumStrength())"></button>
+          <button id="skillbButton" class="md-raised md-button attack-button" onclick="attack(enemy, maxStrength())"></button>
+        </div>
+        <md-toolbar class="md-theme-light enemy-stats-bar" layout="column" flex>
           <span id="inBattle">
             <h2 class="card-heading" id="enemyName"></h2>
             <p class="md-title" flex>Health: <span id="enemyHealth"></span></p>
@@ -154,12 +161,6 @@
             <p class="md-subhead enemy-stat" flex>Defence: <span id="enemyDefence"></span></p>
           </span>
         </md-toolbar>
-        <div layout="row">
-          <button id="startBattleButton" class="md-raised md-button start-battle-button" onclick="findEnemy()">Start Encounter</button>
-          <button id="attackButton" class="md-raised md-button attack-button" onclick="attack(enemy, normalStrength())">Attack</button>
-          <button id="skillaButton" class="md-raised md-button attack-button" onclick="attack(enemy, mediumStrength())"></button>
-          <button id="skillbButton" class="md-raised md-button attack-button" onclick="attack(enemy, maxStrength())"></button>
-        </div>
       </md-card>
 
       <md-card class="battleLogSection" layout-margin layout-padding flex>

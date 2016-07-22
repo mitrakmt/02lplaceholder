@@ -25,6 +25,14 @@ body {
   text-decoration: underline;
 }
 
+.md-subhead {
+  font-size: 14px;
+}
+
+.highScore {
+  text-align: center;
+}
+
 .battleLogSection {
   background-color: #E5E5E6;
   opacity: .85;
