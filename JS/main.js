@@ -1093,6 +1093,7 @@
         enemyHit.toFixed(1);;
       }
       enemy.stats.health -= hit;
+      Math.round(enemy.stats.health);
 
       // When enemy is killed:
       if (enemy.stats.health <= 0) {

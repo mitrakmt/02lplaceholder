@@ -18,8 +18,18 @@ TODO:
   // implement toaster ( we need toast )
   // add animations
   // maybe gain mana and health based on time
+  // even with constitution, health shouldn't go above 100. if > 100, set equal to 100
+  experience that enemies give you should scale
 
 
   // can't buy a dif class's weapons/armorList
   // Fix armor name, not showing up on profile.
-  //
+  //as health goes up, experience stays the same.
+  // score bug, jumped 200k after killing rag
+
+  //HI-SCORES
+  -
+  -
+  -
+  -
+  -
