@@ -4,6 +4,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  padding-top: 30px;
 }
 
 .playerStatsSection {
@@ -142,7 +143,29 @@ body {
   opacity: .2;
 }
 
-.toast-message {
+.toast-message-warning {
   color: white !important;
-  background-color: green;
+  /* background-color: #43a047; */
+  background-color: #e53935;
+  top: 0;
+  padding: 25px;
+  border-radius: 10px;
+  float: right;
+  right: 0;
+  position: fixed;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+.toast-message-success {
+  color: white !important;
+  background-color: #43a047;
+  top: 0;
+  padding: 25px;
+  border-radius: 10px;
+  float: right;
+  right: 0;
+  position: fixed;
+  margin-left: 10px;
+  margin-top: 30px;
 }

@@ -26,6 +26,7 @@ TODO:
   // Fix armor name, not showing up on profile.
   //as health goes up, experience stays the same.
   // score bug, jumped 200k after killing rag
+  // Tresures and lockpickign!
 
   //HI-SCORES
   -
