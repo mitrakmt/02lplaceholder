@@ -570,8 +570,12 @@
     }
   }
 
-  var viewToastr = function () {
-    toastr.info('My name is Inigo Montoya. You killed my father, prepare to die!');
+  var viewToastSuccess = function (string) {
+    toastr.success(string);
+  }
+
+  var viewToastWarn = function (string) {
+    toastr.warning(string);
   }
 
   var addStat = function (stat) {
@@ -587,7 +591,7 @@
       document.getElementById("playerDefence").innerHTML = player.defence;
       document.getElementById("playerWisdom").innerHTML = player.wisdom;
     } else {
-      alert("You have run out of points. Gain a level to receive more stat points!")
+      viewToastWarn("You have run out of points!");
     }
   }
 
@@ -599,7 +603,7 @@
       document.getElementById("playerHealth").innerHTML = player.health;
       document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
     } else {
-      alert("You have no health potions");
+      viewToastrWarn("You have no health potions.");
     }
   }
 
@@ -611,7 +615,7 @@
       document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
       document.getElementById("playerGold").innerHTML = player.gold;
     } else {
-      alert("Sorry, you don't have enough gold yet.")
+      viewToastWarn("Sorry, you don't have enough gold for that yet.");
     }
   }
 
@@ -623,7 +627,7 @@
       document.getElementById("playerResourceValue").innerHTML = player.resource;
       document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
     } else {
-      alert("You have no resource potions");
+      viewToastWarn("You have no resource potions.");
     }
   }
 
@@ -635,7 +639,7 @@
       document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
       document.getElementById("playerGold").innerHTML = player.gold;
     } else {
-      alert("Sorry, you don't have enough gold yet.")
+      viewToastWarn("Sorry, you don't have enough gold for that yet.");
     }
   }
 
@@ -650,6 +654,7 @@
         }
       }
 
+      viewToastSuccess("Your weapon has been equipped, and the old added to your inventory.");
       weaponCheck(player.weapon, weaponName);
 
       player.gold -= store.weapons[weaponName].cost;
@@ -663,7 +668,7 @@
       document.getElementById("playerGold").innerHTML = player.gold;
 
     } else {
-      alert("Sorry, you don't have enough gold yet.")
+      viewToastWarn("Sorry, you don't have enough gold for that yet.");
     }
   }
 
@@ -687,6 +692,8 @@
         }
       }
 
+      viewToastSuccess("Your armor has been equipped, and the old added to your inventory.");
+
       armorCheck(player.armor, armorName);
 
       player.armor = store.armor[armorName].name;
@@ -704,7 +711,7 @@
       document.getElementById("playerWisdom").innerHTML = player.wisdom;
       document.getElementById("playerGold").innerHTML = player.gold;
     } else {
-      alert("Sorry, you don't have enough gold yet.")
+      viewToastWarn("Sorry, you don't have enough gold for that yet.");
     }
   }
 
@@ -954,7 +961,7 @@
           return hit.toFixed(1);;
         }
       } else {
-        alert("Not enough resource to use this attack!");
+        viewToastWarn("Not enough resource to use this attack!");
       }
     }
     else if(player.class === "warrior") {
@@ -969,7 +976,7 @@
           return hit.toFixed(1);;
         }
       } else {
-        alert("Not enough resource to use this attack!");
+        viewToastWarn("Not enough resource to use this attack!");
       }
     } else if (player.class === "rogue") {
       hit = Math.ceil(Math.random()*20)+player.dexterity;
@@ -983,7 +990,7 @@
           return hit.toFixed(1);;
         }
       } else {
-        alert("Not enough resource to use this attack!");
+        viewToastWarn("Not enough resource to use this attack!");
       }
     } else if (player.class === "mage") {
       hit = Math.ceil(Math.random() * 11 ) + player.intellect;
@@ -997,7 +1004,7 @@
           return hit.toFixed(1);;
         }
       } else {
-        alert("Not enough resource to use this attack!");
+        viewToastWarn("Not enough resource to use this attack!");
       }
     }
     player.resource += (player.wisdom*2);
@@ -1018,7 +1025,7 @@
           return hit.toFixed(1);;
         }
       } else {
-        alert("Not enough resource to use this attack!");
+        viewToastWarn("Not enough resource to use this attack!");
       }
     }
     else if(player.class === "warrior") {
@@ -1033,7 +1040,7 @@
           return hit.toFixed(1);;
         }
       } else {
-        alert("Not enough resource to use this attack!");
+        viewToastWarn("Not enough resource to use this attack!");
       }
     } else if (player.class === "rogue") {
       hit = Math.ceil(Math.random() * 25) + player.dexterity;
@@ -1047,7 +1054,7 @@
           return hit.toFixed(1);;
         }
       } else {
-        alert("Not enough resource to use this attack!");
+        viewToastWarn("Not enough resource to use this attack!");
       }
     } else if (player.class === "mage") {
       hit = Math.ceil(Math.random() * 20) + player.intellect;
@@ -1061,7 +1068,7 @@
           return hit.toFixed(1);;
         }
       } else {
-        alert("Not enough mana to use this attack!");
+        viewToastWarn("Not enough mana to use this attack!");
       }
     }
     player.resource += (player.wisdom*2);
@@ -1076,7 +1083,8 @@
       totalExp = totalExp * 3;
       document.getElementById("playerStatPoints").innerHTML = player.statPoints;
       document.getElementById("playerLevel").innerHTML = player.level;
-      alert("Level gained! EXP needed to level " + (player.level+1) + " is " + totalExp)
+      var messageAlert = "Level gained! EXP needed to level " + (player.level+1) + " is " + totalExp;
+      viewToastSuccess(messageAlert);
     }
   }
 
@@ -1119,8 +1127,8 @@
 
         if (enemy.status === "Uncommon" || enemy.status === "Rare") {
           var success = Math.ceil(Math.random() * 10);
-          console.log(success);
           if (success === 9 || success === 10) {
+            viewToastSuccess("The enemy dropped a mallet and it has been added to your inventory!");
             if (player.inventory.mallet === undefined) {
               player.inventory.mallet = 1;
             } else {
@@ -1131,8 +1139,8 @@
 
         if (enemy.status === "Boss" || enemy.status === "Rare") {
           var success = Math.ceil(Math.random() * 10);
-          console.log(success);
           if (success === 9 || success === 10) {
+            viewToastSuccess("The enemy dropped the tier 1 Judgement Armor, and it has been added to your inventory!");
             if (player.inventory['Judgement Armor'] === undefined) {
               player.inventory['Judgement Armor'] = 1;
             } else {
@@ -1168,7 +1176,7 @@
         alert("Game over :(");
         location.reload();
       } else if (player.health <= 15) {
-        alert("You are low on health!");
+        viewToastWarn("You are at low health!");
       }
 
       return enemy;
