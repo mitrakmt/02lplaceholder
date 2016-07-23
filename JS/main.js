@@ -1163,8 +1163,8 @@
         action();
 
       } else
-        document.getElementById("logListTitle").innerHTML = "Attack Successful";
-        document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!";
+        document.getElementById("logListTitle").innerHTML = "";
+        document.getElementById("logListDesc").innerHTML += "You hit for " + hit + "!" + '<br>';
         document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
         player.health -= (enemyHit - (player.defence/2));
         player.health = Math.round(player.health);
