@@ -3,6 +3,6 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "02lplaceholder"
+    "public": "02l"
   }
 }
