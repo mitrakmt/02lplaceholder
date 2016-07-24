@@ -27,15 +27,30 @@
   var armorList = document.getElementById("armorList");
   var weaponsList = document.getElementById("weaponsList");
 
+  //
   var randomTreasure = function () {
-    var randomNumber = Math.floor(Math.random() * 3);
-    document.getElementById("logListTitle").innerHTML = "";
-    document.getElementById("logListDesc").innerHTML += "You just came across a treasure chest!";
-    // Says weapons is not defined
-    var returnedWeapons = _.filter(store.weapons, function(item) {
+    document.getElementById("logListTitle").innerHTML = "You found a chest!";
+    document.getElementById("logListDesc").innerHTML = "You found a treasure chest! But.. someone approaches. <br>";
+    document.getElementById("logListDesc").innerHTML += "The stranger says 'I see you found my chest. You didn't think I would let someone take it that easily, did you? Answer my puzzle correctly and it's all yours. <br>";
+  }
+
+  var treasureSuccess = function () {
+    // add in if success with argument passed in
+    var chooseTreasure = Math.floor(Math.random() * treasure.length);
+    document.getElementById("logListDesc").innerHTML = "Success! You opened the chest and were awarded " + treasure[chooseTreasure].count + " " + treasure[chooseTreasure].name + "<br>";
+    treasure[chooseTreasure].action();
+  }
+
+  var randomWeapon = function () {
+    var randomSelection = Math.floor(Math.random() * 3);
+
+    var classWeapons = _.filter(store.weapons, function(item) {
       return item.class == player.class;
     })
-    return returnedWeapons[randomNumber];
+    var selectedWeapon = classWeapons[randomSelection].name;
+    player.inventory[selectedWeapon] = 1;
+
+    document.getElementById("logListDesc").innerHTML += "The chest you opened was extremely rare and contained " + selectedWeapon + "! <br>";
   }
 
   // Convert player state to inBattle and !inBattle
@@ -49,6 +64,7 @@
           document.getElementById('enemyStatus').style.visibility = 'visible';
           document.getElementById('enemyStrength').style.visibility = 'visible';
           document.getElementById('enemyDefence').style.visibility = 'visible';
+          document.getElementById('nowInBattle').style.visibility = 'visible';
           document.getElementById('enemyLevel').style.visibility = 'visible';
           document.getElementById('inBattle').style.visibility = 'visible';
 
@@ -66,6 +82,7 @@
           document.getElementById('enemyHealth').style.visibility = 'hidden';
           document.getElementById('enemyName').style.visibility = 'hidden';
           document.getElementById('inBattle').style.visibility = 'hidden';
+          document.getElementById('nowInBattle').style.visibility = 'hidden';
           document.getElementById('enemyStatus').style.visibility = 'hidden';
           document.getElementById('enemyStrength').style.visibility = 'hidden';
           document.getElementById('enemyDefence').style.visibility = 'hidden';
@@ -167,72 +184,82 @@
       name : "Giant Rat",
       status: "Common",
       level: 1,
+      gold: 2,
       experience: 7,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 2}
+      inventory: {healthPotion: 0, resourcePotion: 0}
     }, {
       name : "King Scorpion",
       status: "Uncommon",
       level: 1,
+      gold: 3,
       experience: 25,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
+      inventory: {healthPotion: 0, resourcePotion: 0}
     } , {
       name : "Camel",
       status: "Common",
       level: 1,
+      gold: 1,
       experience: 10,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 1}
+      inventory: {healthPotion: 0, resourcePotion: 0}
     } , {
       name : "Mummy",
       status: "Common",
       level: 1,
+      gold: 5,
       experience: 10,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 5}
+      inventory: {healthPotion: 0, resourcePotion: 0}
     } , {
       name : "Naga",
       status: "Common",
       level: 1,
+      gold: 4,
       experience: 10,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 4}
+      inventory: {healthPotion: 0, resourcePotion: 0}
     } , {
       name : "Ragnaros",
       status: "Boss",
       level: 3,
+      gold: 100,
       experience: 150,
       stats : {health : 150, mana : 100, intellect : 3, strength : 6, dexterity : 3, wisdom : 5, constitution : 5, defence : 4},
-      inventory: {healthPotion: 4, resourcePotion: 4, gold: 100}
+      inventory: {healthPotion: 4, resourcePotion: 4}
     } , {
       name : "King Sabertooth",
       status: "Rare",
       level: 2,
+      gold: 85,
       experience: 80,
       stats : {health : 110, mana : 100, intellect : 2, strength : 4, dexterity : 3, wisdom : 5, constitution : 4, defence : 3},
-      inventory: {healthPotion: 2, resourcePotion: 3, gold: 85}
+      inventory: {healthPotion: 2, resourcePotion: 3}
     } , {
       name : "Arcane Golem",
       status: "Uncommon",
       level: 1,
+      gold: 35,
       experience: 25,
       stats : {health : 80, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
+      inventory: {healthPotion: 2, resourcePotion: 2}
     } , {
       name : "Orc Warrior",
       status: "Common",
       level: 1,
+      gold: 35,
       experience: 18,
       stats : {health : 80, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 1, resourcePotion: 2, gold: 35}
+      inventory: {healthPotion: 1, resourcePotion: 2}
     } , {
       name : "Tauren Warrior",
       status: "Uncommon",
       level: 2,
+      gold: 35,
       experience: 20,
       stats : {health : 90, mana : 100, intellect : 1, strength : 4, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 2, resourcePotion: 1, gold: 35}
+      inventory: {healthPotion: 2, resourcePotion: 1}
     } , {
       name: "treasure",
       status: "random",
@@ -242,6 +269,99 @@
       }
     }
   ];
+
+  var treasure = [
+    {
+      name: "Health Potion",
+      count: 2,
+      action: function () {
+        player.inventory.healthPotion += 2;
+        document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+      }
+    },
+    {
+      name: "Resource Potion",
+      count: 2,
+      action: function() {
+        player.inventory.resourcePotion += 2;
+        document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
+      }
+    },
+    {
+      name: "Health Potion",
+      count: 1,
+      action: function () {
+        player.inventory.healthPotion++;
+        document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+      }
+    },
+    {
+      name: "Resource Potion",
+      count: 2,
+      action: function() {
+        player.inventory.resourcePotion += 2;
+        document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
+      }
+    },
+    {
+      name: "Health Potion",
+      count: 2,
+      action: function () {
+        player.inventory.healthPotion += 2;
+        document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+      }
+    },
+    {
+      name: "Resource Potion",
+      count: 1,
+      action: function() {
+        player.inventory.resourcePotion++;
+        document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
+      }
+    },
+    {
+      name: "Gold",
+      count: 300,
+      action: function() {
+        player.gold += 300;
+        document.getElementById("playerGold").innerHTML = player.gold;
+      }
+    },
+    {
+      name: "New Level",
+      count: 1,
+      action: function() {
+        gainedLevel("treasure");
+      }
+    },
+    {
+      name: "Rare Weapon",
+      count: 1,
+      action: function() {
+        randomWeapon();
+      }
+    }
+  ]
+
+  var completedQuestions = [];
+  var puzzles = [
+    {
+      "question": "The more you take, the more you leave behind. What am I?",
+      "answer": "footsteps"
+    },
+    {
+      "question": "I don't have eyes, but once I did see. Once I had thoughts, but now I'm white and empty.",
+      "answer": "skull"
+    },
+    {
+      "question": "What flies without wings?",
+      "answer": "time"
+    },
+    {
+      "question": "What disappears the moment you say its name?",
+      "answer": "silence"
+    }
+  ]
 
   // Store Object
   var store = {
@@ -1110,8 +1230,8 @@
   }
 
   // Player Gain Level Function
-  var gainedLevel = function() {
-    if (player.experience > totalExp) {
+  var gainedLevel = function(status) {
+    if (player.experience > totalExp || status === "treasure") {
       player.level++;
       player.statPoints += 4;
       totalExp = totalExp * 3;
@@ -1119,6 +1239,32 @@
       document.getElementById("playerLevel").innerHTML = player.level;
       var messageAlert = "Level gained! EXP needed to level " + (player.level+1) + " is " + totalExp;
       viewToastSuccess(messageAlert);
+    }
+  }
+
+  var checkEnemyStatus = function () {
+    if (enemy.status === "Uncommon" || enemy.status === "Rare") {
+      var success = Math.ceil(Math.random() * 10);
+      if (success === 9 || success === 10) {
+        viewToastSuccess("The enemy dropped a mallet and it has been added to your inventory!");
+        if (player.inventory.mallet === undefined) {
+          player.inventory.mallet = 1;
+        } else {
+          player.inventory.mallet++;
+        }
+      }
+    }
+
+    if (enemy.status === "Boss") {
+      var success = Math.ceil(Math.random() * 10);
+      if (success === 9 || success === 10) {
+        viewToastSuccess("The enemy dropped the tier 1 Judgement Armor, and it has been added to your inventory!");
+        if (player.inventory['Judgement Armor'] === undefined) {
+          player.inventory['Judgement Armor'] = 1;
+        } else {
+          player.inventory['Judgement Armor']++;
+        }
+      }
     }
   }
 
@@ -1141,9 +1287,9 @@
       if (enemy.stats.health <= 0) {
         // Update player stats
         document.getElementById("logListTitle").innerHTML = "Enemy defeated!";
-        document.getElementById("logListDesc").innerHTML = "You found " + enemy.inventory.gold + " gold!" + "<br>";
-        enemy.inventory.gold *= (enemy.level * .75);
-        player.gold += enemy.inventory.gold;
+        document.getElementById("logListDesc").innerHTML = "You found " + enemy.gold + " gold!" + "<br>";
+        enemy.gold *= (enemy.level * .75);
+        player.gold += Math.round(enemy.gold);
         player.experience += enemy.experience * player.level;
         gainedLevel();
         document.getElementById("playerGold").innerHTML = player.gold;
@@ -1160,34 +1306,12 @@
           }
         }
 
-        if (enemy.status === "Uncommon" || enemy.status === "Rare") {
-          var success = Math.ceil(Math.random() * 10);
-          if (success === 9 || success === 10) {
-            viewToastSuccess("The enemy dropped a mallet and it has been added to your inventory!");
-            if (player.inventory.mallet === undefined) {
-              player.inventory.mallet = 1;
-            } else {
-              player.inventory.mallet++;
-            }
-          }
-        }
-
-        if (enemy.status === "Boss" || enemy.status === "Rare") {
-          var success = Math.ceil(Math.random() * 10);
-          if (success === 9 || success === 10) {
-            viewToastSuccess("The enemy dropped the tier 1 Judgement Armor, and it has been added to your inventory!");
-            if (player.inventory['Judgement Armor'] === undefined) {
-              player.inventory['Judgement Armor'] = 1;
-            } else {
-              player.inventory['Judgement Armor']++;
-            }
-          }
-        }
+        checkEnemyStatus();
 
         player.score += Math.round(enemy.level * startHP * enemy.stats.strength);
-        document.getElementById("playerScore").innerHTML = player.score;
 
         // Updpate items on DOM
+        document.getElementById("playerScore").innerHTML = player.score;
         document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
         document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
 
@@ -1199,7 +1323,7 @@
 
       } else {
         document.getElementById("logListTitle").innerHTML = "";
-        document.getElementById("logListDesc").innerHTML += "You hit for " + hit + "!" + '<br>';
+        document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!" + '<br>';
         enemy.stats.health = Math.round(enemy.stats.health);
         document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
         player.health -= (enemyHit - (player.defence/2));

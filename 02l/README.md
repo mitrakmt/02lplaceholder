@@ -25,3 +25,7 @@ TODO:
   //as health goes up, experience stays the same.
   // score bug, jumped 200k after killing rag
   // Tresures and lockpickign!
+
+
+
+Now have to add in visual of treasure card on UI when finding a treasure

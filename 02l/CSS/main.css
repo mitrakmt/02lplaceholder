@@ -20,6 +20,14 @@ body {
   font-weight: bold;
 }
 
+#nowInBattle {
+  visibility: hidden;
+}
+
+#inTreasureMode {
+  visibility: hidden;
+}
+
 .card-heading {
   margin-bottom: 0px;
   margin-top: 3px;
