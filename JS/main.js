@@ -27,6 +27,17 @@
   var armorList = document.getElementById("armorList");
   var weaponsList = document.getElementById("weaponsList");
 
+  var randomTreasure = function () {
+    var randomNumber = Math.floor(Math.random() * 3);
+    document.getElementById("logListTitle").innerHTML = "";
+    document.getElementById("logListDesc").innerHTML += "You just came across a treasure chest!";
+    // Says weapons is not defined
+    var returnedWeapons = _.filter(store.weapons, function(item) {
+      return item.class == player.class;
+    })
+    return returnedWeapons[randomNumber];
+  }
+
   // Convert player state to inBattle and !inBattle
   function action() {
       inBattle = !inBattle;
@@ -222,6 +233,13 @@
       experience: 20,
       stats : {health : 90, mana : 100, intellect : 1, strength : 4, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
       inventory: {healthPotion: 2, resourcePotion: 1, gold: 35}
+    } , {
+      name: "treasure",
+      status: "random",
+      level: "random",
+      inventory: function() {
+        randomTreasure();
+      }
     }
   ];
 
@@ -648,6 +666,7 @@
     }
   }
 
+
   // Buy Weapon Function
   var buyWeapon = function (weaponName) {
     if (player.gold >= store.weapons[weaponName].cost) {
@@ -882,7 +901,6 @@
   document.getElementById("buyHealthPotionCost").innerHTML = store.potions.HealthPotion.cost;
   document.getElementById("buyResourcePotionCost").innerHTML = store.potions.ResourcePotion.cost;
 
-
   var openEquipment = function () {
     for (var item in player.inventory) {
       console.log(item);
@@ -893,6 +911,9 @@
   var findEnemy = function() {
     var randEnemy = Math.ceil((Math.random() * enemies.length) - 1);
     enemy = enemies[randEnemy];
+    if (enemy.name === 'treasure') {
+      return randomTreasure();
+    }
     if (player.level !== 1) {
       hpMultiplier = 1;
       strMultiplier = 1;
