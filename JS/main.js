@@ -1166,9 +1166,9 @@
         // Take the player out of battle
         action();
 
-      } else
-        document.getElementById("logListTitle").innerHTML = "Attack Successful";
-        document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!";
+      } else {
+        document.getElementById("logListTitle").innerHTML = "";
+        document.getElementById("logListDesc").innerHTML += "You hit for " + hit + "!" + '<br>';
         enemy.stats.health = Math.round(enemy.stats.health);
         document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
         player.health -= (enemyHit - (player.defence/2));
