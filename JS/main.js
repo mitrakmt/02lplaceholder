@@ -609,7 +609,9 @@
 
   // Buy Health Potion Function
   var buyHealthPotion = function () {
-    if (player.gold > store.potions.HealthPotion.cost) {
+    if (player.health === 100) {
+      viewToastWarn("You are at full health!");
+    } else if (player.gold > store.potions.HealthPotion.cost) {
       player.gold -= store.potions.HealthPotion.cost;
       player.inventory.healthPotion++;
       document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
@@ -633,7 +635,9 @@
 
   // Buy Resource Potion Function
   var buyResourcePotion = function () {
-    if (player.gold > store.potions.ResourcePotion.cost) {
+    if (player.resource === 100) {
+      viewToastWarn("You are at full resource!");
+    } else if (player.gold >= store.potions.ResourcePotion.cost) {
       player.gold -= store.potions.ResourcePotion.cost;
       player.inventory.resourcePotion++;
       document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
@@ -1109,7 +1113,7 @@
         document.getElementById("logListTitle").innerHTML = "Enemy defeated!";
         document.getElementById("logListDesc").innerHTML = "You found " + enemy.inventory.gold + " gold!";
         player.gold += enemy.inventory.gold;
-        player.experience += enemy.experience;
+        player.experience += enemy.experience * player.level;
         gainedLevel();
         document.getElementById("playerGold").innerHTML = player.gold;
         document.getElementById("playerHealth").innerHTML = player.health;
@@ -1165,6 +1169,7 @@
       } else
         document.getElementById("logListTitle").innerHTML = "Attack Successful";
         document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!";
+        enemy.stats.health = Math.round(enemy.stats.health);
         document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
         player.health -= (enemyHit - (player.defence/2));
         player.health = Math.round(player.health);
