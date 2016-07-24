@@ -8,6 +8,7 @@
   var rogueResource = "Energy";
   var hpMultiplier = 1;
   var strMultiplier = 1;
+  var baseHP = 100;
 
   // Create elements for insert to DOM
   var newListItem = document.createElement("li");
@@ -597,7 +598,9 @@
 
   // Consume Health Potion Function
   var healthPotion = function () {
-    if (player.inventory.healthPotion > 0) {
+    if (player.health === 100) {
+      viewToastWarn("You are at full health!");
+    } else if (player.inventory.healthPotion > 0) {
       player.health = 100;
       player.inventory.healthPotion--;
       document.getElementById("playerHealth").innerHTML = player.health;
@@ -609,9 +612,7 @@
 
   // Buy Health Potion Function
   var buyHealthPotion = function () {
-    if (player.health === 100) {
-      viewToastWarn("You are at full health!");
-    } else if (player.gold > store.potions.HealthPotion.cost) {
+    if (player.gold > store.potions.HealthPotion.cost) {
       player.gold -= store.potions.HealthPotion.cost;
       player.inventory.healthPotion++;
       document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
@@ -623,7 +624,9 @@
 
   // Consume Resource Potion Function
   var resourcePotion = function () {
-    if (player.inventory.resourcePotion > 0) {
+    if (player.resource === 100) {
+      viewToastWarn("You are at full resource!");
+    } else if (player.inventory.resourcePotion > 0) {
       player.resource = 100;
       player.inventory.resourcePotion--;
       document.getElementById("playerResourceValue").innerHTML = player.resource;
@@ -635,9 +638,7 @@
 
   // Buy Resource Potion Function
   var buyResourcePotion = function () {
-    if (player.resource === 100) {
-      viewToastWarn("You are at full resource!");
-    } else if (player.gold >= store.potions.ResourcePotion.cost) {
+    if (player.gold >= store.potions.ResourcePotion.cost) {
       player.gold -= store.potions.ResourcePotion.cost;
       player.inventory.resourcePotion++;
       document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
@@ -947,8 +948,7 @@
         return hit.toFixed(1);;
       }
     }
-    player.resource += (player.wisdom*2);
-    player.health += (player.constitution*.5);
+    regainStats();
   }
 
   // Medium Strength Attack Function
@@ -1011,8 +1011,7 @@
         viewToastWarn("Not enough resource to use this attack!");
       }
     }
-    player.resource += (player.wisdom*2);
-    player.health += (player.constitution*.5);
+    regainStats();
   }
 
   // Max Strength Attack Function
@@ -1075,8 +1074,18 @@
         viewToastWarn("Not enough mana to use this attack!");
       }
     }
-    player.resource += (player.wisdom*2);
-    player.health += (player.constitution*.5);
+    regainStats();
+  }
+
+  var regainStats = function () {
+    player.resource += (player.wisdom * 2);
+    player.health += (player.constitution * .5);
+    if (player.health > 100) {
+      player.health = baseHP;
+    }
+    if (player.resource > 100) {
+      player.resource = 100;
+    }
   }
 
   // Player Gain Level Function
@@ -1111,7 +1120,8 @@
       if (enemy.stats.health <= 0) {
         // Update player stats
         document.getElementById("logListTitle").innerHTML = "Enemy defeated!";
-        document.getElementById("logListDesc").innerHTML = "You found " + enemy.inventory.gold + " gold!";
+        document.getElementById("logListDesc").innerHTML = "You found " + enemy.inventory.gold + " gold!" + "<br>";
+        enemy.inventory.gold *= (enemy.level * .75);
         player.gold += enemy.inventory.gold;
         player.experience += enemy.experience * player.level;
         gainedLevel();
@@ -1186,3 +1196,4 @@
 
       return enemy;
     }
+  }

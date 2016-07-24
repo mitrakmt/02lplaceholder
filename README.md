@@ -9,17 +9,14 @@ TODO:
   // fix potion drop rates
   // rare chance of monsters dropping weapons
   // fix player inventory so they can choose what armor and weapons to equip
-  // one weapon/armor?
-  // more user options ig. stat choices
-  // fix combat log so it scrolls
-  // show enemy stats in combat
-  // more weapons
   // backpack/character sprites/item icons
-  // implement toaster ( we need toast )
   // add animations
   // maybe gain mana and health based on time
-  // even with constitution, health shouldn't go above 100. if > 100, set equal to 100
+  if nothing equipped, put dropped weapons onto player. based on class
   experience that enemies give you should scale
+  sub classes with more powerful skills
+  run away button, based on luck
+  
 
 
   // can't buy a dif class's weapons/armorList
