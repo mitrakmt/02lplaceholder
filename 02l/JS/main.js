@@ -1,15 +1,16 @@
-  var hit, skillA, skillB;
-  var inBattle = false;
-  var startHP = 0;
-  var totalExp = 100;
-  var mageResource = "Mana";
-  var paladinResource = "Mana";
-  var warriorResource = "Rage";
-  var rogueResource = "Energy";
-  var hpMultiplier = 1;
-  var strMultiplier = 1;
-  var baseHP = 100;
-  var bleh;
+  var hit, skillA, skillB,
+   inBattle = false,
+   startHP = 0,
+   totalExp = 100,
+   mageResource = "Mana",
+   paladinResource = "Mana",
+   warriorResource = "Rage",
+   rogueResource = "Energy",
+   hpMultiplier = 1,
+   strMultiplier = 1,
+   baseHP = 100,
+   correct = false,
+   question, answer;
 
   // Create elements for insert to DOM
   var newListItem = document.createElement("li");
@@ -30,16 +31,23 @@
 
   //
   var randomTreasure = function () {
-    document.getElementById("logListTitle").innerHTML = "You found a chest!";
-    document.getElementById("logListDesc").innerHTML = "You found a treasure chest! But.. someone approaches. <br>";
-    document.getElementById("logListDesc").innerHTML += "The stranger says 'I see you found my chest. You didn't think I would let someone take it that easily, did you? Answer my puzzle correctly and it's all yours. <br>";
+    var randomRiddle = Math.floor(Math.random() * riddles.length);
+    document.getElementById("logListTitle").innerHTML = "Riddle Wall";
+    document.getElementById("logListDesc").innerHTML = "You come across a riddle wall. <br>";
+    document.getElementById("logListDesc").innerHTML += "A voice says 'Answer the riddle correctly and you'll be rewarded. <br>";
+    answer = riddles[randomRiddle].answer;
+    question = riddles[randomRiddle].question;
+    document.getElementById("currentRiddle").innerHTML = question;
+    document.getElementById('inTreasureMode').style.visibility = 'visible';
   }
 
   var treasureSuccess = function () {
-    // add in if success with argument passed in
-    var chooseTreasure = Math.floor(Math.random() * treasure.length);
-    document.getElementById("logListDesc").innerHTML = "Success! You opened the chest and were awarded " + treasure[chooseTreasure].count + " " + treasure[chooseTreasure].name + "<br>";
-    treasure[chooseTreasure].action();
+    var userAnswer = prompt("What is your answer?");
+    if (userAnswer === answer) {
+      var chooseTreasure = Math.floor(Math.random() * treasure.length);
+      document.getElementById("logListDesc").innerHTML = "Success! You opened the chest and were awarded " + treasure[chooseTreasure].count + " " + treasure[chooseTreasure].name + "<br>";
+      treasure[chooseTreasure].action();
+    }
   }
 
   var randomWeapon = function () {
@@ -59,6 +67,7 @@
       inBattle = !inBattle;
       if(inBattle) {
           document.getElementById('startBattleButton').style.visibility = 'hidden';
+          document.getElementById('inTreasureMode').style.visibility = 'hidden';
           document.getElementById('attackButton').style.visibility = 'visible';
           document.getElementById('enemyHealth').style.visibility = 'visible';
           document.getElementById('enemyName').style.visibility = 'visible';
@@ -345,22 +354,38 @@
   ]
 
   var completedQuestions = [];
-  var puzzles = [
+  var riddles = [
     {
-      "question": "The more you take, the more you leave behind. What am I?",
-      "answer": "footsteps"
+      question: "The more you take, the more you leave behind. What am I?",
+      answer: "footsteps"
     },
     {
-      "question": "I don't have eyes, but once I did see. Once I had thoughts, but now I'm white and empty.",
-      "answer": "skull"
+      question: "I don't have eyes, but once I did see. Once I had thoughts, but now I'm white and empty.",
+      answer: "skull"
     },
     {
-      "question": "What flies without wings?",
-      "answer": "time"
+      question: "What flies without wings?",
+      answer: "time"
     },
     {
-      "question": "What disappears the moment you say its name?",
-      "answer": "silence"
+      question: "What disappears the moment you say its name?",
+      answer: "silence"
+    },
+    {
+      question: "What body part is pronounced as one letter but written with three, only two different letters are used?",
+      answer: "eye"
+    },
+    {
+      question: "It can be cracked, It can be made, It can be told, it can be played. What is it?",
+      answer: "jokes"
+    },
+    {
+      question: "What has a head, a tail, is brown, and has no legs?",
+      answer: "penny"
+    },
+    {
+      question: "Feed me and I live, yet give me a drink and I die",
+      answer: "fire"
     }
   ]
 
@@ -1046,6 +1071,7 @@
       return randomTreasure();
     }
     if (player.level !== 1) {
+      startHP = enemy.stats.health;
       hpMultiplier = 1;
       strMultiplier = 1;
       for (var i=1; i<player.level; i++) {

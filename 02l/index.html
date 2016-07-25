@@ -179,6 +179,18 @@
       </md-card>
     </div>
 
+    <md-card class="battleLogSection" id="inTreasureMode" layout-margin layout-padding flex>
+        <md-list>
+          <h2 class="card-heading">Answer the riddle correctly to unlock the chest.</h2>
+          <md-list-item class="md-3-line" layout-padding layout-margin>
+            <div class="md-list-item-text">
+              <h3 id="currentRiddle"></h3>
+              <button type="submit" onclick="return treasureSuccess()" value="Submit">I think I know.. let me answer!</button>
+            </div>
+          </md-list-item>
+        </md-list>
+    </md-card>
+
     <!-- <input class="cheatCodes" onclick="cheatCodes()"></input> -->
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
