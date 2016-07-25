@@ -22,3 +22,7 @@ TODO:
   // Fix armor name, not showing up on profile.
   // score bug, jumped 200k after killing rag
   // Tresures and lockpickign!
+
+
+
+Now have to add in visual of treasure card on UI when finding a treasure
