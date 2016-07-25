@@ -1,4 +1,4 @@
-  var hit, skillA, skillB,
+  var hit, skillA, skillB, question, answer,
    inBattle = false,
    startHP = 0,
    totalExp = 100,
@@ -8,9 +8,7 @@
    rogueResource = "Energy",
    hpMultiplier = 1,
    strMultiplier = 1,
-   baseHP = 100,
-   correct = false,
-   question, answer;
+   baseHP = 100;
 
   // Create elements for insert to DOM
   var newListItem = document.createElement("li");
@@ -22,8 +20,8 @@
   var newLineBreak = document.createElement("br");
   var newButton = document.createElement("button");
   var newSpan = document.createElement("span");
-  var storeUl = document.querySelector('ul');
-  var storeCard = document.getElementById('storeCard');
+  var storeUl = document.querySelector("ul");
+  var storeCard = document.getElementById("storeCard");
 
   // Create lists for insert to DOM
   var armorList = document.getElementById("armorList");
@@ -34,11 +32,11 @@
     var randomRiddle = Math.floor(Math.random() * riddles.length);
     document.getElementById("logListTitle").innerHTML = "Riddle Wall";
     document.getElementById("logListDesc").innerHTML = "You come across a riddle wall. <br>";
-    document.getElementById("logListDesc").innerHTML += "A voice says 'Answer the riddle correctly and you'll be rewarded. <br>";
+    document.getElementById("logListDesc").innerHTML += "A voice says 'Answer the riddle correctly and you'll be rewarded.' <br>";
     answer = riddles[randomRiddle].answer;
     question = riddles[randomRiddle].question;
     document.getElementById("currentRiddle").innerHTML = question;
-    document.getElementById('inTreasureMode').style.visibility = 'visible';
+    document.getElementById("inTreasureMode").style.visibility = "visible";
   }
 
   var treasureSuccess = function () {
@@ -66,44 +64,44 @@
   function action() {
       inBattle = !inBattle;
       if(inBattle) {
-          document.getElementById('startBattleButton').style.visibility = 'hidden';
-          document.getElementById('inTreasureMode').style.visibility = 'hidden';
-          document.getElementById('attackButton').style.visibility = 'visible';
-          document.getElementById('enemyHealth').style.visibility = 'visible';
-          document.getElementById('enemyName').style.visibility = 'visible';
-          document.getElementById('enemyStatus').style.visibility = 'visible';
-          document.getElementById('enemyStrength').style.visibility = 'visible';
-          document.getElementById('enemyDefence').style.visibility = 'visible';
-          document.getElementById('nowInBattle').style.visibility = 'visible';
-          document.getElementById('enemyLevel').style.visibility = 'visible';
-          document.getElementById('inBattle').style.visibility = 'visible';
+          document.getElementById("startBattleButton").style.visibility = "hidden";
+          document.getElementById("inTreasureMode").style.visibility = "hidden";
+          document.getElementById("attackButton").style.visibility = "visible";
+          document.getElementById("enemyHealth").style.visibility = "visible";
+          document.getElementById("enemyName").style.visibility = "visible";
+          document.getElementById("enemyStatus").style.visibility = "visible";
+          document.getElementById("enemyStrength").style.visibility = "visible";
+          document.getElementById("enemyDefence").style.visibility = "visible";
+          document.getElementById("nowInBattle").style.visibility = "visible";
+          document.getElementById("enemyLevel").style.visibility = "visible";
+          document.getElementById("inBattle").style.visibility = "visible";
 
           if (player.level >= 2) {
-            document.getElementById('skillaButton').innerHTML = skillA;
-            document.getElementById('skillaButton').style.visibility = 'visible';
+            document.getElementById("skillaButton").innerHTML = skillA;
+            document.getElementById("skillaButton").style.visibility = "visible";
           }
           if (player.level >= 5) {
-            document.getElementById('skillbButton').innerHTML = skillB;
-            document.getElementById('skillbButton').style.visibility = 'visible';
+            document.getElementById("skillbButton").innerHTML = skillB;
+            document.getElementById("skillbButton").style.visibility = "visible";
           }
       } else {
-          document.getElementById('startBattleButton').style.visibility = 'visible';
-          document.getElementById('attackButton').style.visibility = 'hidden';
-          document.getElementById('enemyHealth').style.visibility = 'hidden';
-          document.getElementById('enemyName').style.visibility = 'hidden';
-          document.getElementById('inBattle').style.visibility = 'hidden';
-          document.getElementById('nowInBattle').style.visibility = 'hidden';
-          document.getElementById('enemyStatus').style.visibility = 'hidden';
-          document.getElementById('enemyStrength').style.visibility = 'hidden';
-          document.getElementById('enemyDefence').style.visibility = 'hidden';
-          document.getElementById('enemyLevel').style.visibility = 'hidden';
+          document.getElementById("startBattleButton").style.visibility = "visible";
+          document.getElementById("attackButton").style.visibility = "hidden";
+          document.getElementById("enemyHealth").style.visibility = "hidden";
+          document.getElementById("enemyName").style.visibility = "hidden";
+          document.getElementById("inBattle").style.visibility = "hidden";
+          document.getElementById("nowInBattle").style.visibility = "hidden";
+          document.getElementById("enemyStatus").style.visibility = "hidden";
+          document.getElementById("enemyStrength").style.visibility = "hidden";
+          document.getElementById("enemyDefence").style.visibility = "hidden";
+          document.getElementById("enemyLevel").style.visibility = "hidden";
           if (player.level >= 2) {
-            document.getElementById('skillaButton').style.visibility = 'hidden';
-            document.getElementById('skillaButton').innerHTML = skillA;
+            document.getElementById("skillaButton").style.visibility = "hidden";
+            document.getElementById("skillaButton").innerHTML = skillA;
           }
           if (player.level >= 5) {
-            document.getElementById('skillbButton').style.visibility = 'hidden';
-            document.getElementById('skillbButton').innerHTML = skillB;
+            document.getElementById("skillbButton").style.visibility = "hidden";
+            document.getElementById("skillbButton").innerHTML = skillB;
           }
         }
       }
@@ -823,8 +821,8 @@
       }
 
       if (store.weapons[weaponName].cost > 100) {
-        var answer = confirm("This item costs " + store.weapons[weaponName].cost + ". Are you sure you want to buy this?");
-        if (!answer) {
+        var buyWeaponAnswer = confirm("This item costs " + store.weapons[weaponName].cost + ". Are you sure you want to buy this?");
+        if (!buyWeaponAnswer) {
           return;
         }
       }
@@ -973,82 +971,82 @@
 
   // Insert store into DOM
     // Paldins weapons
-  document.getElementById("buyKingSlayerName").innerHTML = store.weapons['King Slayer'].name;
-  document.getElementById("buyKingSlayerCost").innerHTML = store.weapons['King Slayer'].cost;
-  document.getElementById("buyMalletName").innerHTML = store.weapons['Mallet'].name;
-  document.getElementById("buyMalletCost").innerHTML = store.weapons['Mallet'].cost;
-  document.getElementById("buyAshbringerName").innerHTML = store.weapons['Ashbringer'].name;
-  document.getElementById("buyAshbringerCost").innerHTML = store.weapons['Ashbringer'].cost;
-  document.getElementById("buyTruthguardName").innerHTML = store.weapons['Truthguard'].name;
-  document.getElementById("buyTruthguardCost").innerHTML = store.weapons['Truthguard'].cost;
-  document.getElementById("buyFrostmourneName").innerHTML = store.weapons['Frostmourne'].name;
-  document.getElementById("buyFrostmourneCost").innerHTML = store.weapons['Frostmourne'].cost;
+  document.getElementById("buyKingSlayerName").innerHTML = store.weapons["King Slayer"].name;
+  document.getElementById("buyKingSlayerCost").innerHTML = store.weapons["King Slayer"].cost;
+  document.getElementById("buyMalletName").innerHTML = store.weapons["Mallet"].name;
+  document.getElementById("buyMalletCost").innerHTML = store.weapons["Mallet"].cost;
+  document.getElementById("buyAshbringerName").innerHTML = store.weapons["Ashbringer"].name;
+  document.getElementById("buyAshbringerCost").innerHTML = store.weapons["Ashbringer"].cost;
+  document.getElementById("buyTruthguardName").innerHTML = store.weapons["Truthguard"].name;
+  document.getElementById("buyTruthguardCost").innerHTML = store.weapons["Truthguard"].cost;
+  document.getElementById("buyFrostmourneName").innerHTML = store.weapons["Frostmourne"].name;
+  document.getElementById("buyFrostmourneCost").innerHTML = store.weapons["Frostmourne"].cost;
 
     // Paldins armor
-    document.getElementById("buyRustedArmorName").innerHTML = store.armor['Rusted Armor'].name;
-    document.getElementById("buyRustedArmorCost").innerHTML = store.armor['Rusted Armor'].cost
-    document.getElementById("buyJudgementName").innerHTML = store.armor['Judgement Armor'].name;
-    document.getElementById("buyJudgementCost").innerHTML = store.armor['Judgement Armor'].cost
-    document.getElementById("buyRedemptionName").innerHTML = store.armor['Redemption Armor'].name;
-    document.getElementById("buyRedemptionCost").innerHTML = store.armor['Redemption Armor'].cost
-    document.getElementById("buyWhiteTigerName").innerHTML = store.armor['White Tiger Armor'].name;
-    document.getElementById("buyWhiteTigerCost").innerHTML = store.armor['White Tiger Armor'].cost
-    document.getElementById("buyLightswornName").innerHTML = store.armor['Lightsworn Dragonplate'].name;
-    document.getElementById("buyLightswornCost").innerHTML = store.armor['Lightsworn Dragonplate'].cost
+    document.getElementById("buyRustedArmorName").innerHTML = store.armor["Rusted Armor"].name;
+    document.getElementById("buyRustedArmorCost").innerHTML = store.armor["Rusted Armor"].cost
+    document.getElementById("buyJudgementName").innerHTML = store.armor["Judgement Armor"].name;
+    document.getElementById("buyJudgementCost").innerHTML = store.armor["Judgement Armor"].cost
+    document.getElementById("buyRedemptionName").innerHTML = store.armor["Redemption Armor"].name;
+    document.getElementById("buyRedemptionCost").innerHTML = store.armor["Redemption Armor"].cost
+    document.getElementById("buyWhiteTigerName").innerHTML = store.armor["White Tiger Armor"].name;
+    document.getElementById("buyWhiteTigerCost").innerHTML = store.armor["White Tiger Armor"].cost
+    document.getElementById("buyLightswornName").innerHTML = store.armor["Lightsworn Dragonplate"].name;
+    document.getElementById("buyLightswornCost").innerHTML = store.armor["Lightsworn Dragonplate"].cost
 
     // Warriors Weapons
-  document.getElementById("buyClaymoreName").innerHTML = store.weapons['Claymore'].name;
-  document.getElementById("buyClaymoreCost").innerHTML = store.weapons['Claymore'].cost;
-  document.getElementById("buyShadowmourneName").innerHTML = store.weapons['Shadowmourne'].name;
-  document.getElementById("buyShadowmourneCost").innerHTML = store.weapons['Shadowmourne'].cost;
-  document.getElementById("buySulfurasName").innerHTML = store.weapons['Sulfuras, Hand of Ragnaros'].name;
-  document.getElementById("buySulfurasCost").innerHTML = store.weapons['Sulfuras, Hand of Ragnaros'].cost;
+  document.getElementById("buyClaymoreName").innerHTML = store.weapons["Claymore"].name;
+  document.getElementById("buyClaymoreCost").innerHTML = store.weapons["Claymore"].cost;
+  document.getElementById("buyShadowmourneName").innerHTML = store.weapons["Shadowmourne"].name;
+  document.getElementById("buyShadowmourneCost").innerHTML = store.weapons["Shadowmourne"].cost;
+  document.getElementById("buySulfurasName").innerHTML = store.weapons["Sulfuras, Hand of Ragnaros"].name;
+  document.getElementById("buySulfurasCost").innerHTML = store.weapons["Sulfuras, Hand of Ragnaros"].cost;
 
     // Warriors armor
-  document.getElementById("buyDestroyerName").innerHTML = store.armor['Battlegear of Wrath Destroyer'].name;
-  document.getElementById("buyDestroyerCost").innerHTML = store.armor['Battlegear of Wrath Destroyer'].cost
-  document.getElementById("buyWrathName").innerHTML = store.armor['Battlegear of Wrath'].name;
-  document.getElementById("buyWrathCost").innerHTML = store.armor['Battlegear of Wrath'].cost
-  document.getElementById("buyDreadnaughtName").innerHTML = store.armor['Valourous Dreadnaught'].name;
-  document.getElementById("buyDreadnaughtCost").innerHTML = store.armor['Valourous Dreadnaught'].cost
-  document.getElementById("buyDragonplateName").innerHTML = store.armor['Sanctified Colossal Dragonplate'].name;
-  document.getElementById("buyDragonplateCost").innerHTML = store.armor['Sanctified Colossal Dragonplate'].cost
+  document.getElementById("buyDestroyerName").innerHTML = store.armor["Battlegear of Wrath Destroyer"].name;
+  document.getElementById("buyDestroyerCost").innerHTML = store.armor["Battlegear of Wrath Destroyer"].cost
+  document.getElementById("buyWrathName").innerHTML = store.armor["Battlegear of Wrath"].name;
+  document.getElementById("buyWrathCost").innerHTML = store.armor["Battlegear of Wrath"].cost
+  document.getElementById("buyDreadnaughtName").innerHTML = store.armor["Valourous Dreadnaught"].name;
+  document.getElementById("buyDreadnaughtCost").innerHTML = store.armor["Valourous Dreadnaught"].cost
+  document.getElementById("buyDragonplateName").innerHTML = store.armor["Sanctified Colossal Dragonplate"].name;
+  document.getElementById("buyDragonplateCost").innerHTML = store.armor["Sanctified Colossal Dragonplate"].cost
 
     // Rogues
-  document.getElementById("buyDirkName").innerHTML = store.weapons['Dirk'].name;
-  document.getElementById("buyDirkCost").innerHTML = store.weapons['Dirk'].cost;
-  document.getElementById("buyWarglaivesName").innerHTML = store.weapons['Warglaives of Azzinoth'].name;
-  document.getElementById("buyWarglaivesCost").innerHTML = store.weapons['Warglaives of Azzinoth'].cost;
-  document.getElementById("buyFangsName").innerHTML = store.weapons['Golad & Tiriosh'].name;
-  document.getElementById("buyFangsCost").innerHTML = store.weapons['Golad & Tiriosh'].cost;
+  document.getElementById("buyDirkName").innerHTML = store.weapons["Dirk"].name;
+  document.getElementById("buyDirkCost").innerHTML = store.weapons["Dirk"].cost;
+  document.getElementById("buyWarglaivesName").innerHTML = store.weapons["Warglaives of Azzinoth"].name;
+  document.getElementById("buyWarglaivesCost").innerHTML = store.weapons["Warglaives of Azzinoth"].cost;
+  document.getElementById("buyFangsName").innerHTML = store.weapons["Golad & Tiriosh"].name;
+  document.getElementById("buyFangsCost").innerHTML = store.weapons["Golad & Tiriosh"].cost;
 
     // Rogues armor
-  document.getElementById("buyNightSlayerName").innerHTML = store.armor['Night Slayer Armor'].name;
-  document.getElementById("buyNightSlayerCost").innerHTML = store.armor['Night Slayer Armor'].cost
-  document.getElementById("buyTerrorbladeName").innerHTML = store.armor['Terrorblade Battlegear'].name;
-  document.getElementById("buyTerrorbladeCost").innerHTML = store.armor['Terrorblade Battlegear'].cost
-  document.getElementById("buyDarkPhoenixName").innerHTML = store.armor['Vestments of the Dark Phoenix'].name;
-  document.getElementById("buyDarkPhoenixCost").innerHTML = store.armor['Vestments of the Dark Phoenix'].cost
+  document.getElementById("buyNightSlayerName").innerHTML = store.armor["Night Slayer Armor"].name;
+  document.getElementById("buyNightSlayerCost").innerHTML = store.armor["Night Slayer Armor"].cost
+  document.getElementById("buyTerrorbladeName").innerHTML = store.armor["Terrorblade Battlegear"].name;
+  document.getElementById("buyTerrorbladeCost").innerHTML = store.armor["Terrorblade Battlegear"].cost
+  document.getElementById("buyDarkPhoenixName").innerHTML = store.armor["Vestments of the Dark Phoenix"].name;
+  document.getElementById("buyDarkPhoenixCost").innerHTML = store.armor["Vestments of the Dark Phoenix"].cost
   document.getElementById("buyDragonSoulName").innerHTML = store.armor["Dragon Soul Battlegear"].name;
   document.getElementById("buyDragonSoulCost").innerHTML = store.armor["Dragon Soul Battlegear"].cost
 
     // Mages
-  document.getElementById("buyShortStaffName").innerHTML = store.weapons['Short Staff'].name;
-  document.getElementById("buyShortStaffCost").innerHTML = store.weapons['Short Staff'].cost;
-  document.getElementById("buyAtieshName").innerHTML = store.weapons['Greatstaff of Atiesh'].name;
-  document.getElementById("buyAtieshCost").innerHTML = store.weapons['Greatstaff of Atiesh'].cost;
+  document.getElementById("buyShortStaffName").innerHTML = store.weapons["Short Staff"].name;
+  document.getElementById("buyShortStaffCost").innerHTML = store.weapons["Short Staff"].cost;
+  document.getElementById("buyAtieshName").innerHTML = store.weapons["Greatstaff of Atiesh"].name;
+  document.getElementById("buyAtieshCost").innerHTML = store.weapons["Greatstaff of Atiesh"].cost;
   document.getElementById("buyDragonwrathName").innerHTML = store.weapons["Dragonwrath"].name;
   document.getElementById("buyDragonwrathCost").innerHTML = store.weapons["Dragonwrath"].cost;
 
     // Mages armor
-  document.getElementById("buyRaggedTunicName").innerHTML = store.armor['Ragged Tunic'].name;
-  document.getElementById("buyRaggedTunicCost").innerHTML = store.armor['Ragged Tunic'].cost
-  document.getElementById("buyAldorName").innerHTML = store.armor['Aldor Regalia'].name;
-  document.getElementById("buyAldorCost").innerHTML = store.armor['Aldor Regalia'].cost
-  document.getElementById("buyTirisfalName").innerHTML = store.armor['Tirisfal Regalia'].name;
-  document.getElementById("buyTirisfalCost").innerHTML = store.armor['Tirisfal Regalia'].cost
-  document.getElementById("buyKirinTorName").innerHTML = store.armor['Kirin Tor Regalia'].name;
-  document.getElementById("buyKirinTorCost").innerHTML = store.armor['Kirin Tor Regalia'].cost
+  document.getElementById("buyRaggedTunicName").innerHTML = store.armor["Ragged Tunic"].name;
+  document.getElementById("buyRaggedTunicCost").innerHTML = store.armor["Ragged Tunic"].cost
+  document.getElementById("buyAldorName").innerHTML = store.armor["Aldor Regalia"].name;
+  document.getElementById("buyAldorCost").innerHTML = store.armor["Aldor Regalia"].cost
+  document.getElementById("buyTirisfalName").innerHTML = store.armor["Tirisfal Regalia"].name;
+  document.getElementById("buyTirisfalCost").innerHTML = store.armor["Tirisfal Regalia"].cost
+  document.getElementById("buyKirinTorName").innerHTML = store.armor["Kirin Tor Regalia"].name;
+  document.getElementById("buyKirinTorCost").innerHTML = store.armor["Kirin Tor Regalia"].cost
   document.getElementById("buyTimeLordsName").innerHTML = store.armor["Time Lord's Regalia"].name;
   document.getElementById("buyTimeLordsCost").innerHTML = store.armor["Time Lord's Regalia"].cost
 
@@ -1067,7 +1065,7 @@
   var findEnemy = function() {
     var randEnemy = Math.ceil((Math.random() * enemies.length) - 1);
     enemy = enemies[randEnemy];
-    if (enemy.name === 'treasure') {
+    if (enemy.name === "treasure") {
       return randomTreasure();
     }
     if (player.level !== 1) {
@@ -1075,8 +1073,8 @@
       hpMultiplier = 1;
       strMultiplier = 1;
       for (var i=1; i<player.level; i++) {
-         hpMultiplier += .25;
-         strMultiplier += .10;
+         hpMultiplier += 0.25;
+         strMultiplier += 0.10;
        }
       enemy.stats.health *= hpMultiplier;
       enemy.stats.strength *= strMultiplier;
@@ -1280,7 +1278,7 @@
 
   var regainStats = function () {
     player.resource += (player.wisdom * 2);
-    player.health += (player.constitution * .5);
+    player.health += (player.constitution * 0.5);
     if (player.health > 100) {
       player.health = baseHP;
     }
@@ -1319,10 +1317,10 @@
       var success = Math.ceil(Math.random() * 10);
       if (success === 9 || success === 10) {
         viewToastSuccess("The enemy dropped the tier 1 Judgement Armor, and it has been added to your inventory!");
-        if (player.inventory['Judgement Armor'] === undefined) {
-          player.inventory['Judgement Armor'] = 1;
+        if (player.inventory["Judgement Armor"] === undefined) {
+          player.inventory["Judgement Armor"] = 1;
         } else {
-          player.inventory['Judgement Armor']++;
+          player.inventory["Judgement Armor"]++;
         }
       }
     }
@@ -1355,7 +1353,7 @@
         document.getElementById("logListDesc").innerHTML = "You found " + enemy.gold + " gold!" + "<br>";
         }
 
-        enemy.gold += Math.floor(enemy.gold*(enemy.level * .1));
+        enemy.gold += Math.floor(enemy.gold*(enemy.level * 0.1));
         player.gold += enemy.gold;
         setEXP();
         gainedLevel();
@@ -1390,7 +1388,7 @@
 
       } else {
         document.getElementById("logListTitle").innerHTML = "";
-        document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!" + '<br>';
+        document.getElementById("logListDesc").innerHTML = "You hit for " + hit + "!" + "<br>";
         enemy.stats.health = Math.round(enemy.stats.health);
         document.getElementById("enemyHealth").innerHTML = enemy.stats.health + " HP";
         player.health -= (enemyHit - (player.defence/2));
