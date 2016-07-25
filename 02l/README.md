@@ -13,15 +13,12 @@ TODO:
   // add animations
   // maybe gain mana and health based on time
   if nothing equipped, put dropped weapons onto player. based on class
-  experience that enemies give you should scale
   sub classes with more powerful skills
   run away button, based on luck
   // mage mages more powerful because less armor
   lower gold gaining
 
 
-  // can't buy a dif class's weapons/armorList
   // Fix armor name, not showing up on profile.
-  //as health goes up, experience stays the same.
   // score bug, jumped 200k after killing rag
   // Tresures and lockpickign!

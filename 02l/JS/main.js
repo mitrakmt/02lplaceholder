@@ -167,72 +167,72 @@
       name : "Giant Rat",
       status: "Common",
       level: 1,
-      experience: 7,
-      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 2}
+      experience: 0,
+      stats : {health : 55, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
+      inventory: {healthPotion: 0, resourcePotion: 0, gold: 5}
     }, {
       name : "King Scorpion",
       status: "Uncommon",
       level: 1,
-      experience: 25,
+      experience: 0,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 3}
+      inventory: {healthPotion: 0, resourcePotion: 0, gold: 25}
     } , {
       name : "Camel",
       status: "Common",
       level: 1,
-      experience: 10,
-      stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 1}
+      experience: 0,
+      stats : {health : 55, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
+      inventory: {healthPotion: 0, resourcePotion: 0, gold: 0}
     } , {
       name : "Mummy",
       status: "Common",
       level: 1,
-      experience: 10,
+      experience: 0,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 5}
+      inventory: {healthPotion: 0, resourcePotion: 0, gold: 15}
     } , {
       name : "Naga",
       status: "Common",
       level: 1,
-      experience: 10,
+      experience: 0,
       stats : {health : 60, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 0, resourcePotion: 0, gold: 4}
+      inventory: {healthPotion: 0, resourcePotion: 0, gold: 15}
     } , {
       name : "Ragnaros",
       status: "Boss",
       level: 3,
-      experience: 150,
+      experience: 0,
       stats : {health : 150, mana : 100, intellect : 3, strength : 6, dexterity : 3, wisdom : 5, constitution : 5, defence : 4},
       inventory: {healthPotion: 4, resourcePotion: 4, gold: 100}
     } , {
       name : "King Sabertooth",
       status: "Rare",
       level: 2,
-      experience: 80,
+      experience: 0,
       stats : {health : 110, mana : 100, intellect : 2, strength : 4, dexterity : 3, wisdom : 5, constitution : 4, defence : 3},
-      inventory: {healthPotion: 2, resourcePotion: 3, gold: 85}
+      inventory: {healthPotion: 2, resourcePotion: 3, gold: 50}
     } , {
       name : "Arcane Golem",
       status: "Uncommon",
       level: 1,
-      experience: 25,
+      experience: 0,
       stats : {health : 80, mana : 100, intellect : 1, strength : 2, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 2, resourcePotion: 2, gold: 35}
+      inventory: {healthPotion: 2, resourcePotion: 2, gold: 25}
     } , {
       name : "Orc Warrior",
-      status: "Common",
+      status: "Uncommon",
       level: 1,
-      experience: 18,
+      experience: 0,
       stats : {health : 80, mana : 100, intellect : 1, strength : 3, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 1, resourcePotion: 2, gold: 35}
+      inventory: {healthPotion: 1, resourcePotion: 2, gold: 25}
     } , {
       name : "Tauren Warrior",
       status: "Uncommon",
       level: 2,
-      experience: 20,
+      experience: 0,
       stats : {health : 90, mana : 100, intellect : 1, strength : 4, dexterity : 2, wisdom : 1, constitution : 3, defence : 1},
-      inventory: {healthPotion: 2, resourcePotion: 1, gold: 35}
+      inventory: {healthPotion: 2, resourcePotion: 1, gold: 25}
     } , {
       name: "treasure",
       status: "random",
@@ -671,6 +671,11 @@
   var buyWeapon = function (weaponName) {
     if (player.gold >= store.weapons[weaponName].cost) {
 
+      if (player.class !== store.weapons[weaponName].class) {
+        toastr.warning("This item is not compatible with your class!");
+        return;
+      }
+
       if (store.weapons[weaponName].cost > 100) {
         var answer = confirm("This item costs " + store.weapons[weaponName].cost + ". Are you sure you want to buy this?");
         if (!answer) {
@@ -708,6 +713,11 @@
   // Buy Armor Function
   var buyArmor = function (armorName) {
     if (player.gold >= store.armor[armorName].cost) {
+
+      if (player.class !== store.armor[armorName].class) {
+        toastr.warning("This item is not compatible with your class!");
+        return;
+      }
 
       if (store.armor[armorName].cost > 100) {
         var answer = confirm("This item costs " + store.armor[armorName].cost + ". Are you sure you want to buy this?");
@@ -934,6 +944,29 @@
     action();
   }
 
+  var setEXP = function() {
+
+    if (enemy.status === "Boss") {
+      enemy.experience += 100;
+    }
+
+    else if (enemy.status === "Rare") {
+      enemy.experience += 75;
+    }
+
+    else if (enemy.status === "Uncommon") {
+      enemy.experience += 30;
+    }
+
+    else if (enemy.status === "Common") {
+      enemy.experience += 15;
+    }
+
+    enemy.experience *= player.level;
+  return player.experience += enemy.experience;
+
+  }
+
   // Normal Strength Attack Function
   var normalStrength = function () {
       if(player.class === "paladin") {
@@ -1142,9 +1175,9 @@
         // Update player stats
         document.getElementById("logListTitle").innerHTML = "Enemy defeated!";
         document.getElementById("logListDesc").innerHTML = "You found " + enemy.inventory.gold + " gold!" + "<br>";
-        enemy.inventory.gold *= (enemy.level * .75);
+        enemy.inventory.gold += Math.round(enemy.inventory.gold*(enemy.level * .1));
         player.gold += enemy.inventory.gold;
-        player.experience += enemy.experience * player.level;
+        setEXP();
         gainedLevel();
         document.getElementById("playerGold").innerHTML = player.gold;
         document.getElementById("playerHealth").innerHTML = player.health;
@@ -1174,7 +1207,7 @@
 
         if (enemy.status === "Boss" || enemy.status === "Rare") {
           var success = Math.ceil(Math.random() * 10);
-          if (success === 9 || success === 10) {
+          if (success === 10) {
             viewToastSuccess("The enemy dropped the tier 1 Judgement Armor, and it has been added to your inventory!");
             if (player.inventory['Judgement Armor'] === undefined) {
               player.inventory['Judgement Armor'] = 1;
