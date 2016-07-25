@@ -1319,9 +1319,17 @@
       // When enemy is killed:
       if (enemy.stats.health <= 0) {
         // Update player stats
-        document.getElementById("logListDesc").innerHTML = "You found " + enemy.inventory.gold + " gold!" + "<br>";
-        enemy.inventory.gold += Math.round(enemy.inventory.gold*(enemy.level * .1));
-        player.gold += enemy.inventory.gold;
+
+        if (enemy.name === "Camel") {
+        document.getElementById("logListDesc").innerHTML = "Camels don't drop gold, idiot" + "<br>";
+        }
+
+        else {
+        document.getElementById("logListDesc").innerHTML = "You found " + enemy.gold + " gold!" + "<br>";
+        }
+
+        enemy.gold += Math.floor(enemy.gold*(enemy.level * .1));
+        player.gold += enemy.gold;
         setEXP();
         gainedLevel();
         document.getElementById("playerGold").innerHTML = player.gold;
@@ -1338,33 +1346,7 @@
           }
         }
 
-<<<<<<< HEAD
-        if (enemy.status === "Uncommon" || enemy.status === "Rare") {
-          var success = Math.ceil(Math.random() * 10);
-          if (success === 9 || success === 10) {
-            viewToastSuccess("The enemy dropped a mallet and it has been added to your inventory!");
-            if (player.inventory.mallet === undefined) {
-              player.inventory.mallet = 1;
-            } else {
-              player.inventory.mallet++;
-            }
-          }
-        }
-
-        if (enemy.status === "Boss" || enemy.status === "Rare") {
-          var success = Math.ceil(Math.random() * 10);
-          if (success === 10) {
-            viewToastSuccess("The enemy dropped the tier 1 Judgement Armor, and it has been added to your inventory!");
-            if (player.inventory['Judgement Armor'] === undefined) {
-              player.inventory['Judgement Armor'] = 1;
-            } else {
-              player.inventory['Judgement Armor']++;
-            }
-          }
-        }
-=======
         checkEnemyStatus();
->>>>>>> origin/master
 
         player.score += Math.round(enemy.level * startHP * enemy.stats.strength);
 
