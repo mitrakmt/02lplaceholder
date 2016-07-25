@@ -9,6 +9,7 @@
   var hpMultiplier = 1;
   var strMultiplier = 1;
   var baseHP = 100;
+  var bleh;
 
   // Create elements for insert to DOM
   var newListItem = document.createElement("li");
