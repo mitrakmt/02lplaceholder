@@ -3,11 +3,8 @@
 TODO:
   // Algorithms for luck/charisma etc.
   // Some type of text based map, ASCII, sprites, search some 2d type of thing. Preset algorithm, can give choices for left or right..?
-  // After successful victory, chance of running into a merchant.
   // create text based map
   // display picture of combat + sprites
-  // fix potion drop rates
-  // rare chance of monsters dropping weapons
   // fix player inventory so they can choose what armor and weapons to equip
   // backpack/character sprites/item icons
   // add animations
@@ -16,7 +13,6 @@ TODO:
   sub classes with more powerful skills
   run away button, based on luck
   // mage mages more powerful because less armor
-  lower gold gaining
 
 
   // Fix armor name, not showing up on profile.
