@@ -1076,6 +1076,12 @@
          hpMultiplier += 0.25;
          strMultiplier += 0.10;
        }
+
+      //keeps player HP @ 100
+       if (player.health > 100) {
+         player.health = baseHP;
+       }
+
       enemy.stats.health *= hpMultiplier;
       enemy.stats.strength *= strMultiplier;
     }
