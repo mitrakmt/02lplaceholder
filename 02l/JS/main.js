@@ -8,7 +8,8 @@
    rogueResource = "Energy",
    hpMultiplier = 1,
    strMultiplier = 1,
-   baseHP = 100;
+   baseHP = 100,
+   treasureFlag = false;
 
   // Create elements for insert to DOM
   var newListItem = document.createElement("li");
@@ -29,6 +30,7 @@
 
   //
   var randomTreasure = function () {
+    treasureFlag = false;
     var randomRiddle = Math.floor(Math.random() * riddles.length);
     document.getElementById("logListTitle").innerHTML = "Riddle Wall";
     document.getElementById("logListDesc").innerHTML = "You come across a riddle wall. <br>";
@@ -40,11 +42,16 @@
   }
 
   var treasureSuccess = function () {
-    var userAnswer = prompt("What is your answer?");
-    if (userAnswer === answer) {
-      var chooseTreasure = Math.floor(Math.random() * treasure.length);
-      document.getElementById("logListDesc").innerHTML = "Success! You opened the chest and were awarded " + treasure[chooseTreasure].count + " " + treasure[chooseTreasure].name + "<br>";
-      treasure[chooseTreasure].action();
+    if (!treasureFlag) {
+      treasureFlag = true;
+      var userAnswer = prompt("What is your answer?");
+      if (userAnswer === answer) {
+        var chooseTreasure = Math.floor(Math.random() * treasure.length);
+        document.getElementById("logListDesc").innerHTML = "Success! You opened the chest and were awarded " + treasure[chooseTreasure].count + " " + treasure[chooseTreasure].name + "<br>";
+        treasure[chooseTreasure].action();
+      }
+    } else {
+      toastr.warning("The chest is empty!");
     }
   }
 
@@ -410,7 +417,7 @@
       },
       "King Slayer": {
         name: "King Slayer",
-        class: "mage",
+        class: "warrior",
         type: "Weapon",
         strength: 25,
         dexterity: 25,
@@ -665,6 +672,7 @@
       "Sanctified Colossal Dragonplate": {
         name: "Sanctified Colossal Dragonplate",
         type: "Plate",
+        class: "warrior",
         defence: 19,
         strength: 15,
         dexterity: 0,
