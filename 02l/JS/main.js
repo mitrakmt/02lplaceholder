@@ -49,9 +49,12 @@ var treasureSuccess = function() {
             var chooseTreasure = Math.floor(Math.random() * treasure.length);
             document.getElementById("logListDesc").innerHTML = "Success! You opened the chest and were awarded " + treasure[chooseTreasure].count + " " + treasure[chooseTreasure].name + "<br>";
             treasure[chooseTreasure].action();
+        } else {
+          document.getElementById("logListDesc").innerHTML = "Sorry, that's not the correct answer.<br>";
+          document.getElementById("inTreasureMode").style.visibility = "hidden";
         }
     } else {
-        toastr.warning("The chest is empty!");
+        toastr.warning("The chest has vanished!");
     }
 }
 
@@ -404,95 +407,99 @@ var enemies = [{
     }
 }];
 
-var treasure = [{
-    name: "Health Potion",
-    count: 2,
-    action: function() {
-        player.inventory.healthPotion += 2;
-        document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
-    }
-}, {
-    name: "Resource Potion",
-    count: 2,
-    action: function() {
-        player.inventory.resourcePotion += 2;
-        document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
-    }
-}, {
-    name: "Health Potion",
-    count: 1,
-    action: function() {
-        player.inventory.healthPotion++;
-        document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
-    }
-}, {
-    name: "Resource Potion",
-    count: 2,
-    action: function() {
-        player.inventory.resourcePotion += 2;
-        document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
-    }
-}, {
-    name: "Health Potion",
-    count: 2,
-    action: function() {
-        player.inventory.healthPotion += 2;
-        document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
-    }
-}, {
-    name: "Resource Potion",
-    count: 1,
-    action: function() {
-        player.inventory.resourcePotion++;
-        document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
-    }
-}, {
-    name: "Gold",
-    count: 300,
-    action: function() {
-        player.gold += 300;
-        document.getElementById("playerGold").innerHTML = player.gold;
-    }
-}, {
-    name: "New Level",
-    count: 1,
-    action: function() {
-        gainedLevel("treasure");
-    }
-}, {
-    name: "Rare Weapon",
-    count: 1,
-    action: function() {
-        randomWeapon();
-    }
-}]
+var treasure = [
+  {
+      name: "Health Potion",
+      count: 2,
+      action: function() {
+          player.inventory.healthPotion += 2;
+          document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+      }
+  }, {
+      name: "Resource Potion",
+      count: 2,
+      action: function() {
+          player.inventory.resourcePotion += 2;
+          document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
+      }
+  }, {
+      name: "Health Potion",
+      count: 1,
+      action: function() {
+          player.inventory.healthPotion++;
+          document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+      }
+  }, {
+      name: "Resource Potion",
+      count: 2,
+      action: function() {
+          player.inventory.resourcePotion += 2;
+          document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
+      }
+  }, {
+      name: "Health Potion",
+      count: 2,
+      action: function() {
+          player.inventory.healthPotion += 2;
+          document.getElementById("playerHealthPotion").innerHTML = player.inventory.healthPotion;
+      }
+  }, {
+      name: "Resource Potion",
+      count: 1,
+      action: function() {
+          player.inventory.resourcePotion++;
+          document.getElementById("playerResourcePotion").innerHTML = player.inventory.resourcePotion;
+      }
+  }, {
+      name: "Gold",
+      count: 300,
+      action: function() {
+          player.gold += 300;
+          document.getElementById("playerGold").innerHTML = player.gold;
+      }
+  }, {
+      name: "New Level",
+      count: 1,
+      action: function() {
+          gainedLevel("treasure");
+      }
+  }, {
+      name: "Rare Weapon",
+      count: 1,
+      action: function() {
+          randomWeapon();
+      }
+  }
+]
 
 var completedQuestions = [];
-var riddles = [{
+var riddles = [
+  {
     question: "The more you take, the more you leave behind. What am I?",
     answer: "footsteps"
-}, {
-    question: "I don't have eyes, but once I did see. Once I had thoughts, but now I'm white and empty.",
-    answer: "skull"
-}, {
-    question: "What flies without wings?",
-    answer: "time"
-}, {
-    question: "What disappears the moment you say its name?",
-    answer: "silence"
-}, {
-    question: "What body part is pronounced as one letter but written with three, only two different letters are used?",
-    answer: "eye"
-}, {
-    question: "It can be cracked, It can be made, It can be told, it can be played. What is it?",
-    answer: "jokes"
-}, {
-    question: "What has a head, a tail, is brown, and has no legs?",
-    answer: "penny"
-}, {
-    question: "Feed me and I live, yet give me a drink and I die",
-    answer: "fire"
-}]
+  }, {
+      question: "I don't have eyes, but once I did see. Once I had thoughts, but now I'm white and empty.",
+      answer: "skull"
+  }, {
+      question: "What flies without wings?",
+      answer: "time"
+  }, {
+      question: "What disappears the moment you say its name?",
+      answer: "silence"
+  }, {
+      question: "What body part is pronounced as one letter but written with three, only two different letters are used?",
+      answer: "eye"
+  }, {
+      question: "It can be cracked, It can be made, It can be told, it can be played. What is it?",
+      answer: "jokes"
+  }, {
+      question: "What has a head, a tail, is brown, and has no legs?",
+      answer: "penny"
+  }, {
+      question: "Feed me and I live, yet give me a drink and I die",
+      answer: "fire"
+  }
+]
 
 // Store Object
 var store = {
