@@ -13,6 +13,17 @@ TODO:
   sub classes with more powerful skills
   run away button, based on luck
   // mage mages more powerful because less armor
+  Pets!
+  Dodging, AI
+  blocking, countering
+  Better character stats card
+  Weaknesses.
+  Roll for stat points at beginning
+  Character pictures
+  Add animations, battle screen
+  Sounds
+  Big level up animation over the screen
+  On regular attack, chance to special attack
 
 
   // Fix armor name, not showing up on profile.
